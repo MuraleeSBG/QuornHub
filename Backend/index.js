@@ -24,7 +24,7 @@ var con = mysql.createConnection({
   });
 
   app.get('/api', (req, res) => {
-    con.query("SELECT * FROM QuornhubDb.new_table", function (err, result, fields) {
+    con.query("SELECT * FROM QuornhubDb.recipes", function (err, result, fields) {
         if (err) throw err;
         res.send(result);
         console.log("works")
@@ -33,7 +33,7 @@ var con = mysql.createConnection({
 
 
   app.get('/api/:id', (req, res) => {
-    con.query("SELECT * FROM QuornhubDb.new_table WHERE idnew_table = ?", [req.params.id], function (err, result, fields) {
+    con.query("SELECT * FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
         if (err) throw err;
         res.send(result);
         console.log("works")
