@@ -27,7 +27,7 @@ var con = mysql.createConnection({
     con.query("SELECT * FROM QuornhubDb.recipes", function (err, result, fields) {
         if (err) throw err;
         res.send(result);
-        console.log("works")
+        console.log("all works")
       });
   });
 
@@ -36,6 +36,6 @@ var con = mysql.createConnection({
     con.query("SELECT * FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
         if (err) throw err;
         res.send(result);
-        console.log("works")
+        console.log("id works")
     });
 });
