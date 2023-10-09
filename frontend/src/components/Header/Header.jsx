@@ -9,18 +9,18 @@ export const Header = ({ userName }) => {
         <div className="header">
             <div className="nav-bar">
                     <div>
-                        <img src={logo}/>
+                        <img src={logo} alt="Quornhub logo"/>
                     </div>
 
                     <div className="nav-links">
-                        <a href="#" className="nav">Home</a>
-                        <a href="#" className="nav">Food Saver</a>
-                        <a href="#" className="nav">Recipes</a>
+                        <a className="nav">Home</a>
+                        <a className="nav">Food Saver</a>
+                        <a className="nav">Recipes</a>
                     </div>
 
                     <div className="nav-right">
-                        <img className="search-icon" src={searchIcon}/>
-                        <img className="profile-pic" id={userName} src={user}/>
+                        <img className="search-icon" src={searchIcon} alt="search icon"/>
+                        <img className="profile-pic" id={userName} src={user} alt="login icon"/>
                     </div>
             </div>
         </div>
