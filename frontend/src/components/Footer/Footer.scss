@@ -4,13 +4,12 @@
     margin-left: auto;
     margin-right: auto;
     height: 100vh;
-    padding: 5%;
+    padding: 2%;
+    background-color: #D7916C;
+    color:#737373;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.footer-bar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+.copyright {
+    text-align: center;
 }

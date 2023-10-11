@@ -4,14 +4,14 @@
     margin-left: auto;
     margin-right: auto;
     height: 100vh;
-    padding: 5%;
+    padding: 2%;
 }
 
 .nav-bar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 14vw;
     align-items: center;
 }
 
@@ -44,3 +44,5 @@
     width: 4vw;
     border-radius: 75%;
 }
+
+// needs media types adding to be responsive for mobile
