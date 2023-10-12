@@ -9,7 +9,7 @@ export const Header = ({ userName }) => {
         <div className="header">
             <div className="nav-bar">
                     <div>
-                        <img src={logo} alt="Quornhub logo"/>
+                        <img className="QHlogo" src={logo} alt="Quornhub logo"/>
                     </div>
 
                     <div className="nav-links">
