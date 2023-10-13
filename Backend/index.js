@@ -2,7 +2,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const mysql = require('mysql');
-
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+ 
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
@@ -90,10 +92,9 @@ app.delete('/api/:id', (req, res) => {
   }
 });
 
-/*
-app.post('/createrecipe', (req, res) => {
-  console.log(req.body);
-  if (req.body) {
+app.post('/api', jsonParser, function (req, res) {
+  console.log(req.body.recipeName);
+  if (req.body.recipeName) {
     con.query("INSERT INTO QuornhubDb.recipes (recipeName, recipeImg, recipeDesc, isVegan, isGlutenFree, isNutFree, isLactoseFree, isUnder15, ingredients, method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [req.body.recipeName, req.body.recipeImg, req.body.recipeDesc, req.body.isVegan, req.body.isGlutenFree, req.body.isNutFree, req.body.isLactoseFree, req.body.isUnder15, req.body.ingredients, req.body.method], function (err, result, fields) {
       if (err) throw err;
       res.send(result);
@@ -101,4 +102,3 @@ app.post('/createrecipe', (req, res) => {
     });
   }
 });
-*/
