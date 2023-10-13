@@ -34,7 +34,7 @@ app.get('/api', (req, res) => {
 });
 
 
-app.get('/api/:id', (req, res) => {
+app.get('/api/id/:id', (req, res) => {
   con.query("SELECT * FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
     if (err) throw err;
     res.send(result);
@@ -42,7 +42,7 @@ app.get('/api/:id', (req, res) => {
   });
 });
 
-app.get('/vegan', (req, res) => {
+app.get('/api/vegan', (req, res) => {
   con.query("SELECT * FROM QuornhubDb.recipes WHERE isVegan = 1", function (err, result, fields) {
       if (err) throw err;
       res.send(result);
@@ -50,7 +50,7 @@ app.get('/vegan', (req, res) => {
     });
 });
 
-app.get('/gluten', (req, res) => {
+app.get('/api/gluten', (req, res) => {
   con.query("SELECT * FROM QuornhubDb.recipes WHERE isGlutenFree = 1", function (err, result, fields) {
       if (err) throw err;
       res.send(result);
@@ -58,7 +58,7 @@ app.get('/gluten', (req, res) => {
     });
 });
 
-app.get('/nut', (req, res) => {
+app.get('/api/nut', (req, res) => {
   con.query("SELECT * FROM QuornhubDb.recipes WHERE isNutFree = 1", function (err, result, fields) {
       if (err) throw err;
       res.send(result);
@@ -66,7 +66,7 @@ app.get('/nut', (req, res) => {
     });
 });
 
-app.get('/lactose', (req, res) => {
+app.get('/api/lactose', (req, res) => {
   con.query("SELECT * FROM QuornhubDb.recipes WHERE isLactoseFree = 1", function (err, result, fields) {
       if (err) throw err;
       res.send(result);
@@ -74,7 +74,7 @@ app.get('/lactose', (req, res) => {
     });
 });
 
-app.get('/u15', (req, res) => {
+app.get('/api/u15', (req, res) => {
   con.query("SELECT * FROM QuornhubDb.recipes WHERE isUnder15 = 1", function (err, result, fields) {
       if (err) throw err;
       res.send(result);
@@ -82,7 +82,7 @@ app.get('/u15', (req, res) => {
     });
 });
 
-app.delete('/api/:id', (req, res) => {
+app.delete('/api/id/:id', (req, res) => {
   if (req.params.id) {
     con.query("DELETE FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
       if (err) throw err;
