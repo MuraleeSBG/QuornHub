@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -26,7 +26,7 @@
 
 .nav {
     margin: 2vw;
-    color: #3E3D74;
+    color: black;
     text-align: center;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
@@ -34,21 +34,39 @@
     font-size: 3vw;
 }
 
-.nav-right{
-    display: flex;
-    justify-content: space-between;
-}
-
-.search-icon {
-    width: 4vw;
-    height: 4vw;
-}
-
-.profile-pic {
+.dropbtn {
+    background: url(../../images/user.svg) no-repeat;
+    cursor: point;
+    border: none;
     width: 4vw;
     height: 4vw;
     border-radius: 75%;
     justify-content: flex-start;
+    
+
 }
 
-// needs media types adding to be responsive for mobile
+.dropdown{
+    display: inline-block;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 10vw;
+    border: solid black;
+    
+}
+.dropdown-content a {
+    padding: 5%;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: black;    
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
