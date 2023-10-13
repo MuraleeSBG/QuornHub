@@ -1,6 +1,5 @@
 import "./Header.scss";
 import logo from "../../images/QHLogo.png";
-import userImg from "../../images/user.svg";
 
 export const Header = ({ userName }) => {
 
