@@ -35,6 +35,11 @@
     color: black;
 }
 
+.nav:hover {
+    color: rgb(166,1,83);
+
+}
+
 .dropbtn {
     background: url(../../images/user.svg) no-repeat;
     cursor: point;
@@ -70,7 +75,7 @@
     overflow: visible;
     text-align: left;
     border-radius: 10%;
-    border: solid pink;
+    border: solid rgb(166,1,83);
 }
 
 .dropdown-content2 {
@@ -78,7 +83,7 @@
     position: absolute;
     background-color: white;
     border-radius: 10%;
-    border: solid pink;
+    border: solid rgb(166,1,83);
 }
 
 .dropdown-content a {
@@ -103,6 +108,7 @@
 .dropdown-content a:hover {
     background-color: rgb(249, 246, 246);
     border-radius: 10%;
+    
 }
 .dropdown:hover .dropdown-content {display: block;}
 
@@ -112,3 +118,7 @@
 }
 .dropdown:hover .dropdown-content2 {display: block;}
 
+.dropbtn2:hover {
+    color: rgb(166,1,83)
+
+}
