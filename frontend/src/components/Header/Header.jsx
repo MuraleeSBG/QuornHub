@@ -21,9 +21,13 @@ export const Header = ({ userName }) => {
                     <div class="dropdown nav">
                         <button class="dropbtn2">Recipes{dropIcon}</button>
                         <div class="dropdown-content2">
-                            <a href="gf">Link 1</a>
-                            <a href="nut">Link 2</a>
-                            <a href="lactofree">Link 3</a>
+                            <a href="gf">Gluten Free</a>
+                            <a href="nut">Vegan</a>
+                            <a href="lactofree">15 Minute</a>
+                            <a href="lactofree">Lactose Free</a>
+                            <a href="lactofree">Add Recipe</a>
+                            <a href="lactofree">All Recipes</a>
+
                         </div>
                     </div> 
                     
@@ -32,8 +36,8 @@ export const Header = ({ userName }) => {
                     <div className="dropdown">
                         <button className="dropbtn"></button>
                         <div class="dropdown-content">
-                            <p><a href="login">Login</a></p>
-                            <p><a href="register">Register</a></p>
+                            <a href="login">Login</a>
+                            <a href="register">Register</a>
                         </div>
                     </div>
             </div>
