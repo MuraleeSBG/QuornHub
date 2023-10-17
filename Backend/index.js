@@ -92,6 +92,9 @@ app.delete('/api/id/:id', (req, res) => {
     });
   }
 });
+
+OLD CODE: PARAMETERS IN URL
+
 */
 
 app.delete('/api', jsonParser, function (req, res) {
