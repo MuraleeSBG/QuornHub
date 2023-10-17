@@ -29,8 +29,8 @@ export const Header = ({ userName }) => {
 							<a href="gf">Gluten Free</a>
 							<a href="nut">Vegan</a>
 							<a href="lactofree">15 Minute</a>
-                            <a href="lactofree">Lactose Free</a>
-                            <Link to='/add-recipes'>Add a Recipe</Link>
+							<a href="lactofree">Lactose Free</a>
+							<Link to="/add-recipes">Add a Recipe</Link>
 							<Link to="/recipes">All Recipes</Link>
 						</div>
 					</div>
@@ -39,8 +39,7 @@ export const Header = ({ userName }) => {
 				<div className="dropdown">
 					<button className="dropbtn"></button>
 					<div className="dropdown-content">
-						<a href="login">Login</a>
-						<a href="register">Register</a>
+						<Link to="/login">Login / Register</Link>
 					</div>
 				</div>
 			</div>
