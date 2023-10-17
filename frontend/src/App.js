@@ -4,7 +4,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import FoodSaver from "./pages/FoodSaver";
 import AddRecipes from "./pages/AddRecipes";
-import Recipes from "./pages/Recipes";
+import Login from "./pages/Login";
+import Recipes from "./pages/recipes";
+import CreateAccount from "./pages/CreateAccount";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -23,6 +25,14 @@ const App = () => {
 		{
 			path: "/add-recipes",
 			element: <AddRecipes />,
+		},
+		{
+			path: "/login",
+			element: <Login />,
+		},
+		{
+			path: "/create-account",
+			element: <CreateAccount />,
 		},
 	]);
 
