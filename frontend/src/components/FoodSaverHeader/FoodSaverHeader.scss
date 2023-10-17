@@ -1,5 +1,5 @@
 .food-saver-header {
-	width: 100%;
+	width: 100vw;
 	margin-left: auto;
 	margin-right: auto;
 	height: min-content;
@@ -10,18 +10,42 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 16px;
+	padding: 2vw;
 }
 
 .fs-header-title {
 	width: 50vw;
 	font-family: "Paytone One", sans-serif;
-	margin: 0px;
+	margin: 0vw;
     text-align: center;
 }
 
 .header-sub-heading {
     width: 40vw;
-	margin-top: 8px;
+	margin-top: 1vw;
     text-align: center;
+}
+
+.search-input {
+    width: 25vw;
+	margin: 2vw 0vw 2vw 2vw;
+    padding: 1vw;
+    border: none;
+    border-radius: 1vw 0 0 1vw;
+    font-family: "Montserrat", sans-serif;
+}
+
+.search-input:focus-visible {
+    outline: 0.1vw solid #3e3d74;
+  }
+
+
+.submit-button {
+	border: none;
+    background-color: #3e3d74;
+    color: #ffffff;
+    border-radius: 0 1vw 1vw 0;
+    padding: 1vw 4vw;
+    font-family: "Montserrat", sans-serif;
+
 }
