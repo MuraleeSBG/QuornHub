@@ -24,7 +24,6 @@ export const Header = ({ userName }) => {
 					<Link className="nav" to="/food-saver">
 						Food Saver
 					</Link>
-
 					<div className="dropdown nav">
 						<button className="dropbtn2">Recipes{dropIcon}</button>
 						<div className="dropdown-content2">

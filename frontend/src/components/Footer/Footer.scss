@@ -13,18 +13,19 @@
 	padding: 16px;
 }
 
-h1 {
+.footer-title {
+	width: 75vw;
 	font-family: "Paytone One", sans-serif;
 	margin: 0px;
     text-align: center;
 }
 
-p {
+.sub-heading {
 	margin-top: 8px;
     text-align: center;
 }
 
-input {
+.join-input {
 	margin: 8px 0 8px 8px;
 	padding: 8px;
 	border: none;
@@ -33,11 +34,12 @@ input {
 
 }
 
-input:focus-visible {
+.join-input:focus-visible {
     outline: 1px solid #3e3d74;
   }
 
-button {
+
+.join-button {
 	border: none;
 	background-color: #3e3d74;
 	color: #ffffff;
