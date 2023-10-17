@@ -22,8 +22,7 @@
     display: flex;
     justify-content: space-evenly;
     overflow: hidden;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-family: "Paytone One", sans-serif;
     font-size: 3vw;
     text-align: center;
 
@@ -32,7 +31,7 @@
 .nav {
     margin: 2vw;
     text-decoration: none;
-    color: black;
+    color: #1f1d1d;
 }
 
 .nav:hover {
@@ -51,12 +50,11 @@
 }
 .dropbtn2 {
     text-decoration: none;
-    color: black;
+    color: #1f1d1d;
     background: none;
     border: none;
-    font-weight: bold;
     font-size: 3vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Paytone One", sans-serif;
     padding-block: 0px;
     padding-inline: 0px;
     margin: none;
