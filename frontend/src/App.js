@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import FoodSaver from "./pages/FoodSaver";
 import AddRecipes from "./pages/AddRecipes";
 import Login from "./pages/Login";
-import Recipes from "./pages/recipes";
+import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount";
 import GlutenFree from "./pages/GlutenFree";
 import Vegan from "./pages/Vegan";
