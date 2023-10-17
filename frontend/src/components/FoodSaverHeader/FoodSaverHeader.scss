@@ -7,27 +7,35 @@
 	font-family: "Montserrat", sans-serif;
 	background-image: url(../../images/FoodSaverHeaderImage.png);
 	background-size: cover;
-	display: flex;
+	// display: flex;
+	// flex-direction: column;
+	// align-items: center;
+	
+}
+
+.main {
+    display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 2vw;
 }
 
 .fs-header-title {
-	width: 50vw;
+	width: 80vw;
 	font-family: "Paytone One", sans-serif;
 	margin: 0vw;
     text-align: center;
+    font-size: 3vw;
 }
 
 .header-sub-heading {
-    width: 40vw;
+    width: 65vw;
 	margin-top: 1vw;
     text-align: center;
+    font-size: 2vw;
 }
 
 .search-input {
-    width: 25vw;
+    width: 40vw;
 	margin: 2vw 0vw 2vw 2vw;
     padding: 1vw;
     border: none;
