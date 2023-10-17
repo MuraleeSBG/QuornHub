@@ -5,18 +5,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-// <div className="nav-links">
-// 					<Link className="nav" to="/">
-// 						Home
-// 					</Link>
-// 					<Link className="nav" to="/food-saver">
-// 						Food Saver
-// 					</Link>
-// 					<a href="Recipes" className="nav">
-// 						Recipes
-// 					</a>
-// 				</div>
-
 
 export const Header = ({ userName }) => {
 
@@ -31,8 +19,12 @@ export const Header = ({ userName }) => {
                 </div>
 
                 <div className="nav-links">
-                    <a href="Home" className="nav">Home</a>
-                    <a href="FoodSaver" className="nav">Food Saver</a>
+                    <Link className="nav" to="/">
+						Home
+				    </Link>
+                    <Link className="nav" to="/food-saver">
+						Food Saver
+					</Link>
                     <div className="dropdown nav">
                         <button className="dropbtn2">Recipes{dropIcon}</button>
                         <div className="dropdown-content2">
