@@ -82,7 +82,7 @@ app.get('/api/u15', (req, res) => {
     });
 });
 
-
+/*
 app.delete('/api/id/:id', (req, res) => {
   if (req.params.id) {
     con.query("DELETE FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
@@ -92,7 +92,17 @@ app.delete('/api/id/:id', (req, res) => {
     });
   }
 });
+*/
 
+app.delete('/api', jsonParser, function (req, res) {
+  if (req.body.recipeId) {
+    con.query("DELETE FROM QuornhubDb.recipes WHERE id = ?", [req.body.recipeId], function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+      console.log("delete works")
+    });
+  }
+});
 
 app.post('/api', jsonParser, function (req, res) {
   console.log(req.body.recipeName);
