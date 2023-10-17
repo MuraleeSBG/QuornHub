@@ -82,6 +82,7 @@ app.get('/api/u15', (req, res) => {
     });
 });
 
+
 app.delete('/api/id/:id', (req, res) => {
   if (req.params.id) {
     con.query("DELETE FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
@@ -92,6 +93,7 @@ app.delete('/api/id/:id', (req, res) => {
   }
 });
 
+
 app.post('/api', jsonParser, function (req, res) {
   console.log(req.body.recipeName);
   if (req.body.recipeName) {
@@ -99,6 +101,17 @@ app.post('/api', jsonParser, function (req, res) {
       if (err) throw err;
       res.send(result);
       console.log("post works")
+    });
+  }
+});
+
+app.put('/api', jsonParser, function (req, res) {
+  console.log(req.body.recipeId);
+  if (req.body.recipeId) {
+    con.query("UPDATE QuornhubDb.recipes SET recipeName = ?, recipeImg = ?, recipeDesc = ?, isVegan = ?, isGlutenFree = ?, isNutFree = ?, isLactoseFree = ?, isUnder15 = ?, ingredients = ?, method = ? WHERE id = ?", [req.body.recipeName, req.body.recipeImg, req.body.recipeDesc, req.body.isVegan, req.body.isGlutenFree, req.body.isNutFree, req.body.isLactoseFree, req.body.isUnder15, req.body.ingredients, req.body.method, req.body.recipeId], function (err, result, fields) {
+      if (err) throw err;
+      res.send(result);
+      console.log("put works")
     });
   }
 });
