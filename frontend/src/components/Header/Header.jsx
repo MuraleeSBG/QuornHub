@@ -1,7 +1,22 @@
 import "./Header.scss";
 import logo from "../../images/QHLogo.png";
+
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
+// <div className="nav-links">
+// 					<Link className="nav" to="/">
+// 						Home
+// 					</Link>
+// 					<Link className="nav" to="/food-saver">
+// 						Food Saver
+// 					</Link>
+// 					<a href="Recipes" className="nav">
+// 						Recipes
+// 					</a>
+// 				</div>
+
 
 export const Header = ({ userName }) => {
 
@@ -12,15 +27,15 @@ export const Header = ({ userName }) => {
             <div className="nav-bar">
 
                 <div>
-                    <img href="Home" className="QHlogo" src={logo} alt="Quornhub logo"/>
+                    <img className="QHlogo" src={logo} alt="Quornhub logo"/>
                 </div>
 
                 <div className="nav-links">
                     <a href="Home" className="nav">Home</a>
                     <a href="FoodSaver" className="nav">Food Saver</a>
-                    <div class="dropdown nav">
-                        <button class="dropbtn2">Recipes{dropIcon}</button>
-                        <div class="dropdown-content2">
+                    <div className="dropdown nav">
+                        <button className="dropbtn2">Recipes{dropIcon}</button>
+                        <div className="dropdown-content2">
                             <a href="gf">Gluten Free</a>
                             <a href="nut">Vegan</a>
                             <a href="lactofree">15 Minute</a>
@@ -35,7 +50,7 @@ export const Header = ({ userName }) => {
 
                     <div className="dropdown">
                         <button className="dropbtn"></button>
-                        <div class="dropdown-content">
+                        <div className="dropdown-content">
                             <a href="login">Login</a>
                             <a href="register">Register</a>
                         </div>
