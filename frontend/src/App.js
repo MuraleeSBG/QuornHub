@@ -7,6 +7,10 @@ import AddRecipes from "./pages/AddRecipes";
 import Login from "./pages/Login";
 import Recipes from "./pages/recipes";
 import CreateAccount from "./pages/CreateAccount";
+import GlutenFree from "./pages/GlutenFree";
+import Vegan from "./pages/Vegan";
+import FifteenMinute from "./pages/FifteenMinute";
+import LactoseFree from "./pages/LactoseFree";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -33,6 +37,22 @@ const App = () => {
 		{
 			path: "/create-account",
 			element: <CreateAccount />,
+		},
+		{
+			path: "/gluten-free",
+			element: <GlutenFree />,
+		},
+		{
+			path: "/vegan",
+			element: <Vegan />,
+		},
+		{
+			path: "/fifteen-minute",
+			element: <FifteenMinute />,
+		},
+		{
+			path: "/lactose-free",
+			element: <LactoseFree />,
 		},
 	]);
 

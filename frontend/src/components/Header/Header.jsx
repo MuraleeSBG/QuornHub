@@ -12,7 +12,9 @@ export const Header = ({ userName }) => {
 		<div className="header">
 			<div className="nav-bar">
 				<div>
-					<img className="QHlogo" src={logo} alt="Quornhub logo" />
+					<Link className="nav" to="/">
+						<img className="QHlogo" src={logo} alt="Quornhub logo" />
+					</Link>
 				</div>
 
 				<div className="nav-links">
@@ -26,10 +28,10 @@ export const Header = ({ userName }) => {
 					<div className="dropdown nav">
 						<button className="dropbtn2">Recipes{dropIcon}</button>
 						<div className="dropdown-content2">
-							<a href="gf">Gluten Free</a>
-							<a href="nut">Vegan</a>
-							<a href="lactofree">15 Minute</a>
-							<a href="lactofree">Lactose Free</a>
+                            <Link to="/gluten-free">Gluten Free</Link>
+                            <Link to="/vegan">Vegan</Link>
+                            <Link to="/fifteen-minute">15 Minute</Link>
+                            <Link to="/lactose-free">Lactose Free</Link>
 							<Link to="/add-recipes">Add a Recipe</Link>
 							<Link to="/recipes">All Recipes</Link>
 						</div>
