@@ -16,26 +16,26 @@
 .footer-title {
 	width: 75vw;
 	font-family: "Paytone One", sans-serif;
-	margin: 0px;
+	margin: 0vw;
     text-align: center;
 }
 
 .sub-heading {
-	margin-top: 8px;
+	margin-top: 1vw;
     text-align: center;
 }
 
 .join-input {
-	margin: 8px 0 8px 8px;
-	padding: 8px;
+	margin: 2vw 0vw 2vw 2vw;
+	padding: 1vw;
 	border: none;
-	border-radius: 10px 0 0 10px;
+	border-radius: 1vw 0 0 1vw;
     font-family: "Montserrat", sans-serif;
 
 }
 
 .join-input:focus-visible {
-    outline: 1px solid #3e3d74;
+    outline: 1vw solid #3e3d74;
   }
 
 
@@ -43,7 +43,8 @@
 	border: none;
 	background-color: #3e3d74;
 	color: #ffffff;
-	border-radius: 0 10px 10px 0;
-	padding: 8px 24px;
+	border-radius: 0 1vw 1vw 0;
+	padding: 1vw 4vw;
 	font-family: "Montserrat", sans-serif;
 }
+
