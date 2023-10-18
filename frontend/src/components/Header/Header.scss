@@ -47,6 +47,7 @@
     height: 4vw;
     border-radius: 75%;
     justify-content: flex-start;
+    
 }
 .dropbtn2 {
     text-decoration: none;
@@ -71,13 +72,14 @@
     display: none;
     position: absolute;
     background-color: white;
-    font-weight: bold;
     font-size: 2vw;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Paytone One", sans-serif;
     overflow: visible;
     text-align: left;
     border-radius: 10%;
     border: solid rgb(166,1,83);
+    right: 0;
+    
 }
 
 .dropdown-content2 {
@@ -88,24 +90,14 @@
     border: solid rgb(166,1,83);
 }
 
-.dropdown-content a {
+.dropdown-content a, .dropdown-content2 a {
     float: none;
     color: black;
     text-decoration: none;
     display: block;
     padding: 1vw 1vh;
+    font-size: 2vw;
 }
-
-.dropdown-content2 a {
-    float: none;
-    color: black;
-    padding: 1vw 1vh;
-    text-decoration: none;
-    display: block;
-    font-size: 2vw; 
-}
-
-
 
 .dropdown-content a:hover {
     background-color: rgb(249, 246, 246);
