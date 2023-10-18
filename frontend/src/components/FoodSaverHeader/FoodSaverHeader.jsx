@@ -1,14 +1,11 @@
 import "./FoodSaverHeader.scss";
 import { Header } from '../Header/Header';
 import { useState } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export const FoodSaverHeader = () => {
 
     const[listOfInput, setListOfInput] = useState([]);
 
-    const removeIcon = <FontAwesomeIcon icon={faXmark} />;
 
     let addIngredient = (e) => {
 
@@ -18,45 +15,28 @@ export const FoodSaverHeader = () => {
             ingredientToAdd,
         ]);
         e.target.previousSibling.value = ''
+
     }
 
-    // let removeIngredient = (e) => {
+    let removeIngredient = (e) => {
 
-    //     let ingredientToRemove = e.target.parentElement.id
-    //     console.log(ingredientToRemove)
+        let ingredientToRemove = e.target.parentElement.id
 
+        const deleteByvalue = ingredientToRemove => {
+            setListOfInput(oldList => {
+                return oldList.filter(item => item !== ingredientToRemove)
+            })
+        }
 
+        deleteByvalue(ingredientToRemove)
 
-    //     let stateList = listOfInput
-    //     console.log(stateList)
+    }
 
-    //     let newList = stateList.filter(checkItems);
-    //     console.log(newList)
-
-    //     function checkItems(x) {
-    //         return x !== ingredientToRemove
-    //     }
-
-
-    //     setListOfInput(() => [
-    //         newList,
-    //     ]);
-
-    //     console.log(listOfInput)
-        
-        
-
-
-
-    // }
-
-
-    // onClick={removeIngredient}
 
     const tags = listOfInput.map(item => {
         return <div className="tag" id={item}>
                     {item}
-                    <button id={`${item}btn`}  className="remove-button">x</button>
+                    <button id={`${item}btn`} onClick={removeIngredient} className="remove-button">x</button>
                 </div>
     })
 
