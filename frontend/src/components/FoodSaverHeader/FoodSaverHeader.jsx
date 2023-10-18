@@ -1,6 +1,7 @@
 import "./FoodSaverHeader.scss";
 import { Header } from '../Header/Header';
 import { useState } from 'react';
+import {FoodSaverCard} from '../FoodSaverCard/FoodSaverCard'
 
 export const FoodSaverHeader = () => {
 
@@ -57,6 +58,12 @@ export const FoodSaverHeader = () => {
                 </div>
 
             </div>
+
+            {
+                listOfInput.length !== 0
+                ? <FoodSaverCard image='https://handletheheat.com/wp-content/uploads/2020/10/BAKERY-STYLE-CHOCOLATE-CHIP-COOKIES-9-637x637-1-550x550.jpg' title='Vegan Chocolate Chip Cookies' tags={['vegan', 'vegetarian', 'gluten-free']}/>
+                : <h1>Enter ingredients to start saving food and be inspired!</h1>
+            }
         
 		</div>
 	);

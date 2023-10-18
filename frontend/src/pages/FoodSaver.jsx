@@ -6,10 +6,6 @@ const FoodSaver = () => {
 	return (
 		<>
 			<FoodSaverHeader/>
-			<div>Food Saver results</div>;
-			<div>Food Saver results</div>;
-			<div>Food Saver results</div>;
-			<div>Food Saver results</div>;
 			<Footer/>
 		</>
 	);
