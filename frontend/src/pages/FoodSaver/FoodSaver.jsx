@@ -43,8 +43,12 @@ const FoodSaver = () => {
     })
 
 
+
+    
+
+
 	return (
-		<>
+		<div>
 			<FoodSaverHeader/>
             <div className="food-saver-main">
                 <div className="search-bar">
@@ -54,18 +58,20 @@ const FoodSaver = () => {
                 <div id="tags" className="tags-container">
                     {tags}
                 </div>
-                {
-                listOfInput.length !== 0
+                <div className="results-container">
+                {listOfInput.length !== 0
                 ? <FoodSaverCard image='https://handletheheat.com/wp-content/uploads/2020/10/BAKERY-STYLE-CHOCOLATE-CHIP-COOKIES-9-637x637-1-550x550.jpg' title='Vegan Chocolate Chip Cookies' tags={['vegan', 'vegetarian', 'gluten-free']}/>
                 : <h1 className="results-placeholder">Enter ingredients to start saving food and be inspired!</h1>
                 }
+                </div>
+                
             </div>
 			
 			
 
 			<Footer/>
 			
-		</>
+		</div>
 	);
 };
 
