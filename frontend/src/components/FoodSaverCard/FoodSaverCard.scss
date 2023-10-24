@@ -6,9 +6,10 @@
     margin-bottom: 2vw;
 }
 
-.image {
+.recipe-image {
     width: 14vw;
-    height: auto;
+    height: 14vw;
+    object-fit: cover;
     border-radius: 0.6vw 0 0 0.6vw;
 }
 
