@@ -9,6 +9,7 @@ Create TABLE QuornhubDb.recipes (
     isLactoseFree boolean NOT NULL,
     isUnder15 boolean NOT NULL,
     ingredients json NOT NULL,
-    method mediumtext NOT NULL
+    method mediumtext NOT NULL,
+    PRIMARY KEY(id)
     );
 
