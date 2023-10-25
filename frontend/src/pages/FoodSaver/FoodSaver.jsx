@@ -1,7 +1,7 @@
 
 import { Footer } from "../../components/Footer/Footer";
 import { FoodSaverHeader } from "../../components/FoodSaverHeader/FoodSaverHeader";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {FoodSaverCard} from '../../components/FoodSaverCard/FoodSaverCard'
 import './FoodSaver.scss'
 
@@ -10,9 +10,6 @@ const FoodSaver = () => {
 	const[listOfInput, setListOfInput] = useState([]);
     let data = require('../../testData.json')
     const [filteredData, setFilteredData] = useState([]);
-
-    //const[allRecipes, setAllRecipes] = useState([])
-    
 
     let addIngredient = (e) => {
 
@@ -36,7 +33,7 @@ const FoodSaver = () => {
         )
         console.log("The filteredData is")
         console.log(filteredData)
-        // setFilteredData(filteredData)
+        
 
         for (let i=0; i < filteredData.length; i++) {
             setFilteredData((currentList) => [
@@ -46,16 +43,7 @@ const FoodSaver = () => {
             ])
 
         }
-        // console.log("updated filtered data")
-        // console.log(filteredData)
 
-        // const ids = filteredData.map(({id}) => id);
-        // const filtered = filteredData.filter(({id}, index) =>
-        // !ids.includes(id, index + 1));
-        // console.log("With duplicates removed")
-        // console.log(filtered);
-
-        // setFilteredData(filtered)
 
     }
 
@@ -86,7 +74,24 @@ const FoodSaver = () => {
     const showResults = filteredData.map(recipe => {
         return <FoodSaverCard title={recipe.recipeName} image={recipe.recipeImg} tags={fakeTags}/>
     })
+
+
+    // // Trying to get duplicate remove working  - it works but stuck in infinite loop
+    // useEffect(() => {
+    //     function removeDups() {
+    //         const ids = filteredData.map(({id}) => id);
+    //         const filtered = filteredData.filter(({id}, index) =>
+    //         !ids.includes(id, index + 1));
+    //         console.log("With duplicates removed")
+    //         console.log(filtered);
     
+    //         setFilteredData(filtered)
+    //     }
+
+    //     removeDups()
+    
+
+    // }, [])
 
 
 	return (
