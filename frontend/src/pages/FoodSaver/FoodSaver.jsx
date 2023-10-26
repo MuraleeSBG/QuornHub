@@ -46,17 +46,6 @@ const FoodSaver = () => {
         }
     }
 
-    
-
-    // input tags NOT dietaries
-    const tags = listOfInput.map(item => {
-        return <div className="tag" id={item}>
-                    {item}
-                    <button id={`${item}btn`} onClick={removeIngredient} className="remove-button">x</button>
-                </div>
-    })
-
-    
 
     // currently only removes the input tag, does not remove recipe YET
     let removeIngredient = (e) => {
@@ -72,6 +61,18 @@ const FoodSaver = () => {
         deleteByvalue(ingredientToRemove)
 
     }
+    
+
+    // input tags NOT dietaries
+    const tags = listOfInput.map(item => {
+        return <div className="tag" id={item}>
+                    {item}
+                    <button id={`${item}btn`} onClick={removeIngredient} className="remove-button">x</button>
+                </div>
+    })
+
+    
+
 
     // placeholder dietary tags whilst the FoodSaver card needs editing (change in the way the data is strutured)
     const fakeTags=['vegan', 'vegetarian', 'gluten-free']
