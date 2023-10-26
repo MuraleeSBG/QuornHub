@@ -10,6 +10,8 @@ const FoodSaver = () => {
 	const[listOfInput, setListOfInput] = useState([]);
     let data = require('../../testData.json')
     const [filteredData, setFilteredData] = useState([]);
+    const [displayedRecipes, setDisplayedRecipes] = useState([]);
+
 
     let addIngredient = (e) => {
 
@@ -71,27 +73,24 @@ const FoodSaver = () => {
 
     const fakeTags=['vegan', 'vegetarian', 'gluten-free']
 
-    const showResults = filteredData.map(recipe => {
-        return <FoodSaverCard title={recipe.recipeName} image={recipe.recipeImg} tags={fakeTags}/>
-    })
-
 
     // Trying to get duplicate remove working  - it works but stuck in infinite loop
     useEffect(() => {
-        function removeDups() {
+            // gets all the unique ids from the filtered data
             const ids = filteredData.map(({id}) => id);
+
+            // filters the recipes using unique ids
             const filtered = filteredData.filter(({id}, index) =>
+                !ids.includes(id, index + 1));
+            
+            // Set filtered recipes into new state for rendering
+            setDisplayedRecipes(filtered)
+            
+    }, [filteredData])
 
-            !ids.includes(id, index + 1));
-            console.log("With duplicates removed")
-            console.log(filtered);
-    
-            setFilteredData(filtered)
-        }
-
-        removeDups()
-
-    }, [listOfInput])
+    const showResults = displayedRecipes.map(recipe => {
+        return <FoodSaverCard title={recipe.recipeName} image={recipe.recipeImg} tags={fakeTags}/>
+    })
 
 
 	return (
