@@ -1,60 +1,60 @@
 .card {
     display: flex;
-    width: 700px;
-    border-radius: 10px;
+    width: 40.5vw;
+    border-radius: 0.6vw;
     background-color: #D7916C;
+    margin-bottom: 2vw;
 }
 
-.image {
-    width: 252px;
-    height: 252px;
-    border-radius: 10px 0 0 10px;
+.recipe-image {
+    width: 14vw;
+    object-fit: cover;
+    border-radius: 0.6vw 0 0 0.6vw;
 }
 
 .card-body {
-    padding: 0 20px 0 30px;
+    padding: 0 1.15vw 0 1.73vw;
     font-family: 'Montserrat', sans-serif;
     color: #1F1D1D;
 }
 
 h3 {
-    font-size: 35px;
+    font-size: 2vw;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 0.6vw;
 }
 
-.card-text {
-    font-size: 18px;
+.tag-text {
+    font-size: 1.2vw;
     font-weight: 500;
     background-color: #C9A5CE;
-    border-radius: 15px;
+    border-radius: 10vw;
     width: fit-content;
-    padding: 2px 10px;
+    padding: 0.11vw 0.5vw;
 }
 
 .tag-container {
     display: flex;
-    gap: 5px;
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: 30px;
+    justify-content: space-around;
 }
 
 .recipe-button {
-    border-radius: 12px;
+    border-radius: 1vw;
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 1vw;
     color: #3E3D74;
-    border: solid 2px #3E3D74;
+    border: solid 0.1vw #3E3D74;
     background: #EFE6DD;
-    box-shadow: 0px 2px 0px 0px #3E3D74;
+    box-shadow: 0px 0.1vw 0px 0px #3E3D74;
     // padding: 10px 16px;
     font-weight: 800;
     //I will come back and change this later to be more accessible and use padding instead of height and width
-    height: 34px;
-    width: 162px;
+    // Jenny: have updated this to be relative to viewport when doing foodsaver page
+    
+    width: 11vw;
+    height: auto;
+    margin-bottom: 1vw;
+
 }
 
 .button-container {
