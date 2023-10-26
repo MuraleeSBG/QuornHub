@@ -76,22 +76,22 @@ const FoodSaver = () => {
     })
 
 
-    // // Trying to get duplicate remove working  - it works but stuck in infinite loop
-    // useEffect(() => {
-    //     function removeDups() {
-    //         const ids = filteredData.map(({id}) => id);
-    //         const filtered = filteredData.filter(({id}, index) =>
-    //         !ids.includes(id, index + 1));
-    //         console.log("With duplicates removed")
-    //         console.log(filtered);
-    
-    //         setFilteredData(filtered)
-    //     }
+    // Trying to get duplicate remove working  - it works but stuck in infinite loop
+    useEffect(() => {
+        function removeDups() {
+            const ids = filteredData.map(({id}) => id);
+            const filtered = filteredData.filter(({id}, index) =>
 
-    //     removeDups()
+            !ids.includes(id, index + 1));
+            console.log("With duplicates removed")
+            console.log(filtered);
     
+            setFilteredData(filtered)
+        }
 
-    // }, [])
+        removeDups()
+
+    }, [listOfInput])
 
 
 	return (
@@ -123,5 +123,3 @@ const FoodSaver = () => {
 };
 
 export default FoodSaver;
-
-{/* <FoodSaverCard image='https://handletheheat.com/wp-content/uploads/2020/10/BAKERY-STYLE-CHOCOLATE-CHIP-COOKIES-9-637x637-1-550x550.jpg' title='Vegan Chocolate Chip Cookies' tags={['vegan', 'vegetarian', 'gluten-free']}/> */}
