@@ -9,7 +9,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 1,
-		"tags": ["vegatarian", "gluten-free"],
+		"tags": ["gluten-free", "nut-free", "under-15"],
 		"ingredients": ["Eggs", "Milk", "Salt", "Pepper"],
 		"method": "Crack 2 eggs into a bowl. Add a dash of milk. Whisk until homogenous. Pour into a hot pan. Ad salt and pepper. Gently move around the eggs around until theyre cooked."
 	},
@@ -23,7 +23,7 @@
 		"isNutFree": 0,
 		"isLactoseFree": 1,
 		"isUnder15": 0,
-		"tags": ["vegatarian", "gluten-free"],
+		"tags": ["gluten-free", "vegan", "lactose-free"],
 		"ingredients": [
 			"Onion",
 			"Garlic",
@@ -47,7 +47,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 1,
-		"tags": ["gluten-free"],
+		"tags": ["under-15", "nut-free"],
 		"ingredients": ["Butter", "Onion", "Garlic", "Risotto Rice", "Tomato"],
 		"method": "STEP 1\nBefore you get started, take a look at our weighing and measuring skills guide. Heat the oven to 200C/180C fan/gas 6. Melt the butter in a large ovenproof frying pan over a medium heat and fry the onion for 3-4 mins until starting to soften. Add the garlic and cook for another minute, stirring the whole time. Tip in the rice and mix well to coat in the buttery onion mixture.\n\nSTEP 2\nIf you’re using a stock cube, boil the kettle. Crumble the stock cube into a jug and carefully measure in 700ml hot water from the kettle, stirring to dissolve the cube. If using fresh stock, warm this in a pan over a low heat until steaming.\n\nSTEP 3\nAdd the cherry tomatoes and hot stock to the rice, season with salt and pepper and stir to combine.\n\nSTEP 4\nCover with a tightly fitting lid and bake for 20 mins. Carefully remove from the oven using oven gloves and stir – the rice should be just cooked, with a little bite. The risotto may still look quite runny at this stage.\n\nSTEP 5\nStir through most of the cheese, replace the lid and leave to stand for 3-4 mins. Sprinkle with the rest of the cheese and the basil to serve."
 	},
@@ -61,7 +61,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 0,
-		"tags": ["vegatarian"],
+		"tags": ["nut-free"],
 		"ingredients": ["Cumin", "Carrot", "Lentil", "Milk", "Stock"],
 		"method": "STEP 1\nHeat a large saucepan and dry-fry 2 tsp cumin seeds and a pinch of chilli flakes for 1 min, or until they start to jump around the pan and release their aromas.\n\nSTEP 2\nScoop out about half with a spoon and set aside. Add 2 tbsp olive oil, 600g coarsely grated carrots, 140g split red lentils, 1l hot vegetable stock and 125ml milk to the pan and bring to the boil.\n\nSTEP 3\nSimmer for 15 mins until the lentils have swollen and softened.\n\nSTEP 4\nWhizz the soup with a stick blender or in a food processor until smooth (or leave it chunky if you prefer).\n\nSTEP 5\nSeason to taste and finish with a dollop of plain yogurt and a sprinkling of the reserved toasted spices. Serve with warmed naan breads."
 	},
@@ -75,6 +75,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 0,
+    "tags": ["nut-free"],
 		"ingredients": [
 			"Lasagne",
 			"Onion",
@@ -95,6 +96,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 0,
+    "tags": ["nut-free"],
 		"ingredients": [
 			"Pumpkin",
 			"Onion",
@@ -115,6 +117,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 1,
 		"isUnder15": 1,
+    "tags": ["nut-free" , "vegan", "lactose-free", "under-15"],
 		"ingredients": [
 			"Onion",
 			"Aubergine",
@@ -137,6 +140,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 0,
+    "tags": ["nut-free"],
 		"ingredients": [
 			"Aubergine",
 			"Tomato",
@@ -157,6 +161,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 1,
 		"isUnder15": 0,
+    "tags": ["nut-free", "vegan", "lactose-free", "under-15"],
 		"ingredients": ["Cumin", "Onion", "Lentil", "Stock", "Tomato", "Chickpea"],
 		"method": "STEP 1\nHeat a large saucepan and dry-fry 2 tsp cumin seeds and a large pinch of chilli flakes for 1 min, or until they start to jump around the pan and release their aromas.\n\nSTEP 2\nAdd 1 tbsp olive oil and 1 chopped red onion, and cook for 5 mins.\n\nSTEP 3\nStir in 140g red split lentils, 850ml vegetable stock or water and a 400g can tomatoes, then bring to the boil. Simmer for 15 mins until the lentils have softened.\n\nSTEP 4\nWhizz the soup with a stick blender or in a food processor until it is a rough purée, pour back into the pan and add a 200g can drained and rinsed chickpeas.\n\nSTEP 5\nHeat gently, season well and stir in a small bunch of chopped coriander, reserving a few leaves to serve."
 	},
@@ -170,6 +175,7 @@
 		"isNutFree": 1,
 		"isLactoseFree": 0,
 		"isUnder15": 0,
+    "tags": ["nut-free", "vegan"],
 		"ingredients": [
 			"Carrot",
 			"Potato",
