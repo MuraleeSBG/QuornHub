@@ -10,9 +10,9 @@ const FoodSaver = () => {
 	const[listOfInput, setListOfInput] = useState([]);
     let data = require('../../testData.json')
     const [filteredData, setFilteredData] = useState([]);
-    const [displayedRecipes, setDisplayedRecipes] = useState([]);
+    const [recipesToDisplay, setrecipesToDisplay] = useState([]);
 
-
+    // sets input into state, clears input box and calls filterData to implement search
     let addIngredient = (e) => {
 
         let ingredientToAdd = e.target.previousSibling.value
@@ -29,6 +29,7 @@ const FoodSaver = () => {
 
     }
 
+    // searches for recipes based on new input
     const filterData = (ingredientToAdd) => {
         const filteredData = data.filter((item) =>
             item.ingredients.toLowerCase().includes(ingredientToAdd.toLowerCase())
@@ -36,19 +37,28 @@ const FoodSaver = () => {
         console.log("The filteredData is")
         console.log(filteredData)
         
-
         for (let i=0; i < filteredData.length; i++) {
             setFilteredData((currentList) => [
                 ...currentList,
                 filteredData[i],
 
             ])
-
         }
-
-
     }
 
+    
+
+    // input tags NOT dietaries
+    const tags = listOfInput.map(item => {
+        return <div className="tag" id={item}>
+                    {item}
+                    <button id={`${item}btn`} onClick={removeIngredient} className="remove-button">x</button>
+                </div>
+    })
+
+    
+
+    // currently only removes the input tag, does not remove recipe YET
     let removeIngredient = (e) => {
 
         let ingredientToRemove = e.target.parentElement.id
@@ -63,18 +73,11 @@ const FoodSaver = () => {
 
     }
 
-
-    const tags = listOfInput.map(item => {
-        return <div className="tag" id={item}>
-                    {item}
-                    <button id={`${item}btn`} onClick={removeIngredient} className="remove-button">x</button>
-                </div>
-    })
-
+    // placeholder dietary tags whilst the FoodSaver card needs editing (change in the way the data is strutured)
     const fakeTags=['vegan', 'vegetarian', 'gluten-free']
 
 
-    // Trying to get duplicate remove working  - it works but stuck in infinite loop
+    // Removes duplicates with same ids whenever filteredData state changes (i.e. whenever there's a new input)
     useEffect(() => {
             // gets all the unique ids from the filtered data
             const ids = filteredData.map(({id}) => id);
@@ -84,11 +87,13 @@ const FoodSaver = () => {
                 !ids.includes(id, index + 1));
             
             // Set filtered recipes into new state for rendering
-            setDisplayedRecipes(filtered)
+            setrecipesToDisplay(filtered)
             
     }, [filteredData])
 
-    const showResults = displayedRecipes.map(recipe => {
+
+    // renders foodsavercard for recipes to display (filtered with dupes removed)
+    const showResults = recipesToDisplay.map(recipe => {
         return <FoodSaverCard title={recipe.recipeName} image={recipe.recipeImg} tags={fakeTags}/>
     })
 
