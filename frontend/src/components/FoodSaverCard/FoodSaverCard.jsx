@@ -7,8 +7,8 @@ export const FoodSaverCard = ({ image, title, tags }) => {
 			<div className="card-body">
 				<h3 className="card-title">{title}</h3>
 				<div className="tag-container">
-					{tags.map((tag) => (
-						<p className="tag-text">{tag}</p>
+					{tags.map((tag, index) => (
+						<p key={index} className="tag-text">{tag}</p>
 					))}
 				</div>
 				<div className="button-container">
