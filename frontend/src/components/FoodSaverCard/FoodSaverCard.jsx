@@ -12,7 +12,7 @@ export const FoodSaverCard = ({ image, title, tags }) => {
 					))}
 				</div>
 				<div className="button-container">
-					<button className="recipe-button">Go to recipe </button>
+					<button className="recipe-button"><a href="/go-to-recipe">Go to recipe </a></button>
 				</div>
 			</div>
 		</div>

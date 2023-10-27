@@ -10,6 +10,7 @@ import GlutenFree from "./pages/GlutenFree";
 import Vegan from "./pages/Vegan";
 import FifteenMinute from "./pages/FifteenMinute";
 import LactoseFree from "./pages/LactoseFree";
+import GoToRecipe from "./pages/GoToRecipe/GoToRecipe";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -52,6 +53,11 @@ const App = () => {
 		{
 			path: "/lactose-free",
 			element: <LactoseFree />,
+		},
+		{
+			path: "/go-to-recipe",
+			element: <GoToRecipe />
+
 		},
 	]);
 
