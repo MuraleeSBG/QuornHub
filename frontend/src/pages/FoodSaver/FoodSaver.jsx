@@ -40,7 +40,7 @@ const FoodSaver = () => {
 			});
 		});
 		setrecipesToDisplay(filteredRecipes);
-	}, [listOfInput]);
+	}, [listOfInput, data]);
 
 	// currently only removes the input tag, does not remove recipe YET
 	const removeIngredient = (e) => {
