@@ -125,9 +125,11 @@ const FoodSaver = () => {
 					{listOfInput.length !== 0 ? (
 						<div>{showResults}</div>
 					) : (
-						<h1 className="results-placeholder">
-							Enter ingredients to start saving food and be inspired!
-						</h1>
+						<div>
+							<h1 className="results-placeholder">
+								Enter ingredients to start saving food and be inspired!
+							</h1>
+						</div>
 					)}
 				</div>
 			</div>
