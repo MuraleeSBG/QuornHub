@@ -55,8 +55,8 @@ const App = () => {
 			element: <LactoseFree />,
 		},
 		{
-			path: "/go-to-recipe",
-			element: <GoToRecipe />
+			path: "/go-to-recipe/:id",
+			element: <GoToRecipe/>
 
 		},
 	]);

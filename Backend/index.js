@@ -1,9 +1,15 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+
+const cors = require('cors')
+
+app.use(cors({
+  origin: "http://localhost:3000"
+}));
  
 // Start the server
 app.listen(port, () => {

@@ -1,6 +1,7 @@
 import "./FoodSaverCard.scss";
 
 export const FoodSaverCard = ({ selectedRecipe, tags, onRecipeSelect }) => {
+	const url = `/go-to-recipe/${selectedRecipe.id}`
 	return (
 		<div className="card">
 			<img className="recipe-image" src={selectedRecipe.recipeImg} alt={selectedRecipe.recipeName} />
@@ -12,7 +13,7 @@ export const FoodSaverCard = ({ selectedRecipe, tags, onRecipeSelect }) => {
 					))}
 				</div>
 				<div className="button-container">
-					<button onClick={() => onRecipeSelect(selectedRecipe)} className="recipe-button"><a href="/go-to-recipe">Go to recipe </a></button>
+					<button onClick={() => onRecipeSelect(selectedRecipe)} className="recipe-button"><a href={url}>Go to recipe </a></button>
 				</div>
 			</div>
 		</div>
