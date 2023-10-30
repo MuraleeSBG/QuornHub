@@ -94,8 +94,7 @@ const FoodSaver = () => {
 		return (
 			<FoodSaverCard
 				key={index}
-				title={recipe.recipeName}
-				image={recipe.recipeImg}
+				selectedRecipe={recipe}
 				tags={tags}
 			/>
 		);
