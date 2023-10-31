@@ -2,7 +2,7 @@ import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import FoodSaver from "./pages/FoodSaver/FoodSaver";
-import AddRecipes from "./pages/AddRecipes";
+import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount";
@@ -61,6 +61,5 @@ const App = () => {
 		</div>
 	);
 };
-
 
 export default App;
