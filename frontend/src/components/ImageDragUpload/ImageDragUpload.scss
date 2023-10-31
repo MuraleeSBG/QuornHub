@@ -1,9 +1,9 @@
 #form-file-upload {
 	height: 16rem;
-	width: 28rem;
-	max-width: 100%;
+	width: 16rem;
 	text-align: center;
 	position: relative;
+	
 }
 
 #input-file-upload {
@@ -18,8 +18,8 @@
 	border-width: 2px;
 	border-radius: 1rem;
 	border-style: dashed;
-	border-color: #cbd5e1;
-	background-color: #f8fafc;
+	border-color: #525252;
+	background-color: #EFE6DD;
 }
 
 #label-file-upload.drag-active {
@@ -48,4 +48,12 @@
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
+}
+
+.uploadImage {
+	height: 30%;
+	width: 30%;
+	border-radius: 1rem;
+	object-fit: cover;
+
 }

@@ -42,15 +42,27 @@ form {
 .leftColumn {
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
+	padding: 5% 5% 5% 0%;
 }
 
 .rightColumn {
 	display: flex;
 	flex-direction: column;
+	align-items: flex-start;
+	padding: 5%;
 }
 
 .tagCheckboxes {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	justify-items: start;
+}
+
+.ingredient {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 }
