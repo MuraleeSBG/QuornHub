@@ -145,9 +145,9 @@ const FoodSaver = () => {
 				<div id="tags" className="tags-container">
 					{tags}
 				</div>
-				<div className="results-container">
+				
 					{listOfInput.length !== 0 ? (
-						<div>{showResults}</div>
+						<div className="results-container">{showResults}</div>
 					) : (
 						<div>
 							<h1 className="results-placeholder">
@@ -155,7 +155,7 @@ const FoodSaver = () => {
 							</h1>
 						</div>
 					)}
-				</div>
+
 			</div>
 
 			<Footer />
