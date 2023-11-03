@@ -1,7 +1,8 @@
 import { Header } from "../../components/Header/Header";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
 import { useState, useEffect } from "react";
-import '../Dietary css/Dietary.scss'
+import './Categories.scss'
+import {Footer} from '../../components/Footer/Footer'
 
 const GlutenFree = () => {
 
@@ -44,6 +45,7 @@ const GlutenFree = () => {
 			<div className="category-results">
 				{showResults}
 			</div>
+			<Footer/>
 		</div>
 	);
 };

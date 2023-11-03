@@ -105,7 +105,7 @@ app.get("/api/gluten", (req, res) => {
 	);
 });
 
-app.get("/api/nut", (req, res) => {
+app.get("/api/nut-free", (req, res) => {
 	con.query(
 		"SELECT * FROM QuornhubDb.recipes WHERE isNutFree = 1",
 		function (err, result, fields) {
@@ -116,7 +116,7 @@ app.get("/api/nut", (req, res) => {
 	);
 });
 
-app.get("/api/lactose", (req, res) => {
+app.get("/api/lactose-free", (req, res) => {
 	con.query(
 		"SELECT * FROM QuornhubDb.recipes WHERE isLactoseFree = 1",
 		function (err, result, fields) {

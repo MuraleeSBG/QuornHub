@@ -6,10 +6,11 @@ import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount";
-import GlutenFree from "./pages/DietaryPages/GlutenFree";
-import Vegan from "./pages/Vegan";
-import FifteenMinute from "./pages/FifteenMinute";
-import LactoseFree from "./pages/LactoseFree";
+import GlutenFree from "./pages/Categories/GlutenFree";
+import Vegan from "./pages/Categories/Vegan";
+import FifteenMinute from "./pages/Categories/FifteenMinute";
+import LactoseFree from "./pages/Categories/LactoseFree";
+import NutFree from "./pages/Categories/NutFree";
 import GoToRecipe from "./pages/GoToRecipe/GoToRecipe";
 
 const App = () => {
@@ -53,6 +54,10 @@ const App = () => {
 		{
 			path: "/lactose-free",
 			element: <LactoseFree />,
+		},
+		{
+			path: "/nut-free",
+			element: <NutFree />,
 		},
 		{
 			path: "/go-to-recipe/:id",

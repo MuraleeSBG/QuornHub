@@ -31,6 +31,7 @@ export const Header = ({ userName }) => {
                             <Link to="/vegan">Vegan</Link>
                             <Link to="/fifteen-minute">15 Minute</Link>
                             <Link to="/lactose-free">Lactose Free</Link>
+							<Link to="/nut-free">Nut Free</Link>
 							<Link to="/add-recipes">Add a Recipe</Link>
 							<Link to="/recipes">All Recipes</Link>
 						</div>
