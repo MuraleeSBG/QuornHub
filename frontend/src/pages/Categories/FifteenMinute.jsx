@@ -42,7 +42,7 @@ const FifteenMinute = () => {
 	return (
 		<div className="category-page">
             <Header />
-            <h1 className="category-title">166 Minute Recipes</h1>
+            <h1 className="category-title">15 Minute Recipes</h1>
 			<div className="category-results">
 				{showResults}
 			</div>
