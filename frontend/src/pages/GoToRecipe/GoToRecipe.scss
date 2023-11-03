@@ -89,3 +89,13 @@ p.ingredient{
     margin-block-end: 0.5rem;
     
 }
+
+.description{
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    align-items: flex-start;
+    text-align: left;
+    font-size: 1.5vh;
+
+}

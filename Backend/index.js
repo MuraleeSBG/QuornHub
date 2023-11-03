@@ -59,15 +59,29 @@ app.get("/api", (req, res) => {
 
 app.get("/api/id/:id", (req, res) => {
 	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE id = ?",
-		[req.params.id],
-		function (err, result, fields) {
+		"SELECT * FROM QuornhubDb.recipes WHERE id = ?", 
+		[req.params.id], 
+		function (err, result) {
 			if (err) throw err;
-			res.send(result);
-			console.log("id works");
-		}
-	);
-});
+			const parsedResult = result.map((recipeAttribute) => {
+				return {
+				  id: recipeAttribute.id,
+				  recipeName: recipeAttribute.recipeName,
+				  recipeImg: recipeAttribute.recipeImg,
+				  recipeDesc: recipeAttribute.recipeDesc,
+				  isVegan: recipeAttribute.isVegan,
+				  isGlutenFree: recipeAttribute.isGlutenFree,
+				  isNutFree: recipeAttribute.isNutFree,
+				  isLactoseFree: recipeAttribute.isLactoseFree,
+				  isUnder15: recipeAttribute.isUnder15,
+				  ingredients: JSON.parse(recipeAttribute.ingredients) ,
+				  method: recipeAttribute.method
+				}
+			  })
+				  res.send(parsedResult);
+				  console.log("all works");
+			  });
+		  });
 
 app.get("/api/vegan", (req, res) => {
 	con.query(
