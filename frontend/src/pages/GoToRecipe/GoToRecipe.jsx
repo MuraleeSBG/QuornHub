@@ -65,7 +65,7 @@ const GoToRecipe = () => {
                             <div className="main">
                                 <div className="main-column1">
                                     <h4 className="sub-heading">Ingredients</h4>
-                                    <div className="ingredients-list">{(JSON.parse(data[0].ingredients)).map((ingredient) => {return (<p key={ingredient} className="ingredient">{ingredient}</p>)})}</div>
+                                    <div className="ingredients-list">{(data[0].ingredients).map((ingredient) => {return (<p key={ingredient} className="ingredient">{ingredient}</p>)})}</div>
                                 </div>
                                 <div className="main-column2">
                                     <h4 className="sub-heading">Method</h4>
