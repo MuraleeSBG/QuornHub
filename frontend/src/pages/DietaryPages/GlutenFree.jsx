@@ -40,7 +40,7 @@ const GlutenFree = () => {
 	return (
 		<div className="category-page">
             <Header />
-            <h1 className="category-title">Gluten Free</h1>
+            <h1 className="category-title">Gluten Free Recipes</h1>
 			<div className="category-results">
 				{showResults}
 			</div>

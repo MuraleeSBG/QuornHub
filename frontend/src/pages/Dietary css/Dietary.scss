@@ -15,6 +15,16 @@
 }
 
 .category-title{
-    margin-bottom: 2vh;
+    margin-bottom: 5vh;
 
+}
+
+
+@media only screen and (min-width: 600px) {
+    .category-title{
+        font-size: 4vw;
+    
+    }
+    
+    
 }
