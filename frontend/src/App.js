@@ -6,7 +6,7 @@ import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login";
 import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount";
-import GlutenFree from "./pages/GlutenFree";
+import GlutenFree from "./pages/DietaryPages/GlutenFree";
 import Vegan from "./pages/Vegan";
 import FifteenMinute from "./pages/FifteenMinute";
 import LactoseFree from "./pages/LactoseFree";
