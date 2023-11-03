@@ -50,10 +50,11 @@ const ImageDragUpload = ({ selectedImage, setSelectedImage }) => {
 						htmlFor="input-file-upload"
 						className={dragActive ? "drag-active" : ""}
 					>
-							<div>
+						<div className="uploadContainer">
 							<img className="uploadImage" src={upload} alt="upload image" />
-							<p>Drag and drop your file here or</p>
-							<p>click to upload</p>
+							<p className="drag">Drag and drop your file here</p>
+							<p>-OR-</p>
+							<p className="clickToUpload" >Browse Files</p>
 						</div>
 					</label>
 					{dragActive && (

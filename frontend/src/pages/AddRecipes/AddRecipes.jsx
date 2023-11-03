@@ -19,7 +19,6 @@ const AddRecipes = () => {
 	const [recipeTags, setRecipeTags] = useState([]);
 	const [selectedImage, setSelectedImage] = useState();
 
-
 	const updateAmount = (e, index) => {
 		const oldIngredients = Array.from(ingredients);
 		oldIngredients[index].amount = e.target.value;
@@ -42,7 +41,10 @@ const AddRecipes = () => {
 				</h5>
 				<form className="addRecipe">
 					<div className="leftColumn">
-						<ImageDragUpload selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+						<ImageDragUpload
+							selectedImage={selectedImage}
+							setSelectedImage={setSelectedImage}
+						/>
 						<label htmlFor="recipeTitle">Recipe Title</label>
 						<input
 							type="text"
@@ -95,7 +97,7 @@ const AddRecipes = () => {
 							Add Ingredient
 						</button>
 						{ingredients.map((ingredient, index) => (
-							<div key={index} className="ingredient" >
+							<div key={index} className="ingredient">
 								<input
 									value={ingredient.amount}
 									type="text"

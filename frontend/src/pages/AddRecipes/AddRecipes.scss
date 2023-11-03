@@ -66,3 +66,29 @@ form {
 	align-items: center;
 	width: 100%;
 }
+
+label {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 400;
+	font-size: 0.9rem;
+	margin-top: 0.5rem;
+	padding-top: 2%;
+	color: #1f1d1d;
+}
+
+input {
+	border-radius: 20px;
+	border: 1px solid #828282;
+	padding: 2%;
+	background-color: #efe6dd;
+
+	
+}
+
+select {
+	background-color: #efe6dd;
+	border-radius: 20px;
+	border: 1px solid #828282;
+	padding: 2%;
+
+}

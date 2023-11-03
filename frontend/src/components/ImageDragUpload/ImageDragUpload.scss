@@ -1,9 +1,8 @@
 #form-file-upload {
-	height: 16rem;
-	width: 16rem;
+	height: 15rem;
+	width: 15rem;
 	text-align: center;
 	position: relative;
-	
 }
 
 #input-file-upload {
@@ -19,7 +18,7 @@
 	border-radius: 1rem;
 	border-style: dashed;
 	border-color: #525252;
-	background-color: #EFE6DD;
+	background-color: #efe6dd;
 }
 
 #label-file-upload.drag-active {
@@ -51,9 +50,37 @@
 }
 
 .uploadImage {
-	height: 30%;
-	width: 30%;
+	height: 25%;
+	width: 25%;
 	border-radius: 1rem;
 	object-fit: cover;
+}
 
+p {
+	font-family: "Nunito Sans", sans-serif;
+	margin: 0px;
+}
+
+.uploadContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.clickToUpload {
+	font-family: "Nunito Sans", sans-serif;
+	font-weight: 800;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	background-color: #a60054;
+	border-radius: 10px;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+	padding: 0.3rem;
+	cursor: pointer;
+}
+
+.drag {
+	margin-top: 1rem;
 }
