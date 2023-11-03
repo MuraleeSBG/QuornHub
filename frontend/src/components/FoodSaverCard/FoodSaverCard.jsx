@@ -1,18 +1,19 @@
 import "./FoodSaverCard.scss";
 
-export const FoodSaverCard = ({ image, title, tags }) => {
+export const FoodSaverCard = ({ selectedRecipe, tags, onRecipeSelect }) => {
+	const url = `/go-to-recipe/${selectedRecipe.id}`
 	return (
 		<div className="card">
-			<img className="recipe-image" src={image} alt={title} />
+			<img className="recipe-image" src={selectedRecipe.recipeImg} alt={selectedRecipe.recipeName} />
 			<div className="card-body">
-				<h3 className="card-title">{title}</h3>
+				<h3 className="card-title">{selectedRecipe.recipeName}</h3>
 				<div className="tag-container">
 					{tags.map((tag, index) => (
 						<p key={index} className="tag-text">{tag}</p>
 					))}
 				</div>
 				<div className="button-container">
-					<button className="recipe-button">Go to recipe </button>
+					<button onClick={() => onRecipeSelect(selectedRecipe)} className="recipe-button"><a href={url}>Go to recipe </a></button>
 				</div>
 			</div>
 		</div>

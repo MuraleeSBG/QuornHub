@@ -6,9 +6,33 @@ import "./FoodSaver.scss";
 
 const FoodSaver = () => {
 	const [listOfInput, setListOfInput] = useState([]);
-	const data = require("../../testData.json");
 	const [recipesToDisplay, setrecipesToDisplay] = useState([]);
 	const [inputText, setInputText] = useState("");
+	
+	// This needs replacing with code commented out below to fetch from database
+	const data = require("../../testData.json");
+
+	// const [data, setData] = useState([]);
+
+	// useEffect(() => {
+    //     const apiUrl = `http://localhost:3001/api`;
+
+    //     fetch(apiUrl)
+    //     .then(response => {
+    //         if (!response.ok) {
+    //             throw new Error("Error with response")
+    //         }
+    //         return response.json();
+    //     })
+    //     .then(data => {
+    //         setData(data);
+    //     })
+    //     .catch(error => {
+    //         console.log("Error fetching data:", error);
+    //     })
+
+    // },)
+
 
 	const handleKeyDown = (e) => {
 		if (e.key === "Enter") {
@@ -94,8 +118,7 @@ const FoodSaver = () => {
 		return (
 			<FoodSaverCard
 				key={index}
-				title={recipe.recipeName}
-				image={recipe.recipeImg}
+				selectedRecipe={recipe}
 				tags={tags}
 			/>
 		);

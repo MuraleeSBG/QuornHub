@@ -46,15 +46,15 @@ h3 {
     border: solid 0.1vw #3E3D74;
     background: #EFE6DD;
     box-shadow: 0px 0.1vw 0px 0px #3E3D74;
-    // padding: 10px 16px;
     font-weight: 800;
-    //I will come back and change this later to be more accessible and use padding instead of height and width
-    // Jenny: have updated this to be relative to viewport when doing foodsaver page
-    
     width: 11vw;
     height: auto;
     margin-bottom: 1vw;
 
+}
+
+.recipe-button a {
+    text-decoration: none;
 }
 
 .button-container {

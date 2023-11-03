@@ -1,0 +1,91 @@
+.recipe-main{
+    background: rgb(239,230,221);
+}
+
+.overview {
+    display: flex;
+    gap: 2vw;
+    justify-content: center;
+    margin: 0 10vw 0 10vw
+
+}
+
+
+
+.rec-image {
+    width: 35vw;
+    height: 35vw;
+    object-fit: cover;
+
+}
+
+.overview-col1 {
+    display:flex;
+
+}
+
+.overview-col2 {
+    display:flex;
+    flex-wrap: wrap;
+    font-family: "Paytone One", sans-serif;
+	margin: 0vw;
+    font-size: 5vw;
+    max-width: 50%;
+
+}
+
+.recipe-title {
+    text-align: left;
+}
+
+
+
+.main{
+    display: flex;
+    gap: 3vw;
+    margin: 2vw 10vw 10vw 10vw;
+}
+
+.main-column1{
+    display:flex;
+    flex-direction: column;
+    min-width: 30%;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+.ingredients-list{
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    align-items: flex-start;
+
+}
+
+.main-column2{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+}
+
+.sub-heading {
+    display:flex;
+    font-family: "Paytone One", sans-serif;
+}
+
+.method {
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    align-items: flex-start;
+    text-align: left;
+
+}
+
+p.ingredient{
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.5rem;
+    
+}
