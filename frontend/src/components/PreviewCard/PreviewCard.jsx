@@ -8,7 +8,7 @@ export const PreviewCard = ({ selectedRecipe }) => {
             <Link className="card-link" to={url}>
                 <img className="preview-image" src={`/recipeImages/${selectedRecipe.recipeImg}`} alt={selectedRecipe.recipeName} />
             </Link>
-            <p className="title-container"><a href={url} className="card-title">{selectedRecipe.recipeName}</a></p>
+            <p className="title-container"><a href={url} className="preview-title">{selectedRecipe.recipeName}</a></p>
 
 		</div>
 	);

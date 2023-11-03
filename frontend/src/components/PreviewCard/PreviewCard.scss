@@ -21,7 +21,7 @@
     
 }
 
-.card-title{
+.preview-title{
     font-size: 1.5vw;
     text-decoration: none;
     color: #1f1d1d;
@@ -42,7 +42,7 @@
 @media only screen and (min-width: 600px) {
     .preview-image {
         width: 25vw;
-        height: 25vw;
+        height: auto;
         object-fit: cover;
         border-radius: 0.6vw 0.6vw 0 0;
     }
