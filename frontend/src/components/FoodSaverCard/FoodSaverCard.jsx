@@ -4,7 +4,7 @@ export const FoodSaverCard = ({ selectedRecipe, tags, onRecipeSelect }) => {
 	const url = `/go-to-recipe/${selectedRecipe.id}`
 	return (
 		<div className="card">
-			<img className="recipe-image" src={selectedRecipe.recipeImg} alt={selectedRecipe.recipeName} />
+			<img className="recipe-image" src={`/recipeImages/${selectedRecipe.recipeImg}`} alt={selectedRecipe.recipeName} />
 			<div className="card-body">
 				<h3 className="card-title">{selectedRecipe.recipeName}</h3>
 				<div className="tag-container">

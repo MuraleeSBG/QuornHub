@@ -58,7 +58,7 @@ const GoToRecipe = () => {
                                 </div>
                                 <div className="overview-col2">
                                     <div className="recipe-title">{data[0].recipeName}</div>
-                                    <div className="tags"></div>
+                                    <div className="description">{data[0].recipeDesc}</div>
                                 </div> 
 
                             </div>
