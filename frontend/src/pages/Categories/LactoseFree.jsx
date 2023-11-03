@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import './Categories.scss'
 import {Footer} from '../../components/Footer/Footer'
 
-const GlutenFree = () => {
+const LactoseFree = () => {
 
 	const [data, setData] = useState([]);
 
@@ -50,4 +50,4 @@ const GlutenFree = () => {
 	);
 };
 
-export default GlutenFree;
+export default LactoseFree;

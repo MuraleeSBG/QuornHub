@@ -5,7 +5,7 @@ import './Categories.scss';
 import {Footer} from '../../components/Footer/Footer'
 
 
-const GlutenFree = () => {
+const FifteenMinute = () => {
 
 	const [data, setData] = useState([]);
 
@@ -51,4 +51,4 @@ const GlutenFree = () => {
 	);
 };
 
-export default GlutenFree;
+export default FifteenMinute;
