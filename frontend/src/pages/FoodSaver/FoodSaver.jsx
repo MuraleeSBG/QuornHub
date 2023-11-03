@@ -10,28 +10,29 @@ const FoodSaver = () => {
 	const [inputText, setInputText] = useState("");
 	
 	// This needs replacing with code commented out below to fetch from database
-	const data = require("../../testData.json");
+	// const data = require("../../testData.json");
 
-	// const [data, setData] = useState([]);
+	const [data, setData] = useState([]);
 
-	// useEffect(() => {
-    //     const apiUrl = `http://localhost:3001/api`;
+	useEffect(() => {
+        const apiUrl = `http://localhost:3001/api`;
 
-    //     fetch(apiUrl)
-    //     .then(response => {
-    //         if (!response.ok) {
-    //             throw new Error("Error with response")
-    //         }
-    //         return response.json();
-    //     })
-    //     .then(data => {
-    //         setData(data);
-    //     })
-    //     .catch(error => {
-    //         console.log("Error fetching data:", error);
-    //     })
+        fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error with response")
+            }
+            return response.json();
+        })
+			.then(data => {
+				console.log({ data })
+            setData(data);
+        })
+        .catch(error => {
+            console.log("Error fetching data:", error);
+        })
 
-    // },)
+    },[])
 
 
 	const handleKeyDown = (e) => {
