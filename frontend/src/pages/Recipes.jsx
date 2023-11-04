@@ -1,11 +1,11 @@
 import { Header } from '../components/Header/Header'
 import { CategoryCard } from "../components/CategoryCard/CategoryCard";
-import { useState, useEffect } from "react";
 import './Categories/Categories.scss'
 import {Footer} from '../components/Footer/Footer'
 
 const Recipes = () => {
 
+	// random static picture for category card image
 	const categories = [
 		{recipeName: "Gluten Free", recipeImg: "1.webp", link: "gluten-free"},
 		{recipeName: "Lactose Free", recipeImg: "2.webp", link: "lactose-free"}, 
