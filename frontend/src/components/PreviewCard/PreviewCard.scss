@@ -8,6 +8,10 @@
     
 }
 
+.preview-card:hover {
+    border: solid #D7916C 0.3vw;
+}
+
 .preview-image {
     width: 35vw;
     height: 35vw;
@@ -22,7 +26,7 @@
 }
 
 .preview-title{
-    font-size: 1.5vw;
+    font-size: 2.5vw;
     text-decoration: none;
     color: #1f1d1d;
     font-family: "Montserrat", sans-serif;
@@ -31,9 +35,8 @@
 .title-container{
     margin-block-start: 0;
     margin-block-end: 0;
-    padding: 0 0 0.5vw 0.5vw;
+    padding: 1vw;
     text-align: left;
-    
     border-radius: 0 0 0.6vw 0.6vw;
 }
 
@@ -44,6 +47,10 @@
         width: 25vw;
         height: 25vw;
         border-radius: 0.6vw 0.6vw 0 0;
+    }
+
+    .preview-title{
+        font-size: 1vw;
     }
 
     .preview-card {
