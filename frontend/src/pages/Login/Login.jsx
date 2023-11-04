@@ -21,8 +21,8 @@ const Login = () => {
 					<img className="QHlogo" src={logo} alt="Quornhub logo" />
 				</Link>
 
-				<h1>Login to your account</h1>
-				<h5>Enter your details to get started</h5>
+				<h2 className="Title">Login to your account</h2>
+				<h5 className="details">Enter your details to get started</h5>
 				<form className="form" onSubmit={handleSubmit}>
 					<label htmlFor="emailAddress">Email</label>
 					<input
@@ -45,9 +45,11 @@ const Login = () => {
 					</button>
 				</form>
 
-				<h5>
-					Not registered yet?
-					<Link to="/create-account"> Create an account</Link>
+				<h5 className="notReg">
+					Not registered yet?{" "}
+					<Link to="/create-account" className="create">
+						Create an account
+					</Link>
 				</h5>
 			</div>
 		</div>
