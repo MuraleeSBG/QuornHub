@@ -2,6 +2,8 @@ import "./AddRecipes.scss";
 import { Header } from "../../components/Header/Header";
 import ImageDragUpload from "../../components/ImageDragUpload/ImageDragUpload";
 import { useState } from "react";
+import servingUser from "../../images/userDouble.svg";
+import plusIcon from "../../images/plus.svg";
 
 const tags = [
 	"Gluten Free",
@@ -18,7 +20,6 @@ const AddRecipes = () => {
 	const [servingSize, setServingSize] = useState(1);
 	const [recipeTags, setRecipeTags] = useState([]);
 	const [selectedImage, setSelectedImage] = useState();
-
 
 	const updateAmount = (e, index) => {
 		const oldIngredients = Array.from(ingredients);
@@ -42,7 +43,10 @@ const AddRecipes = () => {
 				</h5>
 				<form className="addRecipe">
 					<div className="leftColumn">
-						<ImageDragUpload selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+						<ImageDragUpload
+							selectedImage={selectedImage}
+							setSelectedImage={setSelectedImage}
+						/>
 						<label htmlFor="recipeTitle">Recipe Title</label>
 						<input
 							type="text"
@@ -56,6 +60,7 @@ const AddRecipes = () => {
 							value={servingSize}
 							onChange={(e) => setServingSize(e.target.value)}
 						>
+							{/* <img className="servingUser" src={servingUser} alt="Serving size" /> */}
 							{Array.from(Array(10).keys()).map((num) => (
 								<option key={num} value={num + 1}>
 									{num + 1}
@@ -67,6 +72,7 @@ const AddRecipes = () => {
 							{tags.map((tag) => (
 								<div key={tag}>
 									<input
+										className="tagCheckbox"
 										type="checkbox"
 										id={tag}
 										value={recipeTags}
@@ -81,6 +87,7 @@ const AddRecipes = () => {
 						<label htmlFor="addIngredient">Ingredients</label>
 						<button
 							type="button"
+							className="addIngredient"
 							id="addIngredient"
 							onClick={() =>
 								setIngredients([
@@ -92,10 +99,11 @@ const AddRecipes = () => {
 								])
 							}
 						>
+							<img src={plusIcon} alt="Plus icon" className="plusIcon" />
 							Add Ingredient
 						</button>
 						{ingredients.map((ingredient, index) => (
-							<div key={index} className="ingredient" >
+							<div key={index} className="ingredient">
 								<input
 									value={ingredient.amount}
 									type="text"
@@ -114,12 +122,13 @@ const AddRecipes = () => {
 						<label htmlFor="method">Method</label>
 						<textarea
 							id="method"
+							className="method"
 							rows="10"
 							value={method}
 							onChange={(e) => setMethod(e.target.value)}
 						></textarea>
 
-						<button type="submit">Done</button>
+						<button className="done" type="submit">Done</button>
 					</div>
 				</form>
 			</div>
