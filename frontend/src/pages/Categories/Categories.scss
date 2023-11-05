@@ -1,0 +1,30 @@
+
+.category-page{
+    display: flex;
+	flex-direction: column;
+    background: rgb(238,230,221)
+
+}
+
+.category-results{
+    display: flex;
+	flex-wrap: wrap;
+    justify-content: center;
+	gap: 2vw;
+    margin-bottom: 5vh;
+}
+
+.category-title{
+    margin-bottom: 5vh;
+
+}
+
+
+@media only screen and (min-width: 600px) {
+    .category-title{
+        font-size: 4vw;
+    
+    }
+    
+    
+}

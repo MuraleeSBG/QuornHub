@@ -13,7 +13,7 @@ export const FoodSaverCard = ({ selectedRecipe, tags, onRecipeSelect }) => {
 					))}
 				</div>
 				<div className="button-container">
-					<button onClick={() => onRecipeSelect(selectedRecipe)} className="recipe-button"><a href={url}>Go to recipe </a></button>
+					<button className="recipe-button"><a href={url}>Go to recipe </a></button>
 				</div>
 			</div>
 		</div>
