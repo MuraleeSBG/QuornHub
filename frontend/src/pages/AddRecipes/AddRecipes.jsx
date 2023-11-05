@@ -50,6 +50,7 @@ const AddRecipes = () => {
 						<label htmlFor="recipeTitle">Recipe Title</label>
 						<input
 							type="text"
+							className="input"
 							id="recipeTitle"
 							value={recipeTitle}
 							onChange={(e) => setRecipeTitle(e.target.value)}
@@ -68,7 +69,7 @@ const AddRecipes = () => {
 							))}
 						</select>
 						<label htmlFor="recipeTags">The Recipe Is:</label>
-						<div className="tagCheckboxes">
+						<div className="tagCheckboxes input">
 							{tags.map((tag) => (
 								<div key={tag}>
 									<input
@@ -107,12 +108,14 @@ const AddRecipes = () => {
 								<input
 									value={ingredient.amount}
 									type="text"
+									className="input"
 									placeholder="Amount"
 									onChange={(e) => updateAmount(e, index)}
 								/>
 								<input
 									value={ingredient.ingredient}
 									type="text"
+									className="input"
 									placeholder="Ingredient"
 									onChange={(e) => updateIngredient(e, index)}
 								/>
