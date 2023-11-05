@@ -75,11 +75,11 @@ const GoToRecipe = () => {
                             <div className="main">
                                 <div className="main-column1">
                                     <h4 className="sub-heading">Ingredients</h4>
-                                    <div className="ingredients-list">{(data[0].ingredients).map((ingredient) => {return (<p key={ingredient} className="ingredient">{ingredient}</p>)})}</div>
+                                    <div className="ingredients-list">{(data[0].ingredients).map((ingredient) => {return (<p key={ingredient} className="ingredient-list">{ingredient}</p>)})}</div>
                                 </div>
                                 <div className="main-column2">
                                     <h4 className="sub-heading">Method</h4>
-                                    <ul className="method"> {(((data[0].method).split(".")).filter(Boolean)).map((methodLine) => {return (<li key={methodLine}>{methodLine}</li>)})}</ul>
+                                    <ul className="recipe-method"> {(((data[0].method).split(".")).filter(Boolean)).map((methodLine) => {return (<li key={methodLine}>{methodLine}</li>)})}</ul>
                                 </div> 
                                  
                             </div>

@@ -13,7 +13,7 @@ export const Header = ({ userName }) => {
 			<div className="nav-bar">
 				<div>
 					<Link className="nav" to="/">
-						<img className="QHlogo" src={logo} alt="Quornhub logo" />
+						<img className="QHlogo-header" src={logo} alt="Quornhub logo" />
 					</Link>
 				</div>
 

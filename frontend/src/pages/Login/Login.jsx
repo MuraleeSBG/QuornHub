@@ -17,7 +17,7 @@ const Login = () => {
 	return (
 		<div className="page">
 			<div className="container">
-				<Link className="nav" to="/">
+				<Link className="login-logo-container" to="/">
 					<img className="QHlogo" src={logo} alt="Quornhub logo" />
 				</Link>
 
