@@ -94,11 +94,11 @@ const FoodSaver = () => {
 		);
 	});
 
-	// renders foodsavercard for recipes to display (filtered with dupes removed)
+	// dietary tags
 	const getTags = (recipe) => {
 		const tags = [];
-		if (recipe.isVegetarian) {
-			tags.push("Vegetarian");
+		if (recipe.isLactoseFree) {
+			tags.push("Lactose Free");
 		}
 		if (recipe.isVegan) {
 			tags.push("Vegan");

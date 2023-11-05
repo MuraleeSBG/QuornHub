@@ -32,16 +32,25 @@ const GoToRecipe = () => {
 
     }, [id])
 
-
-    // function listIngredients() {
-    //     const ingredients = (JSON.parse(data[0].ingredients))
-    //     ingredients.map((ingredient) => {
-    //         console.log(ingredient)
-    //         return <p>{ingredient}</p>
-    //     })
-    //     return <p>{ingredient}</p>
-
-    // }
+    const getTags = (recipe) => {
+		const tags = [];
+		if (recipe.isLactoseFree) {
+			tags.push("Lactose Free");
+		}
+		if (recipe.isVegan) {
+			tags.push("Vegan");
+		}
+		if (recipe.isGlutenFree) {
+			tags.push("Gluten Free");
+		}
+		if (recipe.isDairyFree) {
+			tags.push("Dairy Free");
+		}
+		if (recipe.isNutFree) {
+			tags.push("Nut Free");
+		}
+		return tags;
+	};
 
 
     
@@ -59,6 +68,7 @@ const GoToRecipe = () => {
                                 <div className="overview-col2">
                                     <div className="recipe-title">{data[0].recipeName}</div>
                                     <div className="description">{data[0].recipeDesc}</div>
+                                    <div className="tag-box">{(getTags(data[0])).map((tag, index) => {return (<p key={index} className="tag-text">{tag}</p>)})}</div>
                                 </div> 
 
                             </div>
@@ -69,7 +79,7 @@ const GoToRecipe = () => {
                                 </div>
                                 <div className="main-column2">
                                     <h4 className="sub-heading">Method</h4>
-                                    <div className="method"> {(data[0].method)}</div>
+                                    <ul className="method"> {(((data[0].method).split(".")).filter(Boolean)).map((methodLine) => {return (<li key={methodLine}>{methodLine}</li>)})}</ul>
                                 </div> 
                                  
                             </div>
