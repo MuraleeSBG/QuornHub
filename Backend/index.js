@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 
 const cors = require("cors");
+const bcrypt = require("bcrypt")
+const saltRounds = 10
+const salt = bcrypt.genSaltSync(10);
 
 app.use(
 	cors({
