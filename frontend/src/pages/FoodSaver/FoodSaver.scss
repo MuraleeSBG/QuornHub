@@ -5,6 +5,10 @@
     background: rgb(238,230,221)
 }
 
+.search-bar{
+	margin-top: 3vw;
+}
+
 
 
 .search-input {
@@ -40,15 +44,12 @@
 	cursor: pointer;
 }
 
-.tags-container {
+.search-tags-container {
 	display: flex;
 	justify-content: space-around;
 	width: 50vw;
 	flex-wrap: wrap;
     margin: 2vw 0 2vw 0;
-    
-	
-	
 
 }
 
@@ -59,6 +60,7 @@
 	border-radius: 2vw;
 	justify-content: space-around;
     font-size: 2vw;
+	margin-bottom: 0.5vw;
 	
 
 }
@@ -69,6 +71,7 @@
 	font-weight: bold;
 	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2vw;
+	cursor: pointer;
 }
 
 .results-placeholder{

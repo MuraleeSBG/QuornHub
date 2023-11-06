@@ -142,7 +142,7 @@ const FoodSaver = () => {
 						Submit ingredient
 					</button>
 				</div>
-				<div id="tags" className="tags-container">
+				<div id="tags" className="search-tags-container">
 					{tags}
 				</div>
 				
