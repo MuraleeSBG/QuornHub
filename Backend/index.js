@@ -232,8 +232,9 @@ app.get('/api/user', (req, res) => {
 
 app.post('/api/user', jsonParser, function (req, res) {
 	if (req.body.password) {
+		var emailLower = req.body.email.toLowerCase();
 		var hashedpass = bcrypt.hashSync(req.body.password, salt);
-		con.query("INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)", [req.body.name, hashedpass, req.body.email, req.body.admin], function (err, result, fields) {
+		con.query("INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)", [req.body.name, hashedpass, emailLower, req.body.admin], function (err, result, fields) {
 			if (err) throw err;
 			res.send(result);
 			console.log("create user works")
