@@ -68,7 +68,7 @@ const GoToRecipe = () => {
                                 <div className="overview-col2">
                                     <div className="recipe-title">{data[0].recipeName}</div>
                                     <div className="description">{data[0].recipeDesc}</div>
-                                    <div className="tag-box">{(getTags(data[0])).map((tag, index) => {return (<p key={index} className="tag-text">{tag}</p>)})}</div>
+                                    <div className="goto-tag-container">{(getTags(data[0])).map((tag, index) => {return (<p key={index} className="goto-tag-text">{tag}</p>)})}</div>
                                 </div> 
 
                             </div>
@@ -79,7 +79,7 @@ const GoToRecipe = () => {
                                 </div>
                                 <div className="main-column2">
                                     <h4 className="sub-heading">Method</h4>
-                                    <ul className="recipe-method"> {(((data[0].method).split(".")).filter(Boolean)).map((methodLine) => {return (<li key={methodLine}>{methodLine}</li>)})}</ul>
+                                    <ul className="recipe-method"> {(((data[0].method).split(".")).filter(Boolean)).map((methodLine) => {return (<li className="method-line" key={methodLine}>{methodLine}</li>)})}</ul>
                                 </div> 
                                  
                             </div>

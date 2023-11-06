@@ -3,7 +3,7 @@ import { CategoryCard } from "../components/CategoryCard/CategoryCard";
 import './Categories/Categories.scss'
 import {Footer} from '../components/Footer/Footer'
 
-const Recipes = () => {
+const AllRecipes = () => {
 
 	// random static picture for category card image
 	const categories = [
@@ -36,4 +36,4 @@ const Recipes = () => {
 	);
 };
 
-export default Recipes;
+export default AllRecipes;
