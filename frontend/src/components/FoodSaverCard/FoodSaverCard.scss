@@ -1,6 +1,6 @@
-.card {
+.food-saver-card {
     display: flex;
-    width: 40.5vw;
+    width: 40vw;
     border-radius: 0.6vw;
     background-color: #D7916C;
     margin-bottom: 2vw;
@@ -12,20 +12,34 @@
     border-radius: 0.6vw 0 0 0.6vw;
 }
 
-.card-body {
-    padding: 0 1.15vw 0 1.73vw;
+.fs-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.73vw 0 1.73vw;
     font-family: 'Montserrat', sans-serif;
     color: #1F1D1D;
+    width: 26vw;
 }
 
-h3 {
+.fs-card-title {
+    display: flex;
+    text-align: left;
     font-size: 2vw;
     font-weight: 600;
-    margin-bottom: 0.6vw;
+    margin-bottom: 0.5vw;
+    
 }
 
-.tag-text {
-    font-size: 1.2vw;
+.fs-tag-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1vw;
+    gap: 0.5vw;
+}
+
+.fs-tag-text {
+    display: flex;
+    font-size: 1vw;
     font-weight: 500;
     background-color: #C9A5CE;
     border-radius: 10vw;
@@ -33,12 +47,15 @@ h3 {
     padding: 0.11vw 0.5vw;
 }
 
-.tag-container {
+.recipe-button-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
+    margin-top: auto;
 }
 
 .recipe-button {
+    display: flex;
+    justify-content: center;
     border-radius: 1vw;
     font-family: 'Montserrat', sans-serif;
     font-size: 1vw;
@@ -57,7 +74,3 @@ h3 {
     text-decoration: none;
 }
 
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-}
