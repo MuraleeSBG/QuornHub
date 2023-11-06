@@ -219,3 +219,49 @@ app.put("/api", jsonParser, function (req, res) {
 		);
 	}
 });
+
+
+app.get('/api/user', (req, res) => {
+	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
+		if (err) throw err;
+		res.send(result);
+		console.log("get user works")
+	});
+});
+
+
+app.post('/api/user', jsonParser, function (req, res) {
+	if (req.body.password) {
+		var hashedpass = bcrypt.hashSync(req.body.password, salt);
+		con.query("INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)", [req.body.name, hashedpass, req.body.email, req.body.admin], function (err, result, fields) {
+			if (err) throw err;
+			res.send(result);
+			console.log("create user works")
+		});
+	}
+});
+
+/*
+
+app.put('/api/user', jsonParser, function (req, res) {
+	if (req.body.password) {
+		var hashedpass = bcrypt.hashSync(req.body.password, salt);
+		con.query("UPDATE QuornhubDb.users SET name = ?, password = ?, email = ?, admin = ? WHERE id = ?", [req.body.name, hashedpass, req.body.email, req.body.admin, req.body.id], function (err, result, fields) {
+			if (err) throw err;
+			res.send(result);
+			console.log("update user works")
+		});
+	}
+});
+
+app.delete('/api/user', (req, res) => {
+	  if (req.params.id) {
+	con.query("DELETE FROM QuornhubDb.users WHERE id = ?", [req.params.id], function (err, result, fields) {
+	  if (err) throw err;
+	  res.send(result);
+	  console.log("delete user works")
+	});
+  }
+});
+
+*/
