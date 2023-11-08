@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 
 const cors = require("cors");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const e = require("express");
+const session = require('express-session');
 const saltRounds = 10
 const salt = bcrypt.genSaltSync(10);
 
@@ -257,8 +259,9 @@ app.post("/api/user", jsonParser, async function (req, res) {
 
 				const salt = bcrypt.genSaltSync(10);
 				var hashedpass = bcrypt.hashSync(password, salt);
+				console.log(hashedpass);
 				con.query(
-					"INSERT INTO users (id, name, password, email, admin) VALUES (UUID(), ?, ?, ?, ?)",
+					"INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)",
 					[name, hashedpass, emailLower, admin || false],
 					function (err, result, fields) {
 						if (err) throw err;
@@ -336,13 +339,15 @@ app.post(
 
 app.post("/api/auth", jsonParser, function(request, response) {
 	// Capture the input fields
-	var email = request.body.email;
+	var email = (request.body.email).toLowerCase();
 	var password = request.body.password;
+	const salt = bcrypt.genSaltSync(10);
 	var hashedpass = bcrypt.hashSync(password, salt);
 	// Ensure the input fields exists and are not empty
 	if (email && password) {
 		// Execute SQL query that'll select the account from the database based on the specified email and password
 		con.query('SELECT * FROM QuornhubDb.users WHERE email = ? AND password = ?', [email, hashedpass], function(error, results, fields) {
+			console.log(hashedpass);
 			// If there is an issue with the query, output the error
 			if (error) throw error;
 			// If the account exists
