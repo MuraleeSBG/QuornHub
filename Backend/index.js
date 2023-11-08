@@ -299,4 +299,66 @@ app.delete('/api/user', (req, res) => {
   }
 });
 
+
+
+const userIsValid = (requestUsername, requestEmail, requestPassword) => {
+	const userExists = express.request === requestUsername;
+	if (userExists) {
+		const user = fakeData[requestUsername];
+		if (user.password === requestPassword) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		return false;
+	}
+};
+
+app.post(
+	"/login",
+	(req, res) => {
+		const validUser = userIsValid(
+			req.body.username,
+			fakeData,
+			req.body.password
+		);
+		console.log(validUser);
+		if (validUser) {
+			res.status(200).send({ response: "Authenticated" });
+		} else {
+			res.status(401).send({ response: "Authentication failed" });
+		}
+	}
+);
+
 */
+
+app.post("/api/auth", jsonParser, function(request, response) {
+	// Capture the input fields
+	var email = request.body.email;
+	var password = request.body.password;
+	var hashedpass = bcrypt.hashSync(password, salt);
+	// Ensure the input fields exists and are not empty
+	if (email && password) {
+		// Execute SQL query that'll select the account from the database based on the specified email and password
+		con.query('SELECT * FROM QuornhubDb.users WHERE email = ? AND password = ?', [email, hashedpass], function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				request.session.loggedin = true;
+				request.session.email = email;
+				// Redirect to home page
+				response.redirect('/home');
+			} else {
+				response.send('Incorrect Email and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Email and Password!');
+		response.end();
+	}
+});
