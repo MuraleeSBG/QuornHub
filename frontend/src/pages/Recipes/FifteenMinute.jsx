@@ -1,7 +1,7 @@
 import { Header } from "../../components/Header/Header";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
 import { useState, useEffect } from "react";
-import './Categories.scss';
+import './Recipes.scss';
 import {Footer} from '../../components/Footer/Footer'
 
 

@@ -1,16 +1,15 @@
 import { Header } from "../../components/Header/Header";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
 import { useState, useEffect } from "react";
-import './Categories.scss'
+import './Recipes.scss'
 import {Footer} from '../../components/Footer/Footer'
 
-
-const NutFree = () => {
+const LactoseFree = () => {
 
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-        const apiUrl = `http://localhost:3001/api/nut-free`;
+        const apiUrl = `http://localhost:3001/api/lactose-free`;
 
         fetch(apiUrl)
         .then(response => {
@@ -42,7 +41,7 @@ const NutFree = () => {
 	return (
 		<div className="category-page">
             <Header />
-            <h1 className="category-title">Nut Free Recipes</h1>
+            <h1 className="category-title">Lactose Free Recipes</h1>
 			<div className="category-results">
 				{showResults}
 			</div>
@@ -51,4 +50,4 @@ const NutFree = () => {
 	);
 };
 
-export default NutFree;
+export default LactoseFree;

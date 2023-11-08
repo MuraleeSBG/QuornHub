@@ -2,7 +2,9 @@
 .category-page{
     display: flex;
 	flex-direction: column;
-    background: rgb(238,230,221)
+    background: rgb(238,230,221);
+    align-items: center;
+    
 
 }
 
@@ -10,12 +12,14 @@
     display: flex;
 	flex-wrap: wrap;
     justify-content: center;
-	gap: 2vw;
+	gap: 1vw;
     margin-bottom: 5vh;
+    max-width: 70vw;
 }
 
 .category-title{
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
+    font-size: 8vw;
 
 }
 

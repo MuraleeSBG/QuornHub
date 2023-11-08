@@ -1,16 +1,16 @@
 import { Header } from "../../components/Header/Header";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
 import { useState, useEffect } from "react";
-import './Categories.scss'
+import './Recipes.scss'
 import {Footer} from '../../components/Footer/Footer'
 
 
-const Vegan = () => {
+const NutFree = () => {
 
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-        const apiUrl = `http://localhost:3001/api/vegan`;
+        const apiUrl = `http://localhost:3001/api/nut-free`;
 
         fetch(apiUrl)
         .then(response => {
@@ -42,7 +42,7 @@ const Vegan = () => {
 	return (
 		<div className="category-page">
             <Header />
-            <h1 className="category-title">Vegan Recipes</h1>
+            <h1 className="category-title">Nut Free Recipes</h1>
 			<div className="category-results">
 				{showResults}
 			</div>
@@ -51,4 +51,4 @@ const Vegan = () => {
 	);
 };
 
-export default Vegan;
+export default NutFree;

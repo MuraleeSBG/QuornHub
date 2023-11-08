@@ -3,7 +3,7 @@
     flex-direction: column;
     border-radius: 0.6vw;
     background-color: white;
-    width: 35vw;
+    width: 20vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
@@ -13,14 +13,15 @@
 }
 
 .category-image {
-    width: 35vw;
-    object-fit: contain;
+    width: 20vw;
+    height: 20vw;
+    object-fit: cover;
     border-radius: 0.6vw 0.6vw 0 0;
 }
 
 
 .link {
-    height: auto;
+    height: 20vw;
     
 }
 
@@ -45,23 +46,21 @@
 // desktop
 @media only screen and (min-width: 600px) {
     .category-image {
-        width: 25vw;
-        height: 25vw;
+        width: 12vw;
+        height: 12vw;
         object-fit: cover;
         border-radius: 0.6vw 0.6vw 0 0;
     }
+    .category-card{
+        width: 12vw;
 
-    .category-card {
-        width: 25vw;
+    }
+    .link {
+        height: 12vw;  
     }
     .category-subtitle{
         font-size: 1vw;
     }
-
-    .card-link {
-        height: 25vw;  
-    }
-
     p{
         margin-top: 1vh;
     }

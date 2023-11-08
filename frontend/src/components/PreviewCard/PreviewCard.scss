@@ -3,7 +3,7 @@
     flex-direction: column;
     border-radius: 0.6vw;
     background-color: white;
-    width: 35vw;
+    width: 25vw;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     
 }
@@ -13,15 +13,15 @@
 }
 
 .preview-image {
-    width: 35vw;
-    height: 35vw;
+    width: 25vw;
+    height: 25vw;
     object-fit: cover;
     border-radius: 0.6vw 0.6vw 0 0;
 }
 
 
 .card-link {
-    height: 35vw;
+    height: 25vw;
     
 }
 
@@ -44,8 +44,8 @@
 // desktop
 @media only screen and (min-width: 600px) {
     .preview-image {
-        width: 25vw;
-        height: 25vw;
+        width: 16vw;
+        height: 16vw;
         border-radius: 0.6vw 0.6vw 0 0;
     }
 
@@ -54,11 +54,11 @@
     }
 
     .preview-card {
-        width: 25vw;
+        width: 16vw;
     }
 
     .card-link {
-        height: 25vw;  
+        height: 16vw;  
     }
 
     p{
