@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 
 const cors = require("cors");
+const bcrypt = require("bcrypt")
+const saltRounds = 10
+const salt = bcrypt.genSaltSync(10);
 
 app.use(
 	cors({
@@ -219,3 +222,81 @@ app.put("/api", jsonParser, function (req, res) {
 		);
 	}
 });
+
+
+app.get('/api/user', (req, res) => {
+	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
+		if (err) throw err;
+		res.send(result);
+		console.log("get user works")
+	});
+});
+
+
+
+app.post("/api/user", jsonParser, async function (req, res) {
+	const { email, password, name, admin } = req.body;
+	if (!email || !password || !name) {
+		return res.status(400).send({
+			message: "Email, name and password are required",
+		});
+	}
+	try {
+		var emailLower = email.toLowerCase();
+
+		con.query(
+			"SELECT COUNT(*) AS count FROM QuornhubDb.users WHERE email = ?",
+			[emailLower],
+			function (err, result, fields) {
+				if (err) throw err;
+				if (result[0].count > 0) {
+					return res.status(400).send({
+						message: "Email already exists",
+					});
+				}
+
+				const salt = bcrypt.genSaltSync(10);
+				var hashedpass = bcrypt.hashSync(password, salt);
+				con.query(
+					"INSERT INTO users (id, name, password, email, admin) VALUES (UUID(), ?, ?, ?, ?)",
+					[name, hashedpass, emailLower, admin || false],
+					function (err, result, fields) {
+						if (err) throw err;
+						res.status(200).send({
+							message: "User created successfully",
+						});
+					}
+				);
+			}
+		);
+	} catch (err) {
+		return res.status(400).send({
+			message: err.message,
+		});
+	}
+});
+
+/*
+
+app.put('/api/user', jsonParser, function (req, res) {
+	if (req.body.password) {
+		var hashedpass = bcrypt.hashSync(req.body.password, salt);
+		con.query("UPDATE QuornhubDb.users SET name = ?, password = ?, email = ?, admin = ? WHERE id = ?", [req.body.name, hashedpass, req.body.email, req.body.admin, req.body.id], function (err, result, fields) {
+			if (err) throw err;
+			res.send(result);
+			console.log("update user works")
+		});
+	}
+});
+
+app.delete('/api/user', (req, res) => {
+	  if (req.params.id) {
+	con.query("DELETE FROM QuornhubDb.users WHERE id = ?", [req.params.id], function (err, result, fields) {
+	  if (err) throw err;
+	  res.send(result);
+	  console.log("delete user works")
+	});
+  }
+});
+
+*/
