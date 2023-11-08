@@ -233,14 +233,45 @@ app.get('/api/user', (req, res) => {
 });
 
 
-app.post('/api/user', jsonParser, function (req, res) {
-	if (req.body.password) {
-		var emailLower = req.body.email.toLowerCase();
-		var hashedpass = bcrypt.hashSync(req.body.password, salt);
-		con.query("INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)", [req.body.name, hashedpass, emailLower, req.body.admin], function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("create user works")
+
+app.post("/api/user", jsonParser, async function (req, res) {
+	const { email, password, name, admin } = req.body;
+	if (!email || !password || !name) {
+		return res.status(400).send({
+			message: "Email, name and password are required",
+		});
+	}
+	try {
+		var emailLower = email.toLowerCase();
+
+		con.query(
+			"SELECT COUNT(*) AS count FROM QuornhubDb.users WHERE email = ?",
+			[emailLower],
+			function (err, result, fields) {
+				if (err) throw err;
+				if (result[0].count > 0) {
+					return res.status(400).send({
+						message: "Email already exists",
+					});
+				}
+
+				const salt = bcrypt.genSaltSync(10);
+				var hashedpass = bcrypt.hashSync(password, salt);
+				con.query(
+					"INSERT INTO users (id, name, password, email, admin) VALUES (UUID(), ?, ?, ?, ?)",
+					[name, hashedpass, emailLower, admin || false],
+					function (err, result, fields) {
+						if (err) throw err;
+						res.status(200).send({
+							message: "User created successfully",
+						});
+					}
+				);
+			}
+		);
+	} catch (err) {
+		return res.status(400).send({
+			message: err.message,
 		});
 	}
 });
