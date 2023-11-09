@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 
 const cors = require("cors");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const e = require("express");
+const session = require('express-session');
 const saltRounds = 10
 const salt = bcrypt.genSaltSync(10);
 
@@ -141,21 +143,6 @@ app.get("/api/u15", (req, res) => {
 	);
 });
 
-/*
-app.delete('/api/id/:id', (req, res) => {
-  if (req.params.id) {
-    con.query("DELETE FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
-      if (err) throw err;
-      res.send(result);
-      console.log("delete works")
-    });
-  }
-});
-
-OLD CODE: PARAMETERS IN URL
-
-*/
-
 app.delete("/api", jsonParser, function (req, res) {
 	if (req.body.recipeId) {
 		con.query(
@@ -223,7 +210,6 @@ app.put("/api", jsonParser, function (req, res) {
 	}
 });
 
-
 app.get('/api/user', (req, res) => {
 	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
 		if (err) throw err;
@@ -231,8 +217,6 @@ app.get('/api/user', (req, res) => {
 		console.log("get user works")
 	});
 });
-
-
 
 app.post("/api/user", jsonParser, async function (req, res) {
 	const { email, password, name, admin } = req.body;
@@ -257,8 +241,9 @@ app.post("/api/user", jsonParser, async function (req, res) {
 
 				const salt = bcrypt.genSaltSync(10);
 				var hashedpass = bcrypt.hashSync(password, salt);
+				console.log(hashedpass);
 				con.query(
-					"INSERT INTO users (id, name, password, email, admin) VALUES (UUID(), ?, ?, ?, ?)",
+					"INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)",
 					[name, hashedpass, emailLower, admin || false],
 					function (err, result, fields) {
 						if (err) throw err;
@@ -277,6 +262,8 @@ app.post("/api/user", jsonParser, async function (req, res) {
 });
 
 /*
+
+unused users table crud functions
 
 app.put('/api/user', jsonParser, function (req, res) {
 	if (req.body.password) {
@@ -297,6 +284,48 @@ app.delete('/api/user', (req, res) => {
 	  console.log("delete user works")
 	});
   }
+});
+
+*/
+
+
+
+/*
+
+vvv THIS IS THE AUTH CODE vvv
+
+
+the issue is that the password is not being hashed the same each time, so the login is not working.
+
+app.post("/api/auth", jsonParser, function(request, response) {
+	// Capture the input fields
+	var email = (request.body.email).toLowerCase();
+	var password = request.body.password;
+	const salt = bcrypt.genSaltSync(10);
+	var hashedpass = bcrypt.hashSync(password, salt);
+	// Ensure the input fields exists and are not empty
+	if (email && password) {
+		// Execute SQL query that'll select the account from the database based on the specified email and password
+		con.query('SELECT * FROM QuornhubDb.users WHERE email = ? AND password = ?', [email, hashedpass], function(error, results, fields) {
+			console.log(hashedpass);
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+				// Authenticate the user
+				request.session.loggedin = true;
+				request.session.email = email;
+				// Redirect to home page
+				response.redirect('/home');
+			} else {
+				response.send('Incorrect Email and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Email and Password!');
+		response.end();
+	}
 });
 
 */
