@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/QHLogo.png";
 import "./Login.scss";
 import { useState } from "react";
+import { login } from "../../utils/authUtils";
 
 const Login = () => {
 	const [emailAddress, setEmailAddress] = useState("");
 	const [password, setPassword] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
+	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -18,17 +21,17 @@ const Login = () => {
 			body: JSON.stringify({ emailAddress, password }),
 		})
 			.then((response) => {
-				console.log({ response });
-				if (!response.ok) {
-					throw new Error("Error with response");
-				}
-				return response.json();
-			})
-			.then((data) => {
-				console.log({ data });
+				response.json().then((body) => {
+					if (!response.ok) {
+						setErrorMessage(body.message);
+						return;
+					}
+					login(body);
+					navigate("/");
+				});
 			})
 			.catch((error) => {
-				console.log("Error fetching data:", error);
+				setErrorMessage(error.message);
 			});
 	};
 
@@ -52,12 +55,13 @@ const Login = () => {
 					/>
 					<label htmlFor="password">Password</label>
 					<input
-						type="text"
+						type="password"
 						className="input"
 						id="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
+					{errorMessage && <p className="error">{errorMessage}</p>}
 					<button type="submit" className="loginButton">
 						Login
 					</button>

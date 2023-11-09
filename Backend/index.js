@@ -308,9 +308,13 @@ app.post("/api/auth", jsonParser, function (request, response) {
 					// request.session.loggedin = true;
 					// request.session.email = email;
 					// Redirect to home page
-					response.send({mame: results[0].name, admin: results[0].admin, emailAddress: results[0].email});
+					response.send({
+						mame: results[0].name,
+						admin: results[0].admin,
+						emailAddress: results[0].email,
+					});
 				} else {
-					response.send("Incorrect Email and/or Password!");
+					response.status(401).send({message: "Incorrect email or password"});
 				}
 				response.end();
 			}
