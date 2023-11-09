@@ -38,31 +38,52 @@ con.connect(function (err) {
 	console.log("Connected!");
 });
 
-app.get("/api", (req, res) => {
-	con.query("SELECT * FROM QuornhubDb.recipes", function (err, result, fields) {
-		if (err) throw err;
-		// we need to transform the result an array of objects
-		const parsedResult = result.map((recipe) => {
-			return {
-				id: recipe.id,
-				recipeName: recipe.recipeName,
-				recipeImg: recipe.recipeImg,
-				recipeDesc: recipe.recipeDesc,
-				isVegan: recipe.isVegan,
-				isGlutenFree: recipe.isGlutenFree,
-				isNutFree: recipe.isNutFree,
-				isLactoseFree: recipe.isLactoseFree,
-				isUnder15: recipe.isUnder15,
-				ingredients: JSON.parse(recipe.ingredients),
-				method: recipe.method,
-			};
-		});
-		res.send(parsedResult);
-		console.log("all works");
-	});
+app.get("/recipes", (req, res) => {
+	const tag = req.query.tag;
+	const extraTerm = (tag) => {
+		switch (tag) {
+			case "vegan":
+				return "isVegan = 1";
+			case "gluten-free":
+				return "isGlutenFree = 1";
+			case "nut-free":
+				return "isNutFree = 1";
+			case "lactose-free":
+				return "isLactoseFree = 1";
+			case "under-15":
+				return "isUnder15 = 1";
+			default:
+				return undefined;
+		}
+	};
+	const whereClause = extraTerm(tag) ? ` WHERE ${extraTerm(tag)}` : "";
+	con.query(
+		`SELECT * FROM QuornhubDb.recipes${whereClause}`,
+		function (err, result, fields) {
+			if (err) throw err;
+			// we need to transform the result an array of objects
+			const parsedResult = result.map((recipe) => {
+				return {
+					id: recipe.id,
+					recipeName: recipe.recipeName,
+					recipeImg: recipe.recipeImg,
+					recipeDesc: recipe.recipeDesc,
+					isVegan: recipe.isVegan,
+					isGlutenFree: recipe.isGlutenFree,
+					isNutFree: recipe.isNutFree,
+					isLactoseFree: recipe.isLactoseFree,
+					isUnder15: recipe.isUnder15,
+					ingredients: JSON.parse(recipe.ingredients),
+					method: recipe.method,
+				};
+			});
+			res.send(parsedResult);
+			console.log("all works");
+		}
+	);
 });
 
-app.get("/api/id/:id", (req, res) => {
+app.get("/recipe/:id", (req, res) => {
 	con.query(
 		"SELECT * FROM QuornhubDb.recipes WHERE id = ?",
 		[req.params.id],
@@ -89,62 +110,7 @@ app.get("/api/id/:id", (req, res) => {
 	);
 });
 
-app.get("/api/vegan", (req, res) => {
-	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE isVegan = 1",
-		function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("vegan works");
-		}
-	);
-});
-
-app.get("/api/gluten", (req, res) => {
-	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE isGlutenFree = 1",
-		function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("gluten works");
-		}
-	);
-});
-
-app.get("/api/nut-free", (req, res) => {
-	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE isNutFree = 1",
-		function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("nut works");
-		}
-	);
-});
-
-app.get("/api/lactose-free", (req, res) => {
-	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE isLactoseFree = 1",
-		function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("lactose works");
-		}
-	);
-});
-
-app.get("/api/u15", (req, res) => {
-	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE isUnder15 = 1",
-		function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("u15 works");
-		}
-	);
-});
-
-app.delete("/api", jsonParser, function (req, res) {
+app.delete("/recipe", jsonParser, function (req, res) {
 	if (req.body.recipeId) {
 		con.query(
 			"DELETE FROM QuornhubDb.recipes WHERE id = ?",
@@ -158,7 +124,7 @@ app.delete("/api", jsonParser, function (req, res) {
 	}
 });
 
-app.post("/api", jsonParser, function (req, res) {
+app.post("/recipe", jsonParser, function (req, res) {
 	console.log(req.body.recipeName);
 	if (req.body.recipeName) {
 		con.query(
@@ -184,7 +150,7 @@ app.post("/api", jsonParser, function (req, res) {
 	}
 });
 
-app.put("/api", jsonParser, function (req, res) {
+app.put("/recipe", jsonParser, function (req, res) {
 	console.log(req.body.recipeId);
 	if (req.body.recipeId) {
 		con.query(
@@ -211,7 +177,7 @@ app.put("/api", jsonParser, function (req, res) {
 	}
 });
 
-app.get("/api/user", (req, res) => {
+app.get("/users", (req, res) => {
 	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
 		if (err) throw err;
 		res.send(result);
@@ -219,7 +185,7 @@ app.get("/api/user", (req, res) => {
 	});
 });
 
-app.post("/api/user", jsonParser, async function (req, res) {
+app.post("/user", jsonParser, async function (req, res) {
 	const { emailAddress, password, displayName, admin } = req.body;
 	if (!emailAddress || !password || !displayName) {
 		return res.status(400).send({
@@ -282,7 +248,7 @@ app.post("/api/user", jsonParser, async function (req, res) {
 //   }
 // });
 
-app.post("/api/auth", jsonParser, function (request, response) {
+app.post("/login", jsonParser, function (request, response) {
 	// Capture the input fields
 	var email = request.body.emailAddress.toLowerCase();
 	var password = request.body.password;
@@ -314,7 +280,7 @@ app.post("/api/auth", jsonParser, function (request, response) {
 						emailAddress: results[0].email,
 					});
 				} else {
-					response.status(401).send({message: "Incorrect email or password"});
+					response.status(401).send({ message: "Incorrect email or password" });
 				}
 				response.end();
 			}

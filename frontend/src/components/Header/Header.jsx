@@ -4,6 +4,7 @@ import logo from "../../images/QHLogo.png";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { isLoggedIn } from "../../utils/authUtils";
 
 export const Header = ({ userName }) => {
 	const dropIcon = <FontAwesomeIcon icon={faCaretDown} />;
@@ -27,12 +28,12 @@ export const Header = ({ userName }) => {
 					<div className="dropdown nav">
 						<button className="dropbtn2">Recipes{dropIcon}</button>
 						<div className="dropdown-content2">
-                            <Link to="/gluten-free">Gluten Free</Link>
-                            <Link to="/vegan">Vegan</Link>
-                            <Link to="/fifteen-minute">15 Minute</Link>
-                            <Link to="/lactose-free">Lactose Free</Link>
+							<Link to="/gluten-free">Gluten Free</Link>
+							<Link to="/vegan">Vegan</Link>
+							<Link to="/fifteen-minute">15 Minute</Link>
+							<Link to="/lactose-free">Lactose Free</Link>
 							<Link to="/nut-free">Nut Free</Link>
-							<Link to="/add-recipes">Add a Recipe</Link>
+							{isLoggedIn() && <Link to="/add-recipes">Add a Recipe</Link>}
 							<Link to="/recipes">All Recipes</Link>
 						</div>
 					</div>

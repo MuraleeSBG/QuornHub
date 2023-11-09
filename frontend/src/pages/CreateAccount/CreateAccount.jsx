@@ -30,7 +30,7 @@ const CreateAccount = () => {
 			setErrorMessage("Please fill in an email, password and display name");
 			return;
 		}
-		const userApiUrl = `http://localhost:3001/api/user`;
+		const userApiUrl = `http://localhost:3001/user`;
 		fetch(userApiUrl, {
 			method: "POST",
 			headers: {

@@ -12,7 +12,7 @@ const Login = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const userApiUrl = `http://localhost:3001/api/auth`;
+		const userApiUrl = `http://localhost:3001/login`;
 		fetch(userApiUrl, {
 			method: "POST",
 			headers: {

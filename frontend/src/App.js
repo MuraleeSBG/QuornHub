@@ -6,12 +6,8 @@ import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login/Login";
 import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
-import GlutenFree from "./pages/Categories/GlutenFree";
-import Vegan from "./pages/Categories/Vegan";
-import FifteenMinute from "./pages/Categories/FifteenMinute";
-import LactoseFree from "./pages/Categories/LactoseFree";
-import NutFree from "./pages/Categories/NutFree";
 import GoToRecipe from "./pages/GoToRecipe/GoToRecipe";
+import Categories from "./pages/Categories/Categories";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -41,28 +37,29 @@ const App = () => {
 		},
 		{
 			path: "/gluten-free",
-			element: <GlutenFree />,
+			element: <Categories tag={"gluten-free"} title={"Gluten Free Recipes"} />,
 		},
 		{
 			path: "/vegan",
-			element: <Vegan />,
+			element: <Categories tag={"vegan"} title={"Vegan Recipes"} />,
 		},
 		{
 			path: "/fifteen-minute",
-			element: <FifteenMinute />,
+			element: <Categories tag={"under-15"} title={"15 Minute Recipes"} />,
 		},
 		{
 			path: "/lactose-free",
-			element: <LactoseFree />,
+			element: (
+				<Categories tag={"lactose-free"} title={"Lactose Free Recipes"} />
+			),
 		},
 		{
 			path: "/nut-free",
-			element: <NutFree />,
+			element: <Categories tag={"nut-free"} title={"Nut Free Recipes"} />,
 		},
 		{
 			path: "/go-to-recipe/:id",
-			element: <GoToRecipe/>
-
+			element: <GoToRecipe />,
 		},
 	]);
 

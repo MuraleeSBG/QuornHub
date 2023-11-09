@@ -8,32 +8,30 @@ const FoodSaver = () => {
 	const [listOfInput, setListOfInput] = useState([]);
 	const [recipesToDisplay, setrecipesToDisplay] = useState([]);
 	const [inputText, setInputText] = useState("");
-	
+
 	// This needs replacing with code commented out below to fetch from database
 	// const data = require("../../testData.json");
 
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
-        const apiUrl = `http://localhost:3001/api`;
+		const apiUrl = `http://localhost:3001/recipes`;
 
-        fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Error with response")
-            }
-            return response.json();
-        })
-			.then(data => {
-				console.log({ data })
-            setData(data);
-        })
-        .catch(error => {
-            console.log("Error fetching data:", error);
-        })
-
-    },[])
-
+		fetch(apiUrl)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Error with response");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				console.log({ data });
+				setData(data);
+			})
+			.catch((error) => {
+				console.log("Error fetching data:", error);
+			});
+	}, []);
 
 	const handleKeyDown = (e) => {
 		if (e.key === "Enter") {
@@ -66,7 +64,6 @@ const FoodSaver = () => {
 		});
 		setrecipesToDisplay(filteredRecipes);
 	}, [listOfInput, data]);
-
 
 	const removeIngredient = (e) => {
 		const ingredientToRemove = e.target.parentElement.id;
@@ -116,13 +113,7 @@ const FoodSaver = () => {
 	};
 	const showResults = recipesToDisplay.map((recipe, index) => {
 		const tags = getTags(recipe);
-		return (
-			<FoodSaverCard
-				key={index}
-				selectedRecipe={recipe}
-				tags={tags}
-			/>
-		);
+		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags} />;
 	});
 
 	return (
@@ -145,17 +136,16 @@ const FoodSaver = () => {
 				<div id="tags" className="tags-container">
 					{tags}
 				</div>
-				
-					{listOfInput.length !== 0 ? (
-						<div className="results-container">{showResults}</div>
-					) : (
-						<div>
-							<h1 className="results-placeholder">
-								Enter ingredients to start saving food and be inspired!
-							</h1>
-						</div>
-					)}
 
+				{listOfInput.length !== 0 ? (
+					<div className="results-container">{showResults}</div>
+				) : (
+					<div>
+						<h1 className="results-placeholder">
+							Enter ingredients to start saving food and be inspired!
+						</h1>
+					</div>
+				)}
 			</div>
 
 			<Footer />
