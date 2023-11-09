@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./GoToRecipe.scss";
 
 const GoToRecipe = () => {
-	const [data, setData] = useState([]);
+	const [data, setData] = useState(undefined);
 
 	const url = window.location.href;
 	const idArray = url.split("/");
@@ -23,7 +23,6 @@ const GoToRecipe = () => {
 			})
 			.then((data) => {
 				setData(data);
-				console.log(data[0]);
 			})
 			.catch((error) => {
 				console.log("Error fetching data:", error);
@@ -55,21 +54,21 @@ const GoToRecipe = () => {
 			<Header />
 
 			<div className="recipe-top">
-				{data.length !== 0 ? (
+				{data ? (
 					<div>
 						<div className="overview">
 							<div className="overview-col1">
 								<img
 									className="rec-image"
-									src={`/recipeImages/${data[0].recipeImg}`}
-									alt={data[0].recipeName}
+									src={`http://localhost:3001/uploads/${data.recipeImg}`}
+									alt={data.recipeName}
 								/>
 							</div>
 							<div className="overview-col2">
-								<div className="recipe-title">{data[0].recipeName}</div>
-								<div className="description">{data[0].recipeDesc}</div>
+								<div className="recipe-title">{data.recipeName}</div>
+								<div className="description">{data.recipeDesc}</div>
 								<div className="tag-box">
-									{getTags(data[0]).map((tag, index) => {
+									{getTags(data).map((tag, index) => {
 										return (
 											<p key={index} className="tag-text">
 												{tag}
@@ -83,10 +82,15 @@ const GoToRecipe = () => {
 							<div className="main-column1">
 								<h4 className="sub-heading">Ingredients</h4>
 								<div className="ingredients-list">
-									{data[0].ingredients.map((ingredient) => {
+									{data.ingredients.map((ingredient) => {
 										return (
-											<p key={ingredient} className="ingredient-list">
-												{ingredient}
+                                            <p key={ingredient} className="ingredient-list">
+                                                {/* Currently, test ingredients are strings, but ingredients added through the app are objects. 
+                                                So if the ingredient is of type string, it must be test ingredient and we display the string.
+                                                If not it must be a new ingredient which is an object with amount and ingredient fields */}
+												{typeof ingredient === "string"
+													? ingredient
+													: `${ingredient.amount} ${ingredient.ingredient}`}
 											</p>
 										);
 									})}
@@ -96,7 +100,7 @@ const GoToRecipe = () => {
 								<h4 className="sub-heading">Method</h4>
 								<ul className="recipe-method">
 									{" "}
-									{data[0].method
+									{data.method
 										.split(".")
 										.filter(Boolean)
 										.map((methodLine) => {

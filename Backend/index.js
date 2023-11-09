@@ -3,7 +3,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
+const multer = require("multer");
 const jsonParser = bodyParser.json();
+const fs = require("fs");
+const uuid = require("uuid");
+const path = require("path");
 
 const cors = require("cors");
 const bcrypt = require("bcrypt");
@@ -17,6 +21,7 @@ app.use(
 		origin: "http://localhost:3000",
 	})
 );
+app.use(express.static(__dirname));
 
 // Start the server
 app.listen(port, () => {
@@ -69,6 +74,7 @@ app.get("/recipes", (req, res) => {
 					recipeImg: recipe.recipeImg,
 					recipeDesc: recipe.recipeDesc,
 					isVegan: recipe.isVegan,
+					serves: recipe.serves,
 					isGlutenFree: recipe.isGlutenFree,
 					isNutFree: recipe.isNutFree,
 					isLactoseFree: recipe.isLactoseFree,
@@ -85,7 +91,7 @@ app.get("/recipes", (req, res) => {
 
 app.get("/recipe/:id", (req, res) => {
 	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE id = ?",
+		"SELECT * FROM QuornhubDb.recipes WHERE id = ? LIMIT 1",
 		[req.params.id],
 		function (err, result) {
 			if (err) throw err;
@@ -95,6 +101,7 @@ app.get("/recipe/:id", (req, res) => {
 					recipeName: recipeAttribute.recipeName,
 					recipeImg: recipeAttribute.recipeImg,
 					recipeDesc: recipeAttribute.recipeDesc,
+					serves: recipeAttribute.serves,
 					isVegan: recipeAttribute.isVegan,
 					isGlutenFree: recipeAttribute.isGlutenFree,
 					isNutFree: recipeAttribute.isNutFree,
@@ -104,7 +111,12 @@ app.get("/recipe/:id", (req, res) => {
 					method: recipeAttribute.method,
 				};
 			});
-			res.send(parsedResult);
+			if (parsedResult.length === 0) {
+				return res.status(404).send({
+					message: "Recipe not found",
+				});
+			}
+			res.send(parsedResult[0]);
 			console.log("all works");
 		}
 	);
@@ -125,34 +137,58 @@ app.delete("/recipe", jsonParser, function (req, res) {
 });
 
 app.post("/recipe", jsonParser, function (req, res) {
-	console.log(req.body.recipeName);
-	if (req.body.recipeName) {
+	try {
+		const {
+			recipeName,
+			recipeImg,
+			recipeDesc,
+			tags,
+			ingredients,
+			method,
+			serves,
+		} = req.body;
+		if (!recipeName || !recipeDesc || !ingredients || !method || !serves) {
+			return res.status(400).send({
+				message: "Recipe name, ingredients and method are required",
+			});
+		}
+		console.log(req.body);
+		const isVegan = tags.includes("Vegan");
+		const isGlutenFree = tags.includes("Gluten Free");
+		const isNutFree = tags.includes("Nut Free");
+		const isLactoseFree = tags.includes("Lactose Free");
+		const isUnder15 = tags.includes("< 15 Minutes");
+		const recipeId = uuid.v4();
 		con.query(
-			"INSERT INTO QuornhubDb.recipes (recipeName, recipeImg, recipeDesc, isVegan, isGlutenFree, isNutFree, isLactoseFree, isUnder15, ingredients, method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+			"INSERT INTO QuornhubDb.recipes (id, recipeName, recipeImg, recipeDesc, serves, isVegan, isGlutenFree, isNutFree, isLactoseFree, isUnder15, ingredients, method) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
 			[
-				req.body.recipeName,
-				req.body.recipeImg,
-				req.body.recipeDesc,
-				req.body.isVegan,
-				req.body.isGlutenFree,
-				req.body.isNutFree,
-				req.body.isLactoseFree,
-				req.body.isUnder15,
-				req.body.ingredients,
-				req.body.method,
+				recipeId,
+				recipeName,
+				recipeImg,
+				recipeDesc,
+				serves,
+				isVegan,
+				isGlutenFree,
+				isNutFree,
+				isLactoseFree,
+				isUnder15,
+				JSON.stringify(ingredients),
+				method,
 			],
 			function (err, result, fields) {
 				if (err) throw err;
-				res.send(result);
-				console.log("post works");
+				res.send({ recipeId });
 			}
 		);
+	} catch (err) {
+		return res.status(400).send({
+			message: err.message,
+		});
 	}
 });
 
-app.put("/recipe", jsonParser, function (req, res) {
-	console.log(req.body.recipeId);
-	if (req.body.recipeId) {
+app.put("/recipe/:recipeId", jsonParser, function (req, res) {
+	if (req.params.recipeId) {
 		con.query(
 			"UPDATE QuornhubDb.recipes SET recipeName = ?, recipeImg = ?, recipeDesc = ?, isVegan = ?, isGlutenFree = ?, isNutFree = ?, isLactoseFree = ?, isUnder15 = ?, ingredients = ?, method = ? WHERE id = ?",
 			[
@@ -166,7 +202,7 @@ app.put("/recipe", jsonParser, function (req, res) {
 				req.body.isUnder15,
 				req.body.ingredients,
 				req.body.method,
-				req.body.recipeId,
+				req.params.recipeId,
 			],
 			function (err, result, fields) {
 				if (err) throw err;
@@ -288,5 +324,44 @@ app.post("/login", jsonParser, function (request, response) {
 	} else {
 		response.send("Please enter Email and Password!");
 		response.end();
+	}
+});
+
+const filePath = path.join(__dirname, "/uploads");
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		fs.mkdir(filePath, (err) => {
+			cb(null, filePath);
+		});
+	},
+	filename: function (req, file, cb) {
+		const ext = file.mimetype.split("/")[1];
+		cb(null, `${file.fieldname}_${Date.now()}.${ext}`);
+	},
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/image", upload.single("image"), (req, res) => {
+	try {
+		const imageId = uuid.v4();
+
+		if (req.file == undefined) {
+			return res.status(400).send(`You must select a file.`);
+		}
+		const oldPath = req.file.path;
+		const ext = req.file.mimetype.split("/")[1];
+		const imageName = `${imageId}.${ext}`;
+		const newPath = path.join(filePath, imageName);
+
+		fs.rename(oldPath, newPath, function (err) {
+			if (err) throw err;
+			res.send({ imageName });
+			res.end();
+		});
+	} catch (error) {
+		console.log(error);
+		return res.status(500).send(`Error when trying upload images: ${error}`);
 	}
 });

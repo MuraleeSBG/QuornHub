@@ -57,8 +57,10 @@ const FoodSaver = () => {
 	useEffect(() => {
 		const filteredRecipes = data.filter((recipe) => {
 			return recipe.ingredients.some((ingredient) => {
+				const finalIngredient =
+					typeof ingredient === "string" ? ingredient : ingredient.ingredient;
 				return listOfInput.some(
-					(input) => input.toLowerCase() === ingredient.toLowerCase()
+					(input) => input.toLowerCase() === finalIngredient.toLowerCase()
 				);
 			});
 		});

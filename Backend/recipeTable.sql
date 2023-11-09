@@ -1,8 +1,9 @@
 Create TABLE QuornhubDb.recipes (
-    id int NOT NULL,
+    id varchar(36) NOT NULL,
     recipeName tinytext NOT NULL,
-    recipeImg tinytext NOT NULL,
+    recipeImg tinytext,
     recipeDesc tinytext NOT NULL,
+    serves int NOT NULL DEFAULT 1,
 	isVegan boolean NOT NULL,
     isGlutenFree boolean NOT NULL, 
     isNutFree boolean NOT NULL,

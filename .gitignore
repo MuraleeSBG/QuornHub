@@ -130,4 +130,4 @@ dist
 .pnp.*
 
 # images
-./Backend/uploads
+Backend/uploads

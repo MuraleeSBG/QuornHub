@@ -4,6 +4,7 @@ import ImageDragUpload from "../../components/ImageDragUpload/ImageDragUpload";
 import { useState } from "react";
 import servingUser from "../../images/userDouble.svg";
 import plusIcon from "../../images/plus.svg";
+import { useNavigate } from "react-router";
 
 const tags = [
 	"Gluten Free",
@@ -20,6 +21,7 @@ const AddRecipes = () => {
 	const [servingSize, setServingSize] = useState(1);
 	const [recipeTags, setRecipeTags] = useState([]);
 	const [selectedImage, setSelectedImage] = useState();
+	const navigate = useNavigate();
 
 	const updateAmount = (e, index) => {
 		const oldIngredients = Array.from(ingredients);
@@ -32,6 +34,71 @@ const AddRecipes = () => {
 		setIngredients(oldIngredients);
 	};
 
+	const updateTags = (tag) => {
+		setRecipeTags((current) => {
+			if (current.includes(tag)) {
+				return current.filter((current) => current !== tag);
+			} else {
+				return [...current, tag];
+			}
+		});
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const imageApiUrl = `http://localhost:3001/image`;
+		const recipeApiUrl = `http://localhost:3001/recipe`;
+
+		if (!selectedImage) {
+			return;
+		}
+		const formData = new FormData();
+		formData.append("image", selectedImage);
+		fetch(imageApiUrl, {
+			method: "POST",
+			body: formData,
+			headers: {
+				Accept: "multipart/form-data",
+			},
+		})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Error uploading image");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				const imageName = data.imageName;
+				return fetch(recipeApiUrl, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						recipeName: recipeTitle,
+						recipeImg: imageName,
+						recipeDesc: recipeTitle,
+						ingredients,
+						serves: servingSize,
+						tags: recipeTags,
+						method: method,
+					}),
+				});
+			})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Error saving recipe");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				navigate("/go-to-recipe/" + data.recipeId);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
+
 	return (
 		<div className="AddRecipesPage">
 			<Header />
@@ -41,7 +108,7 @@ const AddRecipes = () => {
 					Thank you for making our website better, we can't wait to try your
 					delicious recipe!
 				</h5>
-				<form className="addRecipe">
+				<form className="addRecipe" onSubmit={handleSubmit}>
 					<div className="leftColumn">
 						<ImageDragUpload
 							selectedImage={selectedImage}
@@ -76,8 +143,8 @@ const AddRecipes = () => {
 										className="tagCheckbox"
 										type="checkbox"
 										id={tag}
-										value={recipeTags}
-										onChange={(e) => setRecipeTags(e.target.value)}
+										value={recipeTags.includes(tag)}
+										onChange={() => updateTags(tag)}
 									/>
 									<label htmlFor={tag}>{tag}</label>
 								</div>
@@ -131,7 +198,9 @@ const AddRecipes = () => {
 							onChange={(e) => setMethod(e.target.value)}
 						></textarea>
 
-						<button className="done" type="submit">Done</button>
+						<button className="done" type="submit">
+							Done
+						</button>
 					</div>
 				</form>
 			</div>

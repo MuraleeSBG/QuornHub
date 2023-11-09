@@ -41,7 +41,8 @@ const ImageDragUpload = ({ selectedImage, setSelectedImage }) => {
 					<input
 						type="file"
 						id="input-file-upload"
-						multiple={true}
+						name="image"
+						multiple={false}
 						onChange={handleChange}
 					/>
 
@@ -54,7 +55,7 @@ const ImageDragUpload = ({ selectedImage, setSelectedImage }) => {
 							<img className="uploadImage" src={upload} alt="upload image" />
 							<p className="drag">Drag and drop your file here</p>
 							<p>-OR-</p>
-							<p className="clickToUpload" >Browse Files</p>
+							<p className="clickToUpload">Browse Files</p>
 						</div>
 					</label>
 					{dragActive && (

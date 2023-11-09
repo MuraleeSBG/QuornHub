@@ -80,17 +80,17 @@ const CreateAccount = () => {
 					/>
 					<label htmlFor="password">Password</label>
 					<input
-						type="text"
+						type="password"
 						className="input"
 						id="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 					/>
-					<label htmlFor="password">Confirm Password</label>
+					<label htmlFor="confirmPassword">Confirm Password</label>
 					<input
-						type="text"
+						type="password"
 						className="input"
-						id="password"
+						id="confirmPassword"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
