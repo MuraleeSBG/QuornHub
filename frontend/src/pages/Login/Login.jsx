@@ -21,14 +21,14 @@ const Login = () => {
 			body: JSON.stringify({ emailAddress, password }),
 		})
 			.then((response) => {
-				response.json().then((body) => {
-					if (!response.ok) {
-						setErrorMessage(body.message);
-						return;
-					}
-					login(body);
-					navigate("/");
-				});
+				if (!response.ok) {
+					throw new Error("Incorrect email or password");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				login(data);
+				navigate("/");
 			})
 			.catch((error) => {
 				setErrorMessage(error.message);

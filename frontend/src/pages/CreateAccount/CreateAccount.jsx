@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/QHLogo.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./CreateAccount.scss";
 
 const CreateAccount = () => {
@@ -8,9 +8,28 @@ const CreateAccount = () => {
 	const [password, setPassword] = useState("");
 	const [displayName, setDisplayName] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
+	const [passwordMatch, setPasswordMatch] = useState(true);
+	const [errorMessage, setErrorMessage] = useState("");
+	const navigate = useNavigate();
+
+	const validatePasswords = (password, confirmPassword) =>
+		!password || password === confirmPassword;
+
+	useEffect(() => {
+		setPasswordMatch(validatePasswords(password, confirmPassword));
+		if (emailAddress && password && displayName && passwordMatch) {
+			setErrorMessage("");
+		}
+	}, [password, confirmPassword, emailAddress, displayName]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log(validatePasswords(password, confirmPassword));
+		if (!validatePasswords(password, confirmPassword)) return;
+		if (!emailAddress || !password || !displayName) {
+			setErrorMessage("Please fill in an email, password and display name");
+			return;
+		}
 		const userApiUrl = `http://localhost:3001/api/user`;
 		fetch(userApiUrl, {
 			method: "POST",
@@ -20,17 +39,16 @@ const CreateAccount = () => {
 			body: JSON.stringify({ emailAddress, password, displayName }),
 		})
 			.then((response) => {
-				console.log({ response });
 				if (!response.ok) {
-					throw new Error("Error with response");
+					return response.json();
 				}
-				return response.json();
+				navigate("/login");
 			})
 			.then((data) => {
-				console.log({ data });
+				throw new Error(data.message);
 			})
 			.catch((error) => {
-				console.log("Error fetching data:", error);
+				setErrorMessage(error.message);
 			});
 	};
 
@@ -76,6 +94,8 @@ const CreateAccount = () => {
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 					/>
+					{!passwordMatch && <p className="error">Passwords do not match</p>}
+					{errorMessage && <p className="error">{errorMessage}</p>}
 					<button type="submit" className="loginButton">
 						Create an Account
 					</button>
