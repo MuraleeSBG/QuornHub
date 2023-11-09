@@ -143,21 +143,6 @@ app.get("/api/u15", (req, res) => {
 	);
 });
 
-/*
-app.delete('/api/id/:id', (req, res) => {
-  if (req.params.id) {
-    con.query("DELETE FROM QuornhubDb.recipes WHERE id = ?", [req.params.id], function (err, result, fields) {
-      if (err) throw err;
-      res.send(result);
-      console.log("delete works")
-    });
-  }
-});
-
-OLD CODE: PARAMETERS IN URL
-
-*/
-
 app.delete("/api", jsonParser, function (req, res) {
 	if (req.body.recipeId) {
 		con.query(
@@ -225,7 +210,6 @@ app.put("/api", jsonParser, function (req, res) {
 	}
 });
 
-
 app.get('/api/user', (req, res) => {
 	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
 		if (err) throw err;
@@ -233,8 +217,6 @@ app.get('/api/user', (req, res) => {
 		console.log("get user works")
 	});
 });
-
-
 
 app.post("/api/user", jsonParser, async function (req, res) {
 	const { email, password, name, admin } = req.body;
@@ -301,39 +283,6 @@ app.delete('/api/user', (req, res) => {
 	});
   }
 });
-
-
-
-const userIsValid = (requestUsername, requestEmail, requestPassword) => {
-	const userExists = express.request === requestUsername;
-	if (userExists) {
-		const user = fakeData[requestUsername];
-		if (user.password === requestPassword) {
-			return true;
-		} else {
-			return false;
-		}
-	} else {
-		return false;
-	}
-};
-
-app.post(
-	"/login",
-	(req, res) => {
-		const validUser = userIsValid(
-			req.body.username,
-			fakeData,
-			req.body.password
-		);
-		console.log(validUser);
-		if (validUser) {
-			res.status(200).send({ response: "Authenticated" });
-		} else {
-			res.status(401).send({ response: "Authentication failed" });
-		}
-	}
-);
 
 */
 
