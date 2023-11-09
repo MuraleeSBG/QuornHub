@@ -3,6 +3,9 @@
 	background-color: #efe6dd;
 	background-size: cover;
 	// height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .createContainer {
