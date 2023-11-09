@@ -263,6 +263,8 @@ app.post("/api/user", jsonParser, async function (req, res) {
 
 /*
 
+unused users table crud functions
+
 app.put('/api/user', jsonParser, function (req, res) {
 	if (req.body.password) {
 		var hashedpass = bcrypt.hashSync(req.body.password, salt);
@@ -285,6 +287,15 @@ app.delete('/api/user', (req, res) => {
 });
 
 */
+
+
+
+/*
+
+vvv THIS IS THE AUTH CODE vvv
+
+
+the issue is that the password is not being hashed the same each time, so the login is not working.
 
 app.post("/api/auth", jsonParser, function(request, response) {
 	// Capture the input fields
@@ -316,3 +327,5 @@ app.post("/api/auth", jsonParser, function(request, response) {
 		response.end();
 	}
 });
+
+*/
