@@ -8,8 +8,8 @@ const jsonParser = bodyParser.json();
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const e = require("express");
-const session = require('express-session');
-const saltRounds = 10
+const session = require("express-session");
+const saltRounds = 10;
 const salt = bcrypt.genSaltSync(10);
 
 app.use(
@@ -41,22 +41,22 @@ con.connect(function (err) {
 app.get("/api", (req, res) => {
 	con.query("SELECT * FROM QuornhubDb.recipes", function (err, result, fields) {
 		if (err) throw err;
-    // we need to transform the result an array of objects
-    const parsedResult = result.map((recipe) => {
-      return {
-        id: recipe.id,
-        recipeName: recipe.recipeName,
-        recipeImg: recipe.recipeImg,
-        recipeDesc: recipe.recipeDesc,
-        isVegan: recipe.isVegan,
-        isGlutenFree: recipe.isGlutenFree,
-        isNutFree: recipe.isNutFree,
-        isLactoseFree: recipe.isLactoseFree,
-        isUnder15: recipe.isUnder15,
-        ingredients: JSON.parse(recipe.ingredients) ,
-        method: recipe.method
-      }
-    })
+		// we need to transform the result an array of objects
+		const parsedResult = result.map((recipe) => {
+			return {
+				id: recipe.id,
+				recipeName: recipe.recipeName,
+				recipeImg: recipe.recipeImg,
+				recipeDesc: recipe.recipeDesc,
+				isVegan: recipe.isVegan,
+				isGlutenFree: recipe.isGlutenFree,
+				isNutFree: recipe.isNutFree,
+				isLactoseFree: recipe.isLactoseFree,
+				isUnder15: recipe.isUnder15,
+				ingredients: JSON.parse(recipe.ingredients),
+				method: recipe.method,
+			};
+		});
 		res.send(parsedResult);
 		console.log("all works");
 	});
@@ -64,29 +64,30 @@ app.get("/api", (req, res) => {
 
 app.get("/api/id/:id", (req, res) => {
 	con.query(
-		"SELECT * FROM QuornhubDb.recipes WHERE id = ?", 
-		[req.params.id], 
+		"SELECT * FROM QuornhubDb.recipes WHERE id = ?",
+		[req.params.id],
 		function (err, result) {
 			if (err) throw err;
 			const parsedResult = result.map((recipeAttribute) => {
 				return {
-				  id: recipeAttribute.id,
-				  recipeName: recipeAttribute.recipeName,
-				  recipeImg: recipeAttribute.recipeImg,
-				  recipeDesc: recipeAttribute.recipeDesc,
-				  isVegan: recipeAttribute.isVegan,
-				  isGlutenFree: recipeAttribute.isGlutenFree,
-				  isNutFree: recipeAttribute.isNutFree,
-				  isLactoseFree: recipeAttribute.isLactoseFree,
-				  isUnder15: recipeAttribute.isUnder15,
-				  ingredients: JSON.parse(recipeAttribute.ingredients) ,
-				  method: recipeAttribute.method
-				}
-			  })
-				  res.send(parsedResult);
-				  console.log("all works");
-			  });
-		  });
+					id: recipeAttribute.id,
+					recipeName: recipeAttribute.recipeName,
+					recipeImg: recipeAttribute.recipeImg,
+					recipeDesc: recipeAttribute.recipeDesc,
+					isVegan: recipeAttribute.isVegan,
+					isGlutenFree: recipeAttribute.isGlutenFree,
+					isNutFree: recipeAttribute.isNutFree,
+					isLactoseFree: recipeAttribute.isLactoseFree,
+					isUnder15: recipeAttribute.isUnder15,
+					ingredients: JSON.parse(recipeAttribute.ingredients),
+					method: recipeAttribute.method,
+				};
+			});
+			res.send(parsedResult);
+			console.log("all works");
+		}
+	);
+});
 
 app.get("/api/vegan", (req, res) => {
 	con.query(
@@ -210,28 +211,28 @@ app.put("/api", jsonParser, function (req, res) {
 	}
 });
 
-app.get('/api/user', (req, res) => {
+app.get("/api/user", (req, res) => {
 	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
 		if (err) throw err;
 		res.send(result);
-		console.log("get user works")
+		console.log("get user works");
 	});
 });
 
 app.post("/api/user", jsonParser, async function (req, res) {
-	const { email, password, name, admin } = req.body;
-	if (!email || !password || !name) {
+	const { emailAddress, password, displayName, admin } = req.body;
+	if (!emailAddress || !password || !displayName) {
 		return res.status(400).send({
 			message: "Email, name and password are required",
 		});
 	}
 	try {
-		var emailLower = email.toLowerCase();
+		var emailLower = emailAddress.toLowerCase();
 
 		con.query(
 			"SELECT COUNT(*) AS count FROM QuornhubDb.users WHERE email = ?",
 			[emailLower],
-			function (err, result, fields) {
+			function (err, result, _fields) {
 				if (err) throw err;
 				if (result[0].count > 0) {
 					return res.status(400).send({
@@ -240,11 +241,10 @@ app.post("/api/user", jsonParser, async function (req, res) {
 				}
 
 				const salt = bcrypt.genSaltSync(10);
-				var hashedpass = bcrypt.hashSync(password, salt);
-				console.log(hashedpass);
+				const hashedpass = bcrypt.hashSync(password, salt);
 				con.query(
-					"INSERT INTO QuornhubDb.users (name, password, email, admin) VALUES (?, ?, ?, ?)",
-					[name, hashedpass, emailLower, admin || false],
+					"INSERT INTO QuornhubDb.users (id, name, password, email, admin) VALUES (UUID(), ?, ?, ?, ?)",
+					[displayName, hashedpass, emailLower, admin || false],
 					function (err, result, fields) {
 						if (err) throw err;
 						res.status(200).send({
@@ -261,71 +261,62 @@ app.post("/api/user", jsonParser, async function (req, res) {
 	}
 });
 
-/*
+// app.put('/api/user', jsonParser, function (req, res) {
+// 	if (req.body.password) {
+// 		var hashedpass = bcrypt.hashSync(req.body.password, salt);
+// 		con.query("UPDATE QuornhubDb.users SET name = ?, password = ?, email = ?, admin = ? WHERE id = ?", [req.body.name, hashedpass, req.body.email, req.body.admin, req.body.id], function (err, result, fields) {
+// 			if (err) throw err;
+// 			res.send(result);
+// 			console.log("update user works")
+// 		});
+// 	}
+// });
 
-unused users table crud functions
+// app.delete('/api/user', (req, res) => {
+// 	  if (req.params.id) {
+// 	con.query("DELETE FROM QuornhubDb.users WHERE id = ?", [req.params.id], function (err, result, fields) {
+// 	  if (err) throw err;
+// 	  res.send(result);
+// 	  console.log("delete user works")
+// 	});
+//   }
+// });
 
-app.put('/api/user', jsonParser, function (req, res) {
-	if (req.body.password) {
-		var hashedpass = bcrypt.hashSync(req.body.password, salt);
-		con.query("UPDATE QuornhubDb.users SET name = ?, password = ?, email = ?, admin = ? WHERE id = ?", [req.body.name, hashedpass, req.body.email, req.body.admin, req.body.id], function (err, result, fields) {
-			if (err) throw err;
-			res.send(result);
-			console.log("update user works")
-		});
-	}
-});
-
-app.delete('/api/user', (req, res) => {
-	  if (req.params.id) {
-	con.query("DELETE FROM QuornhubDb.users WHERE id = ?", [req.params.id], function (err, result, fields) {
-	  if (err) throw err;
-	  res.send(result);
-	  console.log("delete user works")
-	});
-  }
-});
-
-*/
-
-
-
-/*
-
-vvv THIS IS THE AUTH CODE vvv
-
-
-the issue is that the password is not being hashed the same each time, so the login is not working.
-
-app.post("/api/auth", jsonParser, function(request, response) {
+app.post("/api/auth", jsonParser, function (request, response) {
 	// Capture the input fields
-	var email = (request.body.email).toLowerCase();
+	var email = request.body.emailAddress.toLowerCase();
 	var password = request.body.password;
-	const salt = bcrypt.genSaltSync(10);
-	var hashedpass = bcrypt.hashSync(password, salt);
 	// Ensure the input fields exists and are not empty
 	if (email && password) {
 		// Execute SQL query that'll select the account from the database based on the specified email and password
-		con.query('SELECT * FROM QuornhubDb.users WHERE email = ? AND password = ?', [email, hashedpass], function(error, results, fields) {
-			console.log(hashedpass);
-			// If there is an issue with the query, output the error
-			if (error) throw error;
-			// If the account exists
-			if (results.length > 0) {
-				// Authenticate the user
-				request.session.loggedin = true;
-				request.session.email = email;
-				// Redirect to home page
-				response.redirect('/home');
-			} else {
-				response.send('Incorrect Email and/or Password!');
-			}			
-			response.end();
-		});
+		con.query(
+			"SELECT * FROM QuornhubDb.users WHERE email = ? ",
+			[email],
+			function (error, results, fields) {
+				// If there is an issue with the query, output the error
+				if (error) {
+					return response.status(500).send({ error });
+				}
+				// If the account exists
+				if (
+					// Check if the query returned any users results
+					results.length > 0 &&
+					// Compares the password entered with the password stored in the database
+					bcrypt.compareSync(password, results[0].password)
+				) {
+					// Authenticate the user
+					// request.session.loggedin = true;
+					// request.session.email = email;
+					// Redirect to home page
+					response.send({mame: results[0].name, admin: results[0].admin, emailAddress: results[0].email});
+				} else {
+					response.send("Incorrect Email and/or Password!");
+				}
+				response.end();
+			}
+		);
 	} else {
-		response.send('Please enter Email and Password!');
+		response.send("Please enter Email and Password!");
 		response.end();
 	}
 });
-
-*/

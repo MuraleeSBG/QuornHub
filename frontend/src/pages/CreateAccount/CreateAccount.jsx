@@ -11,9 +11,27 @@ const CreateAccount = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(
-			`Login attempted. Email: ${emailAddress} Password: ${password}`
-		);
+		const userApiUrl = `http://localhost:3001/api/user`;
+		fetch(userApiUrl, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ emailAddress, password, displayName }),
+		})
+			.then((response) => {
+				console.log({ response });
+				if (!response.ok) {
+					throw new Error("Error with response");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				console.log({ data });
+			})
+			.catch((error) => {
+				console.log("Error fetching data:", error);
+			});
 	};
 
 	return (
