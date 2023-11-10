@@ -11,7 +11,7 @@ const Categories = ({ title, tag }) => {
 	useEffect(() => {
 		const apiUrl = `http://localhost:3001/recipes${tag ? `?tag=${tag}` : ""}`;
 
-		fetch(apiUrl)
+		fetch(apiUrl, { credentials: "include" })
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Error with response");

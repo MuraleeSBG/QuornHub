@@ -2,13 +2,12 @@ import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import React, { useState, useEffect } from "react";
 import "./GoToRecipe.scss";
+import { useParams } from "react-router";
 
 const GoToRecipe = () => {
 	const [data, setData] = useState(undefined);
 
-	const url = window.location.href;
-	const idArray = url.split("/");
-	const id = idArray[4];
+	const { id } = useParams();
 
 	useEffect(() => {
 		// CHANGE LOCAL HOST PORT TO WAHTEVER BACKEND IS USING
@@ -84,8 +83,8 @@ const GoToRecipe = () => {
 								<div className="ingredients-list">
 									{data.ingredients.map((ingredient) => {
 										return (
-                                            <p key={ingredient} className="ingredient-list">
-                                                {/* Currently, test ingredients are strings, but ingredients added through the app are objects. 
+											<p key={ingredient} className="ingredient-list">
+												{/* Currently, test ingredients are strings, but ingredients added through the app are objects. 
                                                 So if the ingredient is of type string, it must be test ingredient and we display the string.
                                                 If not it must be a new ingredient which is an object with amount and ingredient fields */}
 												{typeof ingredient === "string"

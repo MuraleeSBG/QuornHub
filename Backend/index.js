@@ -8,20 +8,39 @@ const jsonParser = bodyParser.json();
 const fs = require("fs");
 const uuid = require("uuid");
 const path = require("path");
-
 const cors = require("cors");
 const bcrypt = require("bcrypt");
-const e = require("express");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const saltRounds = 10;
 const salt = bcrypt.genSaltSync(10);
+const MySQLStore = require("express-mysql-session")(session);
 
 app.use(
 	cors({
 		origin: "http://localhost:3000",
+		credentials: true,
 	})
 );
 app.use(express.static(__dirname));
+const sessionLength = 1000 * 60 * 60 * 24; // 1 day session length
+
+const sessionStore = new MySQLStore({
+	host: "localhost",
+	user: "root",
+	password: "rootpass",
+	database: "QuornhubDb",
+});
+app.use(
+	session({
+		secret: "ChangeMetoBeASecretKey",
+		saveUninitialized: true,
+		resave: false,
+		store: sessionStore,
+		cookie: { maxAge: sessionLength },
+	})
+);
+app.use(cookieParser());
 
 // Start the server
 app.listen(port, () => {
@@ -294,7 +313,7 @@ app.post("/login", jsonParser, function (request, response) {
 		con.query(
 			"SELECT * FROM QuornhubDb.users WHERE email = ? ",
 			[email],
-			function (error, results, fields) {
+			function (error, results) {
 				// If there is an issue with the query, output the error
 				if (error) {
 					return response.status(500).send({ error });
@@ -310,6 +329,9 @@ app.post("/login", jsonParser, function (request, response) {
 					// request.session.loggedin = true;
 					// request.session.email = email;
 					// Redirect to home page
+					request.session.user = results[0].email;
+					request.session.admin = results[0].admin;
+					request.session.save();
 					response.send({
 						mame: results[0].name,
 						admin: results[0].admin,
@@ -325,6 +347,11 @@ app.post("/login", jsonParser, function (request, response) {
 		response.send("Please enter Email and Password!");
 		response.end();
 	}
+});
+
+app.get("/logout", function (req, res) {
+	req.session.destroy();
+	res.send("logout success!");
 });
 
 const filePath = path.join(__dirname, "/uploads");

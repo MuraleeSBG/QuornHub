@@ -1,13 +1,31 @@
 import "./Header.scss";
 import logo from "../../images/QHLogo.png";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { isLoggedIn } from "../../utils/authUtils";
+import { isLoggedIn, logout } from "../../utils/authUtils";
 
 export const Header = ({ userName }) => {
 	const dropIcon = <FontAwesomeIcon icon={faCaretDown} />;
+	const navigate = useNavigate();
+
+	const onLogout = () => {
+		const userApiUrl = `http://localhost:3001/logout`;
+		fetch(userApiUrl, {
+			credentials: "include",
+		})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Unable to logout");
+				}
+				logout();
+				navigate("/");
+			})
+			.catch((error) => {
+				console.log(error.message);
+			});
+	};
 
 	return (
 		<div className="header">
@@ -42,7 +60,11 @@ export const Header = ({ userName }) => {
 				<div className="dropdown">
 					<button className="dropbtn"></button>
 					<div className="dropdown-content">
-						<Link to="/login">Login / Register</Link>
+						{isLoggedIn() ? (
+							<Link onClick={onLogout}>Logout</Link>
+						) : (
+							<Link to="/login">Login / Register</Link>
+						)}
 					</div>
 				</div>
 			</div>
