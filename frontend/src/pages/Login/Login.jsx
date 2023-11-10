@@ -4,12 +4,12 @@ import "./Login.scss";
 import { useState } from "react";
 import { login } from "../../utils/authUtils";
 import hidePassword from "../../images/hidePassword.svg";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 
 const Login = () => {
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -56,23 +56,7 @@ const Login = () => {
             onChange={(e) => setEmailAddress(e.target.value)}
           />
           <label htmlFor="password">Password</label>
-          <div className="passwordContainer">
-            <input
-              type={showPassword ? "text" : "password"}
-              className="login-input"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button
-              className="hidePasswordButton"
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              <img src={hidePassword} alt="hide password" />
-            </button>
-          </div>
-
+          <PasswordInput password={password} setPassword={setPassword} />
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button type="submit" className="loginButton">
             Login

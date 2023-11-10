@@ -62,15 +62,12 @@
     &:hover {
         text-decoration: underline;
     }
-
 }
 
 .notReg {
     font-size: small;
     font-family: "Nunito Sans", sans-serif;
     padding-top: 20%;
-
-
 }
 
 .Title {
@@ -93,19 +90,4 @@
 	font-size: small;
 	margin-top: 0;
 	margin-bottom: 0;
-}
-
-.passwordContainer {
-	position: relative;
-	width: 100%;
-}
-
-.hidePasswordButton {
-	position: relative;
-	left: calc(50% - 2px);
-	z-index: 10;
-	border: none;
-	bottom: 30px;
-	cursor: pointer;
-	background: transparent;
 }
