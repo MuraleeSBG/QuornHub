@@ -3,7 +3,6 @@ import logo from "../../images/QHLogo.png";
 import "./Login.scss";
 import { useState } from "react";
 import { login } from "../../utils/authUtils";
-import hidePassword from "../../images/hidePassword.svg";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
 
 const Login = () => {

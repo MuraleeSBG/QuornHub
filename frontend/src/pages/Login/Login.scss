@@ -48,7 +48,7 @@
 }
 
 .login-input {
-	width: 100%;
+	width: calc(100% - 18px);
 	border-radius: 5px;
 	border: 1px solid #828282;
 	padding: 8px;
