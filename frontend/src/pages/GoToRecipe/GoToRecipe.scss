@@ -7,10 +7,7 @@
     gap: 2vw;
     justify-content: center;
     margin: 0 10vw 0 10vw
-
 }
-
-
 
 .rec-image {
     width: 35vw;
@@ -22,11 +19,11 @@
 
 .overview-col1 {
     display:flex;
-
 }
 
 .overview-col2 {
     display:flex;
+    flex-direction: column;
     flex-wrap: wrap;
     font-family: "Paytone One", sans-serif;
 	margin: 0vw;
