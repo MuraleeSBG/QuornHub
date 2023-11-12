@@ -8,6 +8,7 @@ import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import GoToRecipe from "./pages/GoToRecipe/GoToRecipe";
 import Categories from "./pages/Categories/Categories";
+import EditRecipe from "./pages/EditRecipe/EditRecipe";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const App = () => {
 		{
 			path: "/add-recipes",
 			element: <AddRecipes />,
+		},
+		{
+			path: "/edit-recipe/:id",
+			element: <EditRecipe />,
 		},
 		{
 			path: "/login",
