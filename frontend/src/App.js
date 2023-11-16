@@ -4,14 +4,11 @@ import Home from "./pages/Home/Home";
 import FoodSaver from "./pages/FoodSaver/FoodSaver";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login/Login";
-import AllRecipes from "./pages/Recipes/AllRecipes";
-import CreateAccount from "./pages/CreateAccount";
-import GlutenFree from "./pages/Recipes/GlutenFree";
-import Vegan from "./pages/Recipes/Vegan";
-import FifteenMinute from "./pages/Recipes/FifteenMinute";
-import LactoseFree from "./pages/Recipes/LactoseFree";
-import NutFree from "./pages/Recipes/NutFree";
+import Recipes from "./pages/Recipes";
+import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import GoToRecipe from "./pages/GoToRecipe/GoToRecipe";
+import Categories from "./pages/Categories/Categories";
+import EditRecipe from "./pages/EditRecipe/EditRecipe";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -25,11 +22,15 @@ const App = () => {
 		},
 		{
 			path: "/recipes",
-			element: <AllRecipes />,
+			element: <Recipes />,
 		},
 		{
 			path: "/add-recipes",
 			element: <AddRecipes />,
+		},
+		{
+			path: "/edit-recipe/:id",
+			element: <EditRecipe />,
 		},
 		{
 			path: "/login",
@@ -41,28 +42,29 @@ const App = () => {
 		},
 		{
 			path: "/gluten-free",
-			element: <GlutenFree />,
+			element: <Categories tag={"gluten-free"} title={"Gluten Free Recipes"} />,
 		},
 		{
 			path: "/vegan",
-			element: <Vegan />,
+			element: <Categories tag={"vegan"} title={"Vegan Recipes"} />,
 		},
 		{
 			path: "/fifteen-minute",
-			element: <FifteenMinute />,
+			element: <Categories tag={"under-15"} title={"15 Minute Recipes"} />,
 		},
 		{
 			path: "/lactose-free",
-			element: <LactoseFree />,
+			element: (
+				<Categories tag={"lactose-free"} title={"Lactose Free Recipes"} />
+			),
 		},
 		{
 			path: "/nut-free",
-			element: <NutFree />,
+			element: <Categories tag={"nut-free"} title={"Nut Free Recipes"} />,
 		},
 		{
 			path: "/go-to-recipe/:id",
-			element: <GoToRecipe/>
-
+			element: <GoToRecipe />,
 		},
 	]);
 
