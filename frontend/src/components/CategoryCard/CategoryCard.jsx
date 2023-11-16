@@ -1,8 +1,6 @@
 import "./CategoryCard.scss";
 import { Link } from "react-router-dom";
 
-// Could not just use preview card as it forms the url differently
-
 export const CategoryCard = ({ category }) => {
 	const url = `/${category.link}`;
 	return (
@@ -10,7 +8,7 @@ export const CategoryCard = ({ category }) => {
 			<Link className="link" to={url}>
 				<img
 					className="category-image"
-					src={`/recipeImages/${category.recipeImg}`}
+					src={`http://localhost:3001/uploads/${category.recipeImg}`}
 					alt={category.recipeName}
 				/>
 			</Link>

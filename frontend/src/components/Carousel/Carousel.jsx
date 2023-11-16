@@ -45,8 +45,8 @@ export const Carousel = () => {
           <img
             className="slide"
             key={index}
-            src={`/recipeImages/${backgroundColor}`}
-            alt=""
+            src={`http://localhost:3001/uploads/${backgroundColor}`}
+            alt={backgroundColor}
           />
         ))}
       </div>
