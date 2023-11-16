@@ -1,7 +1,7 @@
-import { Header } from '../../components/Header/Header'
-import { CategoryCard } from "../../components/CategoryCard/CategoryCard";
-import './Recipes.scss'
-import {Footer} from '../../components/Footer/Footer'
+import { Header } from '../components/Header/Header'
+import { CategoryCard } from "../components/CategoryCard/CategoryCard";
+import '.Categories';
+import {Footer} from '../components/Footer/Footer'
 
 const AllRecipes = () => {
 
