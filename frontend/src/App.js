@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import FoodSaver from "./pages/FoodSaver/FoodSaver";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login/Login";

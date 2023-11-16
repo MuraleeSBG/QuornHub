@@ -1,7 +1,5 @@
 .food-saver-header {
 	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
 	height: min-content;
 	color: #1f1d1d;
 	font-family: "Montserrat", sans-serif;
@@ -9,7 +7,7 @@
 	background-size: cover;
 	display: flex;
 	flex-direction: column;
-	
+    align-items: center;
 }
 
 .header-main {
@@ -26,16 +24,16 @@
 }
 
 .fs-header-title {
-	width: 80vw;
+	width: 60vw;
 	font-family: "Paytone One", sans-serif;
 	margin: 0vw;
     text-align: center;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .header-sub-heading {
-    width: 65vw;
-	margin-top: 1vw;
+    width: 50vw;
+	margin: 2vw;
     text-align: center;
     font-size: 2vw;
 }

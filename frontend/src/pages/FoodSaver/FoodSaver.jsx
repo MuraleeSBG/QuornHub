@@ -118,7 +118,7 @@ const FoodSaver = () => {
 	});
 
 	return (
-		<div>
+		<div className="foodsaver-page">
 			<FoodSaverHeader />
 			<div className="food-saver-main">
 				<div className="search-bar">
@@ -134,7 +134,7 @@ const FoodSaver = () => {
 						Submit ingredient
 					</button>
 				</div>
-				<div id="tags" className="tags-container">
+				<div id="tags" className="search-tags-container">
 					{tags}
 				</div>
 
