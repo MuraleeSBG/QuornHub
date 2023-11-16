@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
-import '../Recipes/Recipes.scss';
+import '../Categories/Categories.scss';
 import './Home.scss';
 import { useState, useEffect } from "react";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";

@@ -1,9 +1,9 @@
 import { Header } from '../components/Header/Header'
 import { CategoryCard } from "../components/CategoryCard/CategoryCard";
-import '.Categories';
+import './Categories/Categories.scss'
 import {Footer} from '../components/Footer/Footer'
 
-const AllRecipes = () => {
+const Recipes = () => {
 
 	// random static picture for category card image
 	const categories = [
@@ -36,4 +36,4 @@ const AllRecipes = () => {
 	);
 };
 
-export default AllRecipes;
+export default Recipes;
