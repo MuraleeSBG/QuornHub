@@ -30,7 +30,6 @@ const sessionStore = new MySQLStore({
 	host: "localhost",
 	user: "root",
 	password: "rootpass",
-	database: "QuornhubDb",
 });
 app.use(
 	session({
