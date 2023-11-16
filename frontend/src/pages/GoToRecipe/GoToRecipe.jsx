@@ -14,7 +14,7 @@ const GoToRecipe = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    // CHANGE LOCAL HOST PORT TO WAHTEVER BACKEND IS USING
+    // CHANGE LOCAL HOST PORT TO WHATEVER BACKEND IS USING
     const apiUrl = `http://localhost:3001/recipe/${id}`;
 
     fetch(apiUrl)
@@ -28,7 +28,7 @@ const GoToRecipe = () => {
         setData(data);
       })
       .catch((error) => {
-        console.log("Error fetching data:", error);
+        console.error("Error fetching data:", error);
       });
   }, [id]);
 
@@ -38,13 +38,11 @@ const GoToRecipe = () => {
       method: "DELETE",
       // we are checking on the backend that you are an admin or not to stop you going into local storage on the front end and changing admin to true and hacking into the website
       credentials: "include",
-    })
-    .then((response) => {
-      if(response.ok) {
-        navigate("/")
+    }).then((response) => {
+      if (response.ok) {
+        navigate("/");
       }
-    } ) 
-    
+    });
   };
 
   return (
@@ -79,9 +77,9 @@ const GoToRecipe = () => {
               <div className="main-column1">
                 <h4 className="sub-heading">Ingredients</h4>
                 <div className="ingredients-list">
-                  {data.ingredients.map((ingredient) => {
+                  {data.ingredients.map((ingredient, index) => {
                     return (
-                      <p key={ingredient} className="ingredient-list">
+                      <p key={index} className="ingredient-list">
                         {/* Currently, test ingredients are strings, but ingredients added through the app are objects. 
                                                 So if the ingredient is of type string, it must be test ingredient and we display the string.
                                                 If not it must be a new ingredient which is an object with amount and ingredient fields */}
@@ -100,8 +98,8 @@ const GoToRecipe = () => {
                   {data.method
                     .split(".")
                     .filter(Boolean)
-                    .map((methodLine) => {
-                      return <li key={methodLine}>{methodLine}</li>;
+                    .map((methodLine, index) => {
+                      return <li key={index}>{methodLine}</li>;
                     })}
                 </ol>
               </div>

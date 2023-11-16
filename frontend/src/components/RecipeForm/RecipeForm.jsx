@@ -2,7 +2,6 @@ import "./RecipeForm.scss";
 import { Header } from "../../components/Header/Header";
 import ImageDragUpload from "../../components/ImageDragUpload/ImageDragUpload";
 import { useState } from "react";
-import servingUser from "../../images/userDouble.svg";
 import plusIcon from "../../images/plus.svg";
 import { useNavigate } from "react-router";
 import { tags } from "../../utils/tagUtils";
@@ -61,7 +60,6 @@ const RecipeForm = ({
     if (!response.ok) {
       throw new Error("Error uploading image");
     }
-    console.log(response);
     const data = await response.json();
     return data.imageName;
   };
@@ -86,7 +84,7 @@ const RecipeForm = ({
       const newRecipe = await response.json();
       navigate("/go-to-recipe/" + newRecipe.recipeId);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -95,10 +93,10 @@ const RecipeForm = ({
       <Header />
       <div className="createContainer">
         <h1>{pageTitle}</h1>
-        <h5>
+        <h2>
           Thank you for making our website better, we can't wait to try your
           delicious recipe!
-        </h5>
+        </h2>
         <form className="addRecipe" onSubmit={handleSubmit}>
           <div className="leftColumn">
             <ImageDragUpload

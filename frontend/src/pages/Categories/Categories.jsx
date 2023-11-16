@@ -19,13 +19,12 @@ const Categories = ({ title, tag }) => {
 				return response.json();
 			})
 			.then((data) => {
-				console.log({ data });
 				setData(data);
 				setErrorMessage("");
 			})
 			.catch((error) => {
 				setErrorMessage("There was an error getting your recipes.");
-				console.log("Error fetching data:", error);
+				console.error("Error fetching data:", error);
 			});
 	}, [tag]);
 
