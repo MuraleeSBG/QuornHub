@@ -37,7 +37,7 @@ const Home = () => {
 
 	// find recipes with static ids for recipes of week
 	useEffect(() => {
-		const recipesOfWeekIds = ['2', '5', '16', '27']
+		const recipesOfWeekIds = ['2', '5', '16']
 		const filteredRecipes = data.filter((recipe) => {
 			return recipesOfWeekIds.some(
 				(id) => id === recipe.id
@@ -59,7 +59,7 @@ const Home = () => {
 
 	// find recipes with static ids for editors choice
 	useEffect(() => {
-		const editorsChoiceIds = ['5', '35', '38', '21']
+		const editorsChoiceIds = ['5', '35', '38']
 		const filteredRecipes = data.filter((recipe) => {
 			return editorsChoiceIds.some(
 				(id) => id === recipe.id
@@ -80,7 +80,7 @@ const Home = () => {
 
 	// find recipes with static ids for festivefaves
 	useEffect(() => {
-		const festiveIds = ['20', '9', '18', '33']
+		const festiveIds = ['20', '9', '18']
 		const filteredRecipes = data.filter((recipe) => {
 			return festiveIds.some(
 				(id) => id === recipe.id

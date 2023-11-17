@@ -1,68 +1,48 @@
 .preview-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.6vw;
-    background-color: white;
-    width: 25vw;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.6vw;
+	background-color: white;
+	width: 100%;
+	box-shadow: 0 4px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .preview-card:hover {
-    border: solid #D7916C 0.3vw;
+	border: solid #d7916c 3px;
 }
 
 .preview-image {
-    width: 25vw;
-    height: 25vw;
-    object-fit: cover;
-    border-radius: 0.6vw 0.6vw 0 0;
+	object-fit: cover;
+	border-radius: 0.6vw 0.6vw 0 0;
+	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
+	flex-shrink: 0;
 }
 
-
-.card-link {
-    height: 25vw;
-    
+.preview-title {
+	text-decoration: none;
+	color: #1f1d1d;
+	font-family: "Montserrat", sans-serif;
+	font-size: 0.4rem;
 }
 
-.preview-title{
-    font-size: 2.5vw;
-    text-decoration: none;
-    color: #1f1d1d;
-    font-family: "Montserrat", sans-serif;
+.title-container {
+	margin-block-start: 0;
+	margin-block-end: 0;
+	padding: 1vw;
+	text-align: left;
+	border-radius: 0 0 0.6vw 0.6vw;
 }
-
-.title-container{
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding: 1vw;
-    text-align: left;
-    border-radius: 0 0 0.6vw 0.6vw;
-}
-
 
 // desktop
 @media only screen and (min-width: 600px) {
-    .preview-image {
-        width: 16vw;
-        height: 16vw;
-        border-radius: 0.6vw 0.6vw 0 0;
-    }
+	.preview-title {
+		font-size: 1rem;
+	}
 
-    .preview-title{
-        font-size: 1vw;
-    }
-
-    .preview-card {
-        width: 16vw;
-    }
-
-    .card-link {
-        height: 16vw;  
-    }
-
-    p{
-        margin-top: 1vh;
-    }
-    
+	p {
+		margin-top: 1vh;
+	}
 }
