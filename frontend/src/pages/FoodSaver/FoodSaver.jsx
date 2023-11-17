@@ -3,6 +3,7 @@ import { FoodSaverHeader } from "../../components/FoodSaverHeader/FoodSaverHeade
 import { useState, useEffect } from "react";
 import { FoodSaverCard } from "../../components/FoodSaverCard/FoodSaverCard";
 import "./FoodSaver.scss";
+import close from "../../images/close.svg"
 
 const FoodSaver = () => {
 	const [listOfInput, setListOfInput] = useState([]);
@@ -86,7 +87,7 @@ const FoodSaver = () => {
 					onClick={removeIngredient}
 					className="remove-button"
 				>
-					x
+					<img className="remove-button-icon" src={close} alt="remove"/>
 				</button>
 			</div>
 		);
@@ -131,7 +132,7 @@ const FoodSaver = () => {
 						onKeyDown={handleKeyDown}
 					/>
 					<button className="submit-button" onClick={addIngredient}>
-						Submit ingredient
+						Search
 					</button>
 				</div>
 				<div id="tags" className="search-tags-container">
