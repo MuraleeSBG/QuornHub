@@ -12,15 +12,51 @@
     background: rgb(238,230,221)
 }
 
-.search-bar{
-	margin-top: 3vw;
+.food-saver-header {
+	width: 100%;
+	height: min-content;
+	color: #1f1d1d;
+	font-family: "Montserrat", sans-serif;
+	background-image: url(../../images/FoodSaverHeaderImage.png);
+	background-size: 100% 95%;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.fs-header-title {
+	width: 60vw;
+	font-family: "Paytone One", sans-serif;
+	margin: 0vw;
+    text-align: center;
+    font-size: 3vw;
+}
+
+.header-sub-heading {
+    width: 50vw;
+	margin: 2vw;
+    text-align: center;
+    font-size: 2vw;
+}
+
+.header-main {
+	
+    display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 
+.page-desc {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
 
 .search-input {
     width: 30vw;
-	margin: 1vw 0vw 1vw 0;
     padding: 1vw;
     border: none;
     border-radius: 2vw 0 0 2vw;
@@ -33,14 +69,11 @@
     outline: none;
 }
 
-
-
 .submit-button {
 	border: solid rgb(170,93,37);
 	border-width: 0.25vw 0.25vw 0.5vw 0.25vw;
     background-color: rgb(170,93,37);
     color: #ffffff;
-    border-radius: 0 2vw 2vw 0;
     padding: 1vw 4vw;
     font-family: "Montserrat", sans-serif;
 	border-radius: 0 2vw 2vw 0;
@@ -57,7 +90,6 @@
 	width: 50vw;
 	flex-wrap: wrap;
     margin: 1vw 0 1vw 0;
-
 }
 
 .tag {
@@ -68,8 +100,6 @@
 	justify-content: space-around;
     font-size: 1.5vw;
 	margin-bottom: 0.5vw;
-	
-
 }
 
 .remove-button {
@@ -99,10 +129,29 @@
 }
 
 @media only screen and (max-width: 600px) {
-	.search-input {
-		width: 70vw;
-		border-radius: 4vw;
-		border-width: 0.5vw 0.5vw 0.75vw 0.5vw;
+	.nav-links, .dropbtn2 {
+		font-size: 4vw;
+	}
+	.fs-header-title, .footer-title {
+		font-size: 4vw;
+	}
+	.header-sub-heading, .sub-heading {
+		font-size: 3vw;
+	}
+	.header-sub-heading {
+		width: 85vw;
+	}
+	// .search-input {
+	// 	width: 70vw;
+	// 	border-radius: 4vw;
+	// 	border-width: 0.5vw 0.5vw 0.75vw 0.5vw;
+	// }
+	.search-input{
+		width: 50vw;
+		border-radius: 2vh 0 0 2vh;
+	}
+	.submit-button{
+		border-radius: 0 2vh 2vh 0;
 	}
 	.join-input {
 		border-radius: 2vw 0 0 2vw;
@@ -110,8 +159,4 @@
 	.join-button {
 		border-radius: 0 2vw 2vw 0;
 	}
-	.submit-button {
-		border-radius: 2vw 2vw 2vw 2vw;
-	}
-	
 }
