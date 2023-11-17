@@ -1,72 +1,9 @@
-.food-saver-header {
-	width: 100%;
-	height: min-content;
-	color: #1f1d1d;
-	font-family: "Montserrat", sans-serif;
-	background-image: url(../../images/FoodSaverHeaderImage.png);
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-    align-items: center;
-}
-
-.header-main {
-    display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.page-desc {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-}
-
-.fs-header-title {
-	width: 60vw;
-	font-family: "Paytone One", sans-serif;
-	margin: 0vw;
-    text-align: center;
-    font-size: 3vw;
-}
-
-.header-sub-heading {
-    width: 50vw;
-	margin: 2vw;
-    text-align: center;
-    font-size: 2vw;
-}
 
 
 
-@media only screen and (max-width: 600px) {
-	.nav-links, .dropbtn2 {
-		font-size: 4vw;
-	}
-	.fs-header-title, .footer-title {
-		font-size: 4vw;
-	}
-	.header-sub-heading, .sub-heading {
-		font-size: 3vw;
-	}
-	.header-sub-heading {
-		width: 85vw;
-	}
-	.search-input {
-		width: 70vw;
-		border-radius: 4vw;
-		border-width: 0.5vw 0.5vw 0.75vw 0.5vw;
-	}
-	.join-input {
-		border-radius: 2vw 0 0 2vw;
-	}
-	.join-button {
-		border-radius: 0 2vw 2vw 0;
-	}
-	.submit-button {
-		border-radius: 2vw 2vw 2vw 2vw;
 
-	}
-	
-}
+
+
+
+
+
