@@ -62,10 +62,10 @@ const GoToRecipe = () => {
               <div className="overview-col2">
                 <div className="recipe-title">{data.recipeName}</div>
                 <div className="description">{data.recipeDesc}</div>
-                <div className="tag-box">
+                <div className="goto-tag-container">
                   {getTags(data).map((tag, index) => {
                     return (
-                      <p key={index} className="tag-text">
+                      <p key={index} className="goto-tag-text">
                         {tag}
                       </p>
                     );
