@@ -1,5 +1,5 @@
 import { Footer } from "../../components/Footer/Footer";
-import { FoodSaverHeader } from "../../components/FoodSaverHeader/FoodSaverHeader";
+import { Header } from "../../components/Header/Header";
 import { useState, useEffect } from "react";
 import { FoodSaverCard } from "../../components/FoodSaverCard/FoodSaverCard";
 import "./FoodSaver.scss";
@@ -118,7 +118,22 @@ const FoodSaver = () => {
 
   return (
     <div className="food-saver-page">
-      <FoodSaverHeader />
+      <div className="food-saver-header">
+        <Header />
+        <div className="header-main">
+          <div className="page-desc">
+            <h1 className="fs-header-title">
+              A curated recipe list to help you reduce food waste
+            </h1>
+            <p className="header-sub-heading">
+              Simply submit each ingredient you have left over and our smart
+              saver will find suitable recipes so you never have to throw away
+              soggy vegetables again!
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="food-saver-main">
         <div className="search-bar">
           <input

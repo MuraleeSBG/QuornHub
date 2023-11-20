@@ -3,14 +3,12 @@
 	flex-direction: column;
 	border-radius: 0.6vw;
 	background-color: white;
-	width: 100%;
+	width: 30vw;
 	box-shadow: 0 4px 1px 0 rgba(0, 0, 0, 0.2);
 }
 
 .preview-card:hover {
     box-shadow: 0 0 2px 4px #d7916c;
-
-
 }
 
 .preview-image {
@@ -28,12 +26,13 @@
 	color: #1f1d1d;
 	font-family: "Montserrat", sans-serif;
 	font-size: 0.4rem;
+    font-weight: 600;
 }
 
 .title-container {
 	margin-block-start: 0;
 	margin-block-end: 0;
-	padding: 1vw;
+	padding: 0.5vw;
 	text-align: left;
 	border-radius: 0 0 0.6vw 0.6vw;
 }
