@@ -3,11 +3,16 @@ import { Header } from "../../components/Header/Header";
 import { useState, useEffect } from "react";
 import { FoodSaverCard } from "../../components/FoodSaverCard/FoodSaverCard";
 import "./FoodSaver.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const FoodSaver = () => {
+	const dropIcon = <FontAwesomeIcon icon={faCaretDown} />;
+
 	const [listOfInput, setListOfInput] = useState([]);
 	const [recipesToDisplay, setrecipesToDisplay] = useState([]);
 	const [inputText, setInputText] = useState("");
+	const [categoryFilters, setcategoryFilters] = useState(new Set());
 
 	// This needs replacing with code commented out below to fetch from database
 	// const data = require("../../testData.json");
@@ -54,7 +59,7 @@ const FoodSaver = () => {
 
 	// searches for recipes based on new input
 	useEffect(() => {
-		const filteredRecipes = data.filter((recipe) => {
+		const filteredRecsByIngredient = data.filter((recipe) => {
 			return recipe.ingredients.some((ingredient) => {
 				const finalIngredient =
 					typeof ingredient === "string" ? ingredient : ingredient.ingredient;
@@ -63,7 +68,7 @@ const FoodSaver = () => {
 				);
 			});
 		});
-		setrecipesToDisplay(filteredRecipes);
+		setrecipesToDisplay(filteredRecsByIngredient);
 	}, [listOfInput, data]);
 
 	const removeIngredient = (e) => {
@@ -77,7 +82,7 @@ const FoodSaver = () => {
 	};
 
 	// input tags NOT dietaries
-	const tags = listOfInput.map((item, index) => {
+	const searchTags = listOfInput.map((item, index) => {
 		return (
 			<div className="tag" id={item} key={index}>
 				{item}
@@ -110,12 +115,32 @@ const FoodSaver = () => {
 		if (recipe.isNutFree) {
 			tags.push("Nut Free");
 		}
+		if (recipe.isUnder15) {
+			tags.push("15 mins");
+		}
 		return tags;
 	};
+
+	function updateFilters(checked, categoryFilter) {
+		if (checked)
+      		setcategoryFilters((prev) => new Set(prev).add(categoryFilter));
+    	if (!checked)
+      		setcategoryFilters((prev) => {
+        		const next = new Set(prev);
+        		next.delete(categoryFilter);
+        		return next;
+      		});
+
+	}
+
 	const showResults = recipesToDisplay.map((recipe, index) => {
 		const tags = getTags(recipe);
+		const filterArray = Array.from(categoryFilters)
+		console.log(filterArray)
+
 		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags} />;
 	});
+	
 
 	return (
 		<div className="foodsaver-page">
@@ -140,13 +165,38 @@ const FoodSaver = () => {
 						Add
 					</button>
 				</div>
+				<div className="filter-dropdown" data-control="checkbox-dropdown">
+						Filters {dropIcon}
+						<div className="filter-dropdown-content">
+							<div className="dropdown-option">
+								<input type="checkbox" name="dropdown-group" value="Gluten Free" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
+								Gluten Free
+							</div>
+							<div className="dropdown-option">
+								<input type="checkbox" name="dropdown-group" value="Vegan" onChange={(e) => updateFilters(e.target.checked, e.target.value)} />
+								Vegan
+							</div>
+							<div className="dropdown-option">
+								<input type="checkbox" name="dropdown-group" value="15 mins" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
+								15 minute
+							</div>
+							<div className="dropdown-option">
+								<input type="checkbox" name="dropdown-group" value="Lactose Free" onChange={(e) => updateFilters(e.target.checked, e.target.value)} />
+								Lactose Free
+							</div>
+							<div className="dropdown-option">
+								<input type="checkbox" name="dropdown-group" value="isNutFree" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
+								Nut Free
+							</div> 
+						</div>
+					</div>
 				
 
 			</div>
 			
 			<div className="food-saver-main">
 				<div id="tags" className="search-tags-container">
-					{tags}
+					{searchTags}
 				</div>
 				{listOfInput.length !== 0 ? (
 					<div className="results-container">{showResults}</div>

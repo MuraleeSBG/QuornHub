@@ -128,6 +128,36 @@
 
 }
 
+.filter-dropdown{
+	float: left;
+  	overflow: hidden;
+
+}
+
+
+.filter-dropdown-content{
+	z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: white;
+	border-radius: 16px;
+	border: solid rgb(166, 1, 83);
+}
+
+.filter-dropdown:hover .filter-dropdown-content {
+	display: block;
+}
+
+.filter-dropdown-content a:hover {
+	background-color: rgb(249, 246, 246);
+	border-radius: 16px;
+  }
+
+.filter-dropdown-content a:hover {
+	background-color: rgb(249, 246, 246);
+	border-radius: 16px;
+}
+
 @media only screen and (max-width: 600px) {
 	.nav-links, .dropbtn2 {
 		font-size: 4vw;
