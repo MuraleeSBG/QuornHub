@@ -10,7 +10,7 @@
 
 .QHlogo-header {
 	display: flex;
-	width: 100px;
+	width: 200px;
 }
 
 .nav-links {
@@ -18,7 +18,7 @@
 	justify-content: space-evenly;
 	overflow: hidden;
 	font-family: "Paytone One", sans-serif;
-	font-size: 2vw;
+	font-size: 2.5vw;
 	text-align: center;
 }
 
@@ -60,7 +60,6 @@
 .dropdown {
 	float: left;
 	overflow: hidden;
-
 }
 
 .dropdown-content {
@@ -100,7 +99,7 @@
 }
 .dropdown:hover .dropdown-content {
 	display: block;
-  z-index: 10;
+	z-index: 10;
 }
 
 .dropdown-content2 a:hover {
@@ -122,16 +121,60 @@
 	background-color: rgba(0, 0, 0, 0.9);
 	overflow-x: hidden;
 	transition: 0.5s;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: start;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: start;
 }
 
 .mobile-menu-items {
 	height: 100%;
 	width: 100%;
 	background-color: #efe6dd;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.mobile-sub-menu {
+	background-color: #efe6dd;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-top: 0.8rem;
+}
+
+.mobile-sub-menu__link {
+	text-align: left;
+}
+
+.mobile-menu-items__link {
+	padding: 0 16px;
+	text-align: left;
+	color: #a60054;
+	font-family: Paytone One;
+	font-size: 2rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-decoration: none;
+}
+
+.mobile-menu-items__sub-link {
+	padding: 0 32px;
+	color: #a60054;
+	font-family: Paytone One;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-decoration: none;
+	text-align: left;
+}
+
+.mobile-menu-items__logo {
+	padding: 16px;
+	width: 200px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -140,5 +183,8 @@
 	}
 	.nav-mobile-menu {
 		display: flex;
+	}
+	.QHlogo-header {
+		width: 120px;
 	}
 }
