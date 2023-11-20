@@ -1,6 +1,26 @@
+.food-saver-header {
+  width: 100%;
+  height: min-content;
+  color: #1f1d1d;
+  font-family: "Montserrat", sans-serif;
+  background-image: url(../../images/FoodSaverHeaderImage.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.header-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-
+.page-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 
 
