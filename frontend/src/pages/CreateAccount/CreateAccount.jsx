@@ -14,7 +14,7 @@ const CreateAccount = () => {
   const navigate = useNavigate();
 
   const validatePasswords = (password, confirmPassword) =>
-    !password || !confirmPassword || password === confirmPassword;
+    !password || password === confirmPassword;
 
   useEffect(() => {
     setPasswordMatch(validatePasswords(password, confirmPassword));
@@ -25,7 +25,6 @@ const CreateAccount = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(validatePasswords(password, confirmPassword));
     if (!validatePasswords(password, confirmPassword)) return;
     if (!emailAddress || !password || !displayName) {
       setErrorMessage("Please fill in an email, password and display name");
@@ -60,8 +59,8 @@ const CreateAccount = () => {
           <img className="QHlogo" src={logo} alt="Quornhub logo" />
         </Link>
 
-        <h2 className="Title">Create your account</h2>
-        <h5 className="details">Enter your details to get started</h5>
+        <h1 className="Title">Create your account</h1>
+        <h2 className="details">Enter your details to get started</h2>
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="emailAddress">Email</label>
           <input
@@ -71,16 +70,15 @@ const CreateAccount = () => {
             value={emailAddress}
             onChange={(e) => setEmailAddress(e.target.value)}
           />
-          <label htmlFor="emailAddress">Display Name</label>
+          <label htmlFor="displayName">Display Name</label>
           <input
             type="text"
             className="input"
-            id="emailAddress"
+            id="displayName"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
           <label htmlFor="password">Password</label>
-
           <PasswordInput password={password} setPassword={setPassword} />
           <label htmlFor="confirmPassword">Confirm Password</label>
           <PasswordInput
@@ -94,12 +92,12 @@ const CreateAccount = () => {
           </button>
         </form>
 
-        <h5 className="notReg">
+        <h2 className="notReg">
           Already have an account?{" "}
           <Link to="/login" className="create">
             Login
           </Link>
-        </h5>
+        </h2>
       </div>
     </div>
   );

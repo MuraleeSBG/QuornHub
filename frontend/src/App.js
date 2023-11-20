@@ -1,6 +1,6 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import FoodSaver from "./pages/FoodSaver/FoodSaver";
 import AddRecipes from "./pages/AddRecipes/AddRecipes";
 import Login from "./pages/Login/Login";
@@ -8,6 +8,7 @@ import Recipes from "./pages/Recipes";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import GoToRecipe from "./pages/GoToRecipe/GoToRecipe";
 import Categories from "./pages/Categories/Categories";
+import EditRecipe from "./pages/EditRecipe/EditRecipe";
 
 const App = () => {
 	const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const App = () => {
 		{
 			path: "/add-recipes",
 			element: <AddRecipes />,
+		},
+		{
+			path: "/edit-recipe/:id",
+			element: <EditRecipe />,
 		},
 		{
 			path: "/login",

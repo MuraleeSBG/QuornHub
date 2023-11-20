@@ -11,7 +11,7 @@ const Categories = ({ title, tag }) => {
 	useEffect(() => {
 		const apiUrl = `http://localhost:3001/recipes${tag ? `?tag=${tag}` : ""}`;
 
-		fetch(apiUrl)
+		fetch(apiUrl, { credentials: "include" })
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error("Error with response");
@@ -19,13 +19,12 @@ const Categories = ({ title, tag }) => {
 				return response.json();
 			})
 			.then((data) => {
-				console.log({ data });
 				setData(data);
 				setErrorMessage("");
 			})
 			.catch((error) => {
 				setErrorMessage("There was an error getting your recipes.");
-				console.log("Error fetching data:", error);
+				console.error("Error fetching data:", error);
 			});
 	}, [tag]);
 

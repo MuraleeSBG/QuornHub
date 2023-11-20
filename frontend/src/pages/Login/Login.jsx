@@ -19,6 +19,7 @@ const Login = () => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({ emailAddress, password }),
     })
       .then((response) => {
@@ -43,31 +44,32 @@ const Login = () => {
           <img className="QHlogo" src={logo} alt="Quornhub logo" />
         </Link>
 
-        <h2 className="Title">Login to your account</h2>
-        <h5 className="details">Enter your details to get started</h5>
+        <h1 className="Title">Login to your account</h1>
+        <h2 className="details">Enter your details to get started</h2>
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="emailAddress">Email</label>
           <input
             type="text"
-            className="login-input"
+            className="input"
             id="emailAddress"
             value={emailAddress}
             onChange={(e) => setEmailAddress(e.target.value)}
           />
           <label htmlFor="password">Password</label>
           <PasswordInput password={password} setPassword={setPassword} />
+
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button type="submit" className="loginButton">
             Login
           </button>
         </form>
 
-        <h5 className="notReg">
+        <p className="notReg">
           Not registered yet?{" "}
           <Link to="/create-account" className="create">
             Create an account
           </Link>
-        </h5>
+        </p>
       </div>
     </div>
   );

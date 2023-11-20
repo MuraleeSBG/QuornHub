@@ -1,5 +1,5 @@
 import { Footer } from "../../components/Footer/Footer";
-import { FoodSaverHeader } from "../../components/FoodSaverHeader/FoodSaverHeader";
+import { Header } from "../../components/Header/Header";
 import { useState, useEffect } from "react";
 import { FoodSaverCard } from "../../components/FoodSaverCard/FoodSaverCard";
 import "./FoodSaver.scss";
@@ -25,11 +25,10 @@ const FoodSaver = () => {
 				return response.json();
 			})
 			.then((data) => {
-				console.log({ data });
 				setData(data);
 			})
 			.catch((error) => {
-				console.log("Error fetching data:", error);
+				console.error("Error fetching data:", error);
 			});
 	}, []);
 
@@ -119,9 +118,15 @@ const FoodSaver = () => {
 	});
 
 	return (
-		<div>
-			<FoodSaverHeader />
-			<div className="food-saver-main">
+		<div className="foodsaver-page">
+			<div className="food-saver-header">
+			<Header />
+			<div className="header-main">
+					<div className="page-desc">
+						<h1 className="fs-header-title">A curated recipe list to help you reduce food waste</h1>
+						<p className="header-sub-heading">Simply submit each ingredient you have left over and our smart saver will find suitable recipes so you never have to throw away soggy vegetables again!</p>
+					</div>
+				</div>
 				<div className="search-bar">
 					<input
 						className="search-input"
@@ -132,13 +137,17 @@ const FoodSaver = () => {
 						onKeyDown={handleKeyDown}
 					/>
 					<button className="submit-button" onClick={addIngredient}>
-						Submit ingredient
+						Add
 					</button>
 				</div>
-				<div id="tags" className="tags-container">
+				
+
+			</div>
+			
+			<div className="food-saver-main">
+				<div id="tags" className="search-tags-container">
 					{tags}
 				</div>
-
 				{listOfInput.length !== 0 ? (
 					<div className="results-container">{showResults}</div>
 				) : (

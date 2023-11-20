@@ -1,8 +1,9 @@
 import { useState } from "react";
-import hidePassword from "../../images/hidePassword.svg";
-import "./PasswordInput.scss"
+import hidePasswordIcon from "../../images/hidePassword.svg";
+import showPasswordIcon from "../../images/showPassword.svg";
+import "./PasswordInput.scss";
 
-const PasswordInput = ({password, setPassword}) => {
+const PasswordInput = ({ password, setPassword }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -15,14 +16,18 @@ const PasswordInput = ({password, setPassword}) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button
-        className="hidePasswordButton"
+        className="hide-password-button"
         type="button"
         onClick={() => setShowPassword(!showPassword)}
       >
-        <img src={hidePassword} alt="hide password" />
+        <img
+          className="eye-icon"
+          src={showPassword ? hidePasswordIcon : showPasswordIcon}
+          alt="hide password"
+        />
       </button>
     </div>
   );
 };
 
-export default PasswordInput
+export default PasswordInput;

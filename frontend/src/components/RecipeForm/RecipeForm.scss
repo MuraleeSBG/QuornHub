@@ -1,0 +1,135 @@
+.AddRecipesPage {
+  background-image: url(../../images/addrecipebackground.png);
+  background-color: #efe6dd;
+  background-size: cover;
+  // height: 100vh;
+}
+
+.createContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+  padding: 5%;
+  padding-top: 2%;
+  background-color: rgba(239, 230, 221, 0.7);
+  border-radius: 10px;
+  // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  font-family: "Paytone One", sans-serif;
+  font-size: 45px;
+  margin: 0px;
+  color: #1f1d1d;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 0px;
+  padding-top: 2%;
+  color: #1f1d1d;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5% 5% 5% 0%;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5%;
+}
+
+.tagCheckboxes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: start;
+  padding: 2%;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  padding-top: 2%;
+  color: #1f1d1d;
+}
+
+.input {
+  border-radius: 20px;
+  border: 1px solid #828282;
+  padding: 2%;
+  background-color: #efe6dd;
+}
+
+select {
+  background-color: #efe6dd;
+  border-radius: 20px;
+  border: 1px solid #828282;
+  padding: 8px 16px;
+}
+
+.tagCheckbox {
+  height: 20px;
+  width: 20px;
+}
+
+.addIngredient {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid #828282;
+  padding: 2%;
+}
+
+.plusIcon {
+  height: 15px;
+  width: 15px;
+}
+
+.method {
+  width: 100%;
+  border-radius: 20px;
+  background-color: #efe6dd;
+  border: 1px solid #828282;
+}
+
+.done {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  border: none;
+  background-color: #a60054;
+  border-radius: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}
