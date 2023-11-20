@@ -18,50 +18,47 @@
 }
 
 .food-saver-header {
-	width: 100%;
-	height: min-content;
-	color: #1f1d1d;
-	font-family: "Montserrat", sans-serif;
-	background-image: url(../../images/FoodSaverHeaderImage.png);
-	background-size: 100% 95%;
-	background-repeat: no-repeat;
-	display: flex;
-	flex-direction: column;
-    align-items: center;
+  width: 100%;
+  height: min-content;
+  color: #1f1d1d;
+  font-family: "Montserrat", sans-serif;
+  background-image: url(../../images/FoodSaverHeaderImage.png);
+  background-size: 100% 95%;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fs-header-title {
-	width: 60vw;
-	font-family: "Paytone One", sans-serif;
-	margin: 0vw;
-    text-align: center;
-    font-size: 3vw;
+  font-family: "Paytone One", sans-serif;
+  margin: 0;
+  text-align: center;
+  font-size: 2.5rem;
 }
 
 .header-sub-heading {
-    width: 50vw;
-	margin: 2vw;
-    text-align: center;
-    font-size: 2vw;
+  margin: 16px;
+  padding-bottom: 16px;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .header-main {
-	
-    display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
 }
 
-
 .page-desc {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search-input {
-  width: 50%;
+  min-width: 40%;
   padding: 16px;
   border: none;
   border-radius: 32px 0 0 32px;
@@ -135,4 +132,22 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 2vw;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .fs-header-title {
+    font-size: 1.2rem;
+  }
+
+  .header-sub-heading {
+    margin: 8px;
+    padding-bottom: 8px;
+    font-size: 0.8rem;
+  }
 }

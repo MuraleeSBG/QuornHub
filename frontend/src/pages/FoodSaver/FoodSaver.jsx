@@ -145,7 +145,7 @@ const FoodSaver = () => {
             onKeyDown={handleKeyDown}
           />
           <button className="submit-button" onClick={addIngredient}>
-            Search
+            Add
           </button>
         </div>
         <div id="tags" className="search-tags-container">
