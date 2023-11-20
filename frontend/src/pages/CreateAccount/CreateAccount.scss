@@ -24,7 +24,6 @@
 	background-color: #a60054;
 	border: none;
 	color: #ffffff;
-	padding: 1.8%;
 	margin-top: 20%;
 	font-weight: 800;
 	font-family: "Nunito Sans", sans-serif;
@@ -48,10 +47,10 @@
 }
 
 .input {
-	width: calc(100% - 14px);
+	width: calc(100% - 18px);
 	border-radius: 5px;
 	border: 1px solid #828282;
-	padding: 2%;
+	padding: 8px;
 	background-color: transparent;
 	margin-top: 3px;
 }

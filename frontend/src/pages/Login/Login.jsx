@@ -3,6 +3,7 @@ import logo from "../../images/QHLogo.png";
 import "./Login.scss";
 import { useState } from "react";
 import { login } from "../../utils/authUtils";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 
 const Login = () => {
   const [emailAddress, setEmailAddress] = useState("");
@@ -55,13 +56,8 @@ const Login = () => {
             onChange={(e) => setEmailAddress(e.target.value)}
           />
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            className="input"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <PasswordInput password={password} setPassword={setPassword} />
+
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button type="submit" className="loginButton">
             Login
