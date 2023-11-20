@@ -1,5 +1,8 @@
 .recipe-main{
     background: rgb(239,230,221);
+    display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .overview {
