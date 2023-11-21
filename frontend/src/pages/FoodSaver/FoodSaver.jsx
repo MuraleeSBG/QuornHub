@@ -12,7 +12,7 @@ const FoodSaver = () => {
 	const [listOfInput, setListOfInput] = useState([]);
 	const [recipesToDisplay, setrecipesToDisplay] = useState([]);
 	const [inputText, setInputText] = useState("");
-	const [categoryFilters, setcategoryFilters] = useState(new Set());
+	const [categoryFilter, setcategoryFilter] = useState(new Set());
 	const [finalRecs, setFinalRecs] = useState([]);
 
 	// This needs replacing with code commented out below to fetch from database
@@ -126,53 +126,43 @@ const FoodSaver = () => {
 		return tags;
 	};
 
+	const filters = ["Gluten Free", "Vegan", "15 mins", "Lactose Free", "Nut Free"]
 	
+	const showFilters = filters.map((category) => {
+		return <div className="dropdown-option">
+			<input type="radio" name="dropdown-group" value={category} onChange={(e) => setcategoryFilter(e.target.value)}/>
+			{category}
 
+		</div>
+	})
 
-	function updateFilters(checked, categoryFilter) {
-		if (checked)
-      		setcategoryFilters((prev) => new Set(prev).add(categoryFilter));
-    	if (!checked)
-      		setcategoryFilters((prev) => {
-        		const next = new Set(prev);
-        		next.delete(categoryFilter);
-        		return next;
-      		});
-		
-	}
 
 	useEffect(() => {
 		const filterRecsByCategory = recipesToDisplay.filter((recipe) => {
 
 			const tags = getTags(recipe);
-			const filtersArray = Array.from(categoryFilters)
 
-			if (filtersArray.length == 0) {
-				return recipesToDisplay
+			if (categoryFilter.length > 0) {
+				return tags.includes(categoryFilter)
 			}
+			
+			return recipesToDisplay
 
-			return tags.some((tag) => {
-				const finalTag =
-					typeof tag === "string" ? tag : tag.tag;
-				return filtersArray.some(
-					(category) => category === finalTag
-				)
-			})
+
+		
 		})
 		setFinalRecs(filterRecsByCategory)
-		console.log(filterRecsByCategory)
 
-	}, [recipesToDisplay, categoryFilters])
+	}, [recipesToDisplay, categoryFilter])
 
-
-
-	
 
 	const showResults = finalRecs.map((recipe, index) => {
 		const tags = getTags(recipe);
-		console.log(categoryFilters)
+
 		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags}/> 
 	})
+
+	
 	
 
 	return (
@@ -199,30 +189,11 @@ const FoodSaver = () => {
 					</button>
 				</div>
 				<div className="filter-dropdown" data-control="checkbox-dropdown">
-						Filters {dropIcon}
+						Select a filter {dropIcon}
 						<div className="filter-dropdown-content">
-							<div className="dropdown-option">
-								<input type="checkbox" name="dropdown-group" value="Gluten Free" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
-								Gluten Free
-							</div>
-							<div className="dropdown-option">
-								<input type="checkbox" name="dropdown-group" value="Vegan" onChange={(e) => updateFilters(e.target.checked, e.target.value)} />
-								Vegan
-							</div>
-							<div className="dropdown-option">
-								<input type="checkbox" name="dropdown-group" value="15 mins" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
-								15 minute
-							</div>
-							<div className="dropdown-option">
-								<input type="checkbox" name="dropdown-group" value="Lactose Free" onChange={(e) => updateFilters(e.target.checked, e.target.value)} />
-								Lactose Free
-							</div>
-							<div className="dropdown-option">
-								<input type="checkbox" name="dropdown-group" value="Nut Free" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
-								Nut Free
-							</div> 
+							{showFilters}
 						</div>
-					</div>
+				</div>
 				
 
 			</div>
