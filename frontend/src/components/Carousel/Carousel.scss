@@ -45,13 +45,7 @@
 	background-color: #a5b9cb;
 }
 
-@media only screen and (max-width: 1000px) {
-	.slideshowDot {
-		height: 10px;
-		width: 10px;
-		margin: 15px 4px 0px;
-	}
-}
+
 
 .slideshowDot.active {
 	background-color: #4b7498;
@@ -73,4 +67,27 @@
 	padding-top: 3%;
 	font-family: "Montserrat", sans-serif;
 	font-size: 2.4vw;
+}
+
+@media only screen and (max-width: 600px) {
+	.recipeNames {
+		font-size: 6vw;
+	}
+	.recipeDescriptions {
+		font-size: 3.5vw;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.slideshowDot {
+		height: 10px;
+		width: 10px;
+		margin: 15px 4px 0px;
+	}
+
+	.slideImage {
+		width: 350%;
+		height: 90vh;
+
+	}
 }

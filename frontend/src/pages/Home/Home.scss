@@ -66,4 +66,9 @@
 		margin: 10px 0;
 		padding-left: 5%;
 	}
+	.home-main {
+		display: flex;
+		flex-direction: column;
+		max-width: 100%;
+	}
 }
