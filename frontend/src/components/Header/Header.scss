@@ -65,22 +65,29 @@
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: white;
-	font-size: 2vw;
-	font-family: "Paytone One", sans-serif;
+	background-color: #fff9f9;
+	font-size: 10px;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
 	overflow: visible;
 	text-align: left;
 	border-radius: 16px;
-	border: solid rgb(166, 1, 83);
+	border: 2px solid rgba(166, 0, 84, 0.45);
+	box-shadow: 0px 9px 26px 0px rgba(23, 15, 73, 0.3),
+		0px 10px 14px 0px rgba(74, 58, 255, 0.01);
 }
 
 .dropdown-content2 {
 	z-index: 10;
 	display: none;
 	position: absolute;
-	background-color: white;
+	font-family: "Montserrat", sans-serif;
+	font-weight: 600;
+	background-color: #fff9f9;
 	border-radius: 16px;
-	border: solid rgb(166, 1, 83);
+	border: 2px solid rgba(166, 0, 84, 0.45);
+	box-shadow: 0px 9px 26px 0px rgba(23, 15, 73, 0.3),
+		0px 10px 14px 0px rgba(74, 58, 255, 0.01);
 }
 
 .dropdown-content a,
@@ -90,7 +97,7 @@
 	text-decoration: none;
 	display: block;
 	padding: 1vw 1vh;
-	font-size: 2vw;
+	font-size: 1rem;
 }
 
 .dropdown-content a:hover {
@@ -186,5 +193,14 @@
 	}
 	.QHlogo-header {
 		width: 120px;
+	}
+	.dropdown-content a,
+	.dropdown-content2 a {
+		float: none;
+		color: black;
+		text-decoration: none;
+		display: block;
+		padding: 1vw 1vh;
+		font-size: 0.6rem;
 	}
 }
