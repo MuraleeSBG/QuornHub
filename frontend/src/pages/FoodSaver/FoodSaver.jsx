@@ -13,6 +13,7 @@ const FoodSaver = () => {
 	const [recipesToDisplay, setrecipesToDisplay] = useState([]);
 	const [inputText, setInputText] = useState("");
 	const [categoryFilters, setcategoryFilters] = useState(new Set());
+	const [finalRecs, setFinalRecs] = useState([]);
 
 	// This needs replacing with code commented out below to fetch from database
 	// const data = require("../../testData.json");
@@ -69,7 +70,11 @@ const FoodSaver = () => {
 			});
 		});
 		setrecipesToDisplay(filteredRecsByIngredient);
+
+		
 	}, [listOfInput, data]);
+
+
 
 	const removeIngredient = (e) => {
 		const ingredientToRemove = e.target.parentElement.id;
@@ -121,6 +126,9 @@ const FoodSaver = () => {
 		return tags;
 	};
 
+	
+
+
 	function updateFilters(checked, categoryFilter) {
 		if (checked)
       		setcategoryFilters((prev) => new Set(prev).add(categoryFilter));
@@ -130,16 +138,41 @@ const FoodSaver = () => {
         		next.delete(categoryFilter);
         		return next;
       		});
-
+		
 	}
 
-	const showResults = recipesToDisplay.map((recipe, index) => {
-		const tags = getTags(recipe);
-		const filterArray = Array.from(categoryFilters)
-		console.log(filterArray)
+	useEffect(() => {
+		const filterRecsByCategory = recipesToDisplay.filter((recipe) => {
 
-		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags} />;
-	});
+			const tags = getTags(recipe);
+			const filtersArray = Array.from(categoryFilters)
+
+			if (filtersArray.length == 0) {
+				return recipesToDisplay
+			}
+
+			return tags.some((tag) => {
+				const finalTag =
+					typeof tag === "string" ? tag : tag.tag;
+				return filtersArray.some(
+					(category) => category === finalTag
+				)
+			})
+		})
+		setFinalRecs(filterRecsByCategory)
+		console.log(filterRecsByCategory)
+
+	}, [recipesToDisplay, categoryFilters])
+
+
+
+	
+
+	const showResults = finalRecs.map((recipe, index) => {
+		const tags = getTags(recipe);
+		console.log(categoryFilters)
+		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags}/> 
+	})
 	
 
 	return (
@@ -185,7 +218,7 @@ const FoodSaver = () => {
 								Lactose Free
 							</div>
 							<div className="dropdown-option">
-								<input type="checkbox" name="dropdown-group" value="isNutFree" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
+								<input type="checkbox" name="dropdown-group" value="Nut Free" onChange={(e) => updateFilters(e.target.checked, e.target.value)}/>
 								Nut Free
 							</div> 
 						</div>
