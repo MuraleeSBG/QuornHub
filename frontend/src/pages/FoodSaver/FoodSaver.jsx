@@ -128,7 +128,7 @@ const FoodSaver = () => {
 	
 	const showFilters = filters.map((category) => {
 		return <div className="dropdown-option">
-			<input type="radio" name="dropdown-group" value={category} onChange={(e) => setcategoryFilter(e.target.value)}/>
+			<input type="radio" name="dropdown-group" value={category} onChange={(e) => setCategoryFilter(e.target.value)}/>
 			{
 				category.length > 0 ? category : "Clear filters"
 			}
