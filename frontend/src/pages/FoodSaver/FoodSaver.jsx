@@ -126,13 +126,14 @@ const FoodSaver = () => {
 		return tags;
 	};
 
-	const filters = ["Gluten Free", "Vegan", "15 mins", "Lactose Free", "Nut Free"]
+	const filters = ["Gluten Free", "Vegan", "15 mins", "Lactose Free", "Nut Free", ""]
 	
 	const showFilters = filters.map((category) => {
 		return <div className="dropdown-option">
 			<input type="radio" name="dropdown-group" value={category} onChange={(e) => setcategoryFilter(e.target.value)}/>
-			{category}
-
+			{
+				category.length > 0 ? category : "Clear filters"
+			}
 		</div>
 	})
 
@@ -158,6 +159,8 @@ const FoodSaver = () => {
 
 	const showResults = finalRecs.map((recipe, index) => {
 		const tags = getTags(recipe);
+
+		
 
 		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags}/> 
 	})
@@ -188,22 +191,19 @@ const FoodSaver = () => {
 						Add
 					</button>
 				</div>
+			</div>
+			<div className="food-saver-main">
 				<div className="filter-dropdown" data-control="checkbox-dropdown">
-						Select a filter {dropIcon}
+						Filter by a category {dropIcon}
 						<div className="filter-dropdown-content">
 							{showFilters}
 						</div>
 				</div>
-				
-
-			</div>
-			
-			<div className="food-saver-main">
 				<div id="tags" className="search-tags-container">
 					{searchTags}
 				</div>
 				{listOfInput.length !== 0 ? (
-					<div className="results-container">{showResults}</div>
+					<div className="results-container">{finalRecs.length === 0 ? <h1 className="results-placeholder">There are no recipes in that category, please choose another category or search for more ingredients </h1>: showResults}</div>
 				) : (
 					<div>
 						<h1 className="results-placeholder">
