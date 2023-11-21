@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../images/QHLogo.png";
 import { useEffect, useState } from "react";
 import "./CreateAccount.scss";
+import PasswordInput from "../../components/PasswordInput/PasswordInput";
 
 const CreateAccount = () => {
   const [emailAddress, setEmailAddress] = useState("");
@@ -78,20 +79,11 @@ const CreateAccount = () => {
             onChange={(e) => setDisplayName(e.target.value)}
           />
           <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            className="input"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <PasswordInput password={password} setPassword={setPassword} />
           <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            className="input"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+          <PasswordInput
+            password={confirmPassword}
+            setPassword={setConfirmPassword}
           />
           {!passwordMatch && <p className="error">Passwords do not match</p>}
           {errorMessage && <p className="error">{errorMessage}</p>}

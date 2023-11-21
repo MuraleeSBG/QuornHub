@@ -35,9 +35,11 @@ const Categories = ({ title, tag }) => {
 	return (
 		<div className="category-page">
 			<Header />
-			<h1 className="category-title">{title}</h1>
-			<div className="category-results">{results}</div>
-			{errorMessage && <p className="error-message">{errorMessage}</p>}
+			<div className="category-main-content">
+				<h1 className="category-title">{title}</h1>
+				<div className="category-results">{results}</div>
+				{errorMessage && <p className="error-message">{errorMessage}</p>}
+			</div>
 			<Footer />
 		</div>
 	);

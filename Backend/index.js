@@ -114,6 +114,7 @@ app.get("/recipes", (req, res) => {
 // Endpoint to get a single recipe by ID
 app.get("/recipe/:id", (req, res) => {
 	con.query(
+		// parameterised queries prevent sql injection as the inputs are interpretted as raw strings 
 		"SELECT * FROM QuornhubDb.recipes WHERE id = ? LIMIT 1",
 		[req.params.id],
 		function (err, result) {

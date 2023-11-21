@@ -16,7 +16,8 @@
 }
 
 .feature-container {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	flex-direction: row;
 	justify-content: center;
 	overflow-x: auto;
@@ -32,8 +33,9 @@
 	width: 90vw;
 	font-family: "Paytone One", sans-serif;
 	text-align: left;
-	font-size: 2.5vw;
+	font-size: 2rem;
 	margin: 10px 0;
+	padding-left: 8px;
 }
 
 .feature {
@@ -42,4 +44,26 @@
 	justify-content: flex-start;
 	gap: 1vw;
 	margin-bottom: 2vh;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+	.feature-container {
+		display: flex;
+		flex-direction: column;
+		padding: 0 5%;
+		gap: 1.5rem;
+
+	}
+	.feature-title {
+		display: flex;
+		color: #1f1d1d;
+		width: 90vw;
+		font-family: "Paytone One", sans-serif;
+		text-align: left;
+		font-size: 1.5rem;
+		margin: 10px 0;
+		padding-left: 5%;
+	}
 }

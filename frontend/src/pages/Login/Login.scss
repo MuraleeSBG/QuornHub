@@ -47,28 +47,27 @@
   align-items: center;
 }
 
-.input {
-  width: calc(100% - 14px);
-  border-radius: 5px;
-  border: 1px solid #828282;
-  padding: 2%;
-  background-color: transparent;
-  margin-top: 3px;
+.login-input {
+	width: calc(100% - 18px);
+	border-radius: 5px;
+	border: 1px solid #828282;
+	padding: 8px;
+	background-color: transparent;
+	margin-top: 3px;
 }
 
 .create {
-  color: #a60054;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
+    color: #a60054;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .notReg {
-  font-size: small;
-  font-family: "Nunito Sans", sans-serif;
-  padding-top: 20%;
-  font-weight: 700;
+    font-size: small;
+    font-family: "Nunito Sans", sans-serif;
+    padding-top: 20%;
 }
 
 .Title {

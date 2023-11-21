@@ -3,91 +3,89 @@ import { Header } from "../../components/Header/Header";
 import { useState, useEffect } from "react";
 import { FoodSaverCard } from "../../components/FoodSaverCard/FoodSaverCard";
 import "./FoodSaver.scss";
+import close from "../../images/close.svg";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const FoodSaver = () => {
 	const dropIcon = <FontAwesomeIcon icon={faCaretDown} />;
-
-	const [listOfInput, setListOfInput] = useState([]);
-	const [recipesToDisplay, setrecipesToDisplay] = useState([]);
+	const [ingredientSearchTerms, setIngredientSearchTerms] = useState([]);
+	const [recipesToDisplay, setRecipesToDisplay] = useState([]);
 	const [inputText, setInputText] = useState("");
-	const [categoryFilter, setcategoryFilter] = useState(new Set());
+	const [categoryFilter, setCategoryFilter] = useState(new Set());
 	const [finalRecs, setFinalRecs] = useState([]);
 
-	// This needs replacing with code commented out below to fetch from database
-	// const data = require("../../testData.json");
 
-	const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-	useEffect(() => {
-		const apiUrl = `http://localhost:3001/recipes`;
+  useEffect(() => {
+    const apiUrl = `http://localhost:3001/recipes`;
 
-		fetch(apiUrl)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Error with response");
-				}
-				return response.json();
-			})
-			.then((data) => {
-				setData(data);
-			})
-			.catch((error) => {
-				console.error("Error fetching data:", error);
-			});
-	}, []);
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error with response");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
-	const handleKeyDown = (e) => {
-		if (e.key === "Enter") {
-			addIngredient();
-		}
-	};
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      addIngredient();
+    }
+  };
 
-	// sets input into state, clears input box and calls filterData to implement search
-	const addIngredient = () => {
-		if (
-			listOfInput.some(
-				(item) => item.toLowerCase() === inputText.toLowerCase()
-			) ||
-			inputText === ""
-		) {
-			return;
-		}
-		setListOfInput((currentList) => [...currentList, inputText]);
-		setInputText("");
-	};
+  // sets input into state, clears input box and calls filterData to implement search
+  const addIngredient = () => {
+    if (
+      ingredientSearchTerms.some(
+        (item) => item.toLowerCase() === inputText.toLowerCase()
+      ) ||
+      inputText === ""
+    ) {
+      return;
+    }
+    setIngredientSearchTerms((currentList) => [...currentList, inputText]);
+    setInputText("");
+  };
 
 	// searches for recipes based on new input
 	useEffect(() => {
 		const filteredRecsByIngredient = data.filter((recipe) => {
 			return recipe.ingredients.some((ingredient) => {
-				const finalIngredient =
+				const ingredientStr =
 					typeof ingredient === "string" ? ingredient : ingredient.ingredient;
-				return listOfInput.some(
-					(input) => input.toLowerCase() === finalIngredient.toLowerCase()
+				return ingredientSearchTerms.some(
+					(ingredientSearchTerm) =>
+            		ingredientSearchTerm.toLowerCase() === ingredientStr.toLowerCase()
 				);
 			});
 		});
-		setrecipesToDisplay(filteredRecsByIngredient);
+		setRecipesToDisplay(filteredRecsByIngredient);
 
 		
-	}, [listOfInput, data]);
+	}, [ingredientSearchTerms, data]);
 
 
 
-	const removeIngredient = (e) => {
-		const ingredientToRemove = e.target.parentElement.id;
-		const deleteByvalue = (ingredientToRemove) => {
-			setListOfInput((oldList) => {
-				return oldList.filter((item) => item !== ingredientToRemove);
-			});
-		};
-		deleteByvalue(ingredientToRemove);
-	};
+  const removeIngredient = (e) => {
+    const ingredientToRemove = e.target.parentElement.id;
+    const newIngredientSearchTerms = ingredientSearchTerms.filter(
+      (item) => item !== ingredientToRemove
+    );
+    setIngredientSearchTerms(newIngredientSearchTerms);
+  };
 
 	// input tags NOT dietaries
-	const searchTags = listOfInput.map((item, index) => {
+	const searchTags = ingredientSearchTerms.map((item, index) => {
 		return (
 			<div className="tag" id={item} key={index}>
 				{item}
@@ -96,7 +94,7 @@ const FoodSaver = () => {
 					onClick={removeIngredient}
 					className="remove-button"
 				>
-					x
+					<img className="remove-button-icon" src={close} alt="remove" />
 				</button>
 			</div>
 		);
@@ -159,14 +157,9 @@ const FoodSaver = () => {
 
 	const showResults = finalRecs.map((recipe, index) => {
 		const tags = getTags(recipe);
-
-		
-
 		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags}/> 
 	})
 
-	
-	
 
 	return (
 		<div className="foodsaver-page">
@@ -202,7 +195,7 @@ const FoodSaver = () => {
 				<div id="tags" className="search-tags-container">
 					{searchTags}
 				</div>
-				{listOfInput.length !== 0 ? (
+				{ingredientSearchTerms.length !== 0 ? (
 					<div className="results-container">{finalRecs.length === 0 ? <h1 className="results-placeholder">There are no recipes in that category, please choose another category or search for more ingredients </h1>: showResults}</div>
 				) : (
 					<div>
