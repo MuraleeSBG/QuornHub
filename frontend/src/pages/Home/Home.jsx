@@ -101,11 +101,11 @@ const Home = () => {
 
 	// category cards
 	const categories = [
-		{recipeName: "Gluten Free", recipeImg: "1.webp", link: "gluten-free"},
-		{recipeName: "Lactose Free", recipeImg: "2.webp", link: "lactose-free"}, 
-		{recipeName: "Vegan", recipeImg: "3.webp", link:"vegan"},
-		{recipeName: "Nut Free", recipeImg: "4.webp", link: "nut-free"},
-		{recipeName: "Fifteen Minutes", recipeImg: "5.webp", link: "fifteen-minute"},
+		{recipeName: "Gluten Free", recipeImg: "1.jpeg", link: "gluten-free"},
+		{recipeName: "Lactose Free", recipeImg: "2.jpeg", link: "lactose-free"}, 
+		{recipeName: "Vegan", recipeImg: "3.jpeg", link:"vegan"},
+		{recipeName: "Nut Free", recipeImg: "4.jpeg", link: "nut-free"},
+		{recipeName: "Fifteen Minutes", recipeImg: "5.jpeg", link: "fifteen-minute"},
 	]
 
 
