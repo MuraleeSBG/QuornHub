@@ -16,46 +16,45 @@ const FoodSaver = () => {
 	const [categoryFilter, setCategoryFilter] = useState(new Set());
 	const [finalRecs, setFinalRecs] = useState([]);
 
+	const [data, setData] = useState([]);
 
-  const [data, setData] = useState([]);
+	useEffect(() => {
+		const apiUrl = `http://localhost:3001/recipes`;
 
-  useEffect(() => {
-    const apiUrl = `http://localhost:3001/recipes`;
+		fetch(apiUrl)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Error with response");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				setData(data);
+			})
+			.catch((error) => {
+				console.error("Error fetching data:", error);
+			});
+	}, []);
 
-    fetch(apiUrl)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error with response");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			addIngredient();
+		}
+	};
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      addIngredient();
-    }
-  };
-
-  // sets input into state, clears input box and calls filterData to implement search
-  const addIngredient = () => {
-    if (
-      ingredientSearchTerms.some(
-        (item) => item.toLowerCase() === inputText.toLowerCase()
-      ) ||
-      inputText === ""
-    ) {
-      return;
-    }
-    setIngredientSearchTerms((currentList) => [...currentList, inputText]);
-    setInputText("");
-  };
+	// sets input into state, clears input box and calls filterData to implement search
+	const addIngredient = () => {
+		if (
+			ingredientSearchTerms.some(
+				(item) => item.toLowerCase() === inputText.toLowerCase()
+			) ||
+			inputText === ""
+		) {
+			return;
+		}
+		setIngredientSearchTerms((currentList) => [...currentList, inputText]);
+		setInputText("");
+	};
 
 	// searches for recipes based on new input
 	useEffect(() => {
@@ -65,35 +64,27 @@ const FoodSaver = () => {
 					typeof ingredient === "string" ? ingredient : ingredient.ingredient;
 				return ingredientSearchTerms.some(
 					(ingredientSearchTerm) =>
-            		ingredientSearchTerm.toLowerCase() === ingredientStr.toLowerCase()
+						ingredientSearchTerm.toLowerCase() === ingredientStr.toLowerCase()
 				);
 			});
 		});
 		setRecipesToDisplay(filteredRecsByIngredient);
-
-		
 	}, [ingredientSearchTerms, data]);
 
-
-
-  const removeIngredient = (e) => {
-    const ingredientToRemove = e.target.parentElement.id;
-    const newIngredientSearchTerms = ingredientSearchTerms.filter(
-      (item) => item !== ingredientToRemove
-    );
-    setIngredientSearchTerms(newIngredientSearchTerms);
-  };
+	const removeIngredient = (e) => {
+		const ingredientToRemove = e.target.parentElement.id;
+		const newIngredientSearchTerms = ingredientSearchTerms.filter(
+			(item) => item !== ingredientToRemove
+		);
+		setIngredientSearchTerms(newIngredientSearchTerms);
+	};
 
 	// input tags NOT dietaries
 	const searchTags = ingredientSearchTerms.map((item, index) => {
 		return (
 			<div className="tag" id={item} key={index}>
 				{item}
-				<button
-					id={`${item}btn`}
-					onClick={removeIngredient}
-					className="remove-button"
-				>
+				<button id={item} onClick={removeIngredient} className="remove-button">
 					<img className="remove-button-icon" src={close} alt="remove" />
 				</button>
 			</div>
@@ -124,51 +115,61 @@ const FoodSaver = () => {
 		return tags;
 	};
 
-	const filters = ["Gluten Free", "Vegan", "15 mins", "Lactose Free", "Nut Free", ""]
-	
-	const showFilters = filters.map((category) => {
-		return <div className="dropdown-option">
-			<input type="radio" name="dropdown-group" value={category} onChange={(e) => setCategoryFilter(e.target.value)}/>
-			{
-				category.length > 0 ? category : "No filters"
-			}
-		</div>
-	})
+	const filters = [
+		"Gluten Free",
+		"Vegan",
+		"15 mins",
+		"Lactose Free",
+		"Nut Free",
+		"",
+	];
 
+	const showFilters = filters.map((category, index) => {
+		return (
+			<div className="dropdown-option" key={index}>
+				<input
+					type="radio"
+					name="dropdown-group"
+					value={category}
+					onChange={(e) => setCategoryFilter(e.target.value)}
+				/>
+				{category.length > 0 ? category : "No filters"}
+			</div>
+		);
+	});
 
 	useEffect(() => {
 		const filterRecsByCategory = recipesToDisplay.filter((recipe) => {
-
 			const tags = getTags(recipe);
 
 			if (categoryFilter.length > 0) {
-				return tags.includes(categoryFilter)
+				return tags.includes(categoryFilter);
 			}
-			
-			return recipesToDisplay
 
-
-		
-		})
-		setFinalRecs(filterRecsByCategory)
-
-	}, [recipesToDisplay, categoryFilter])
-
+			return recipesToDisplay;
+		});
+		setFinalRecs(filterRecsByCategory);
+	}, [recipesToDisplay, categoryFilter]);
 
 	const showResults = finalRecs.map((recipe, index) => {
 		const tags = getTags(recipe);
-		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags}/> 
-	})
-
+		return <FoodSaverCard key={index} selectedRecipe={recipe} tags={tags} />;
+	});
 
 	return (
 		<div className="foodsaver-page">
 			<div className="food-saver-header">
-			<Header />
-			<div className="header-main">
+				<Header />
+				<div className="header-main">
 					<div className="page-desc">
-						<h1 className="fs-header-title">A curated recipe list to help you reduce food waste</h1>
-						<p className="header-sub-heading">Simply submit each ingredient you have left over and our smart saver will find suitable recipes so you never have to throw away soggy vegetables again!</p>
+						<h1 className="fs-header-title">
+							A curated recipe list to help you reduce food waste
+						</h1>
+						<p className="header-sub-heading">
+							Simply submit each ingredient you have left over and our smart
+							saver will find suitable recipes so you never have to throw away
+							soggy vegetables again!
+						</p>
 					</div>
 				</div>
 				<div className="search-bar">
@@ -187,16 +188,23 @@ const FoodSaver = () => {
 			</div>
 			<div className="food-saver-main">
 				<div className="filter-dropdown" data-control="checkbox-dropdown">
-						Filter by a category {dropIcon}
-						<div className="filter-dropdown-content">
-							{showFilters}
-						</div>
+					Filter by a category {dropIcon}
+					<div className="filter-dropdown-content">{showFilters}</div>
 				</div>
 				<div id="tags" className="search-tags-container">
 					{searchTags}
 				</div>
 				{ingredientSearchTerms.length !== 0 ? (
-					<div className="results-container">{finalRecs.length === 0 ? <h1 className="results-placeholder">There are no recipes in that category, please choose another category or search for more ingredients </h1>: showResults}</div>
+					<div className="results-container">
+						{finalRecs.length === 0 ? (
+							<h1 className="results-placeholder">
+								There are no recipes in that category, please choose another
+								category or search for more ingredients{" "}
+							</h1>
+						) : (
+							showResults
+						)}
+					</div>
 				) : (
 					<div>
 						<h1 className="results-placeholder">

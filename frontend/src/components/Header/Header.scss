@@ -1,6 +1,5 @@
 .nav-bar {
 	width: 85%;
-	max-height: 100vh;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -185,6 +184,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+	.nav-bar {
+		height: 15vh;
+	}
 	.nav-links {
 		display: none;
 	}

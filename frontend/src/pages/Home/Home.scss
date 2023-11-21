@@ -46,15 +46,12 @@
 	margin-bottom: 2vh;
 }
 
-
-
 @media only screen and (max-width: 600px) {
 	.feature-container {
 		display: flex;
 		flex-direction: column;
 		padding: 0 5%;
 		gap: 1.5rem;
-
 	}
 	.feature-title {
 		display: flex;
