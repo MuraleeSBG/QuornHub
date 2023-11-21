@@ -164,7 +164,9 @@
 }
 
 .filter-dropdown:hover .filter-dropdown-content {
-	display: block;
+	display: flex;
+  flex-direction: column;
+  align-items:flex-start;
 }
 
 .filter-dropdown-content a:hover {

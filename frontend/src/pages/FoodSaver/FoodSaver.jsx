@@ -130,7 +130,7 @@ const FoodSaver = () => {
 		return <div className="dropdown-option">
 			<input type="radio" name="dropdown-group" value={category} onChange={(e) => setCategoryFilter(e.target.value)}/>
 			{
-				category.length > 0 ? category : "Clear filters"
+				category.length > 0 ? category : "No filters"
 			}
 		</div>
 	})
