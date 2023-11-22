@@ -17,7 +17,6 @@
 
 .slideImage {
 	width: 60%;
-	height: 100%;
 }
 
 .slideContainer {
@@ -50,10 +49,9 @@
 .recipeNames {
 	text-wrap: wrap;
 	text-align: left;
-	padding-left: 5%;
-	padding-top: 3%;
+	padding-left: 16px;
 	word-spacing: 100vw;
-	font-size: 4.5vw;
+	font-size: 4rem;
 }
 
 .recipeDescriptionContainer {
@@ -65,10 +63,10 @@
 .recipeDescriptions {
 	text-wrap: wrap;
 	text-align: left;
-	padding-left: 5%;
-	padding-top: 3%;
+	padding-left: 16px;
+	padding-top: 8px;
 	font-family: "Montserrat", sans-serif;
-	font-size: 2.4vw;
+	font-size: 2rem;
 }
 
 .goToRecipeButton {
@@ -87,13 +85,29 @@
 	width: 45px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1400px) {
 	.recipeNames {
-		font-size: 6vw;
+		font-size: 3rem;
 	}
 
 	.recipeDescriptions {
-		font-size: 3.5vw;
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.recipeNames {
+		font-size: 2rem;
+	}
+
+	.recipeDescriptions {
+		font-size: 1rem;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.recipeNames {
+		font-size: 1rem;
 	}
 
 	.slideshowDotContainer {
@@ -113,7 +127,7 @@
 
 	.slideImage {
 		width: 350%;
-		height: 86vh;
+		height: 85vh;
 	}
 
 	.slideDescription {
