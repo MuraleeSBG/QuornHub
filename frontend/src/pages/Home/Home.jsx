@@ -1,14 +1,13 @@
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
-import '../Categories/Categories.scss';
-import './Home.scss';
+import "../Categories/Categories.scss";
+import "./Home.scss";
 import { useState, useEffect } from "react";
 import { PreviewCard } from "../../components/PreviewCard/PreviewCard";
-import { CategoryCard } from "../../components/CategoryCard/CategoryCard"
+import { CategoryCard } from "../../components/CategoryCard/CategoryCard";
 import { Carousel } from "../../components/Carousel/Carousel";
 
 const Home = () => {
-
 	const [data, setData] = useState([]);
 	const [recipesOfWeek, setRecipesOfWeek] = useState([]);
 	const [editorsRecs, setEditorsRecs] = useState([]);
@@ -17,139 +16,105 @@ const Home = () => {
 	// fetch all recipes
 
 	useEffect(() => {
-        const apiUrl = `http://localhost:3001/recipes`;
+		const apiUrl = `http://localhost:3001/recipes`;
 
-        fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Error with response")
-            }
-            return response.json();
-        })
-			.then(data => {
-            setData(data);
-        })
-        .catch(error => {
-            console.error("Error fetching data:", error);
-        })
-
-    },[])
+		fetch(apiUrl)
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error("Error with response");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				setData(data);
+			})
+			.catch((error) => {
+				console.error("Error fetching data:", error);
+			});
+	}, []);
 
 	// find recipes with static ids for recipes of week
 	useEffect(() => {
-		const recipesOfWeekIds = ['2', '5', '16']
+		const recipesOfWeekIds = ["2", "5", "16"];
 		const filteredRecipes = data.filter((recipe) => {
-			return recipesOfWeekIds.some(
-				(id) => id === recipe.id
-			);
-
+			return recipesOfWeekIds.some((id) => id === recipe.id);
 		});
 		setRecipesOfWeek(filteredRecipes);
 	}, [data]);
 
-	
 	const showRecipesOfWeek = recipesOfWeek.map((recipe, index) => {
-		return (
-			<PreviewCard
-				key={index}
-				selectedRecipe={recipe}
-			/>
-		);
+		return <PreviewCard key={index} selectedRecipe={recipe} />;
 	});
 
 	// find recipes with static ids for editors choice
 	useEffect(() => {
-		const editorsChoiceIds = ['5', '35', '38']
+		const editorsChoiceIds = ["5", "35", "38"];
 		const filteredRecipes = data.filter((recipe) => {
-			return editorsChoiceIds.some(
-				(id) => id === recipe.id
-			);
-
+			return editorsChoiceIds.some((id) => id === recipe.id);
 		});
 		setEditorsRecs(filteredRecipes);
 	}, [data]);
 
 	const showEditorsChoice = editorsRecs.map((recipe, index) => {
-		return (
-			<PreviewCard
-				key={index}
-				selectedRecipe={recipe}
-			/>
-		);
+		return <PreviewCard key={index} selectedRecipe={recipe} />;
 	});
 
 	// find recipes with static ids for festivefaves
 	useEffect(() => {
-		const festiveIds = ['20', '9', '18']
+		const festiveIds = ["20", "9", "18"];
 		const filteredRecipes = data.filter((recipe) => {
-			return festiveIds.some(
-				(id) => id === recipe.id
-			);
-
+			return festiveIds.some((id) => id === recipe.id);
 		});
 		setFestiveFaves(filteredRecipes);
 	}, [data]);
 
 	const showFestives = festiveFaves.map((recipe, index) => {
-		return (
-			<PreviewCard
-				key={index}
-				selectedRecipe={recipe}
-			/>
-		);
+		return <PreviewCard key={index} selectedRecipe={recipe} />;
 	});
 
 	// category cards
 	const categories = [
-		{recipeName: "Gluten Free", recipeImg: "1.jpeg", link: "gluten-free"},
-		{recipeName: "Lactose Free", recipeImg: "2.jpeg", link: "lactose-free"}, 
-		{recipeName: "Vegan", recipeImg: "3.jpeg", link:"vegan"},
-		{recipeName: "Nut Free", recipeImg: "4.jpeg", link: "nut-free"},
-		{recipeName: "Fifteen Minutes", recipeImg: "5.jpeg", link: "fifteen-minute"},
-	]
-
+		{ recipeName: "Gluten Free", recipeImg: "1.jpeg", link: "gluten-free" },
+		{ recipeName: "Lactose Free", recipeImg: "2.jpeg", link: "lactose-free" },
+		{ recipeName: "Vegan", recipeImg: "3.jpeg", link: "vegan" },
+		{ recipeName: "Nut Free", recipeImg: "4.jpeg", link: "nut-free" },
+		{
+			recipeName: "Fifteen Minutes",
+			recipeImg: "5.jpeg",
+			link: "fifteen-minute",
+		},
+	];
 
 	const showCategories = categories.map((category, index) => {
-		return (
-			<CategoryCard
-				key={index}
-				category={category}
-			/>
-		);
+		return <CategoryCard key={index} category={category} />;
 	});
-
-	
 
 	return (
 		<div className="home-page">
 			<Header />
 			<div className="home-main">
 				<div className="carousel">
-					<Carousel/>
+					<Carousel />
 				</div>
 				<div className="feature">
-					<h5 className="feature-title">Recipes of the Week</h5>
+					<h1 className="feature-title">Recipes of the Week</h1>
 					<div className="feature-container">{showRecipesOfWeek}</div>
-					
 				</div>
 				<div className="feature">
-					<h5 className="feature-title">Festive Favourites</h5>
+					<h1 className="feature-title">Festive Favourites</h1>
 					<div className="feature-container">{showFestives}</div>
-					
 				</div>
 				<div className="feature">
-					<h5 className="feature-title">Editor's Autumn Favourites</h5>
+					<h1 className="feature-title">Editor's Autumn Favourites</h1>
 					<div className="feature-container">{showEditorsChoice}</div>
-					
 				</div>
 				<div className="feature">
-					<h5 className="feature-title">Popular Categories</h5>
+					<h1 className="feature-title">Popular Categories</h1>
 					<div className="feature-container">{showCategories}</div>
-					
 				</div>
 			</div>
 
-			<Footer/>
+			<Footer />
 		</div>
 	);
 };

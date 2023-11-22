@@ -65,8 +65,8 @@ export const Carousel = () => {
 									<p className="recipeDescriptions">
 										{recipeDescriptions[index]}
 									</p>
-									<button className="goToRecipeButton">
-										<img className="goToRecipeIcon" src={arrowRight}></img>
+									<button className="goToRecipeButton" aria-label="go to recipe">
+										<img className="goToRecipeIcon" src={arrowRight} alt="go to recipe"></img>
 									</button>
 								</div>
 							</div>
