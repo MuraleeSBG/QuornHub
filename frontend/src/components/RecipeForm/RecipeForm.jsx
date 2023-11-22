@@ -211,7 +211,6 @@ const RecipeForm = ({
 					</div>
 				</form>
 			</div>
-			;
 		</div>
 	);
 };
