@@ -2,59 +2,48 @@
 	display: flex;
 	flex-direction: column;
 	border-radius: 0.6vw;
-	width: 20vw;
+	width: 200px;
 }
 
 .category-card:hover {
-    box-shadow: 0 0 2px 4px #d7916c;
-
+	box-shadow: 0 0 2px 4px #d7916c;
 }
 
 .category-image {
-	width: 20vw;
-	height: 20vw;
+	width: 200px;
+	height: 200px;
 	object-fit: cover;
-	border-radius: 0.6vw 0.6vw 0 0;
+	border-radius: 50%;
 }
 
 .link {
-	height: 20vw;
+	height: 200px;
 }
 
 .category-subtitle {
-	font-size: 2.5vw;
+	font-size: 2rem;
 	text-decoration: none;
 	color: #1f1d1d;
 	font-family: "Montserrat", sans-serif;
-    font-weight: 600;
+	font-weight: 600;
 }
 
 .category-container {
 	margin-block-start: 0;
 	margin-block-end: 0;
-	padding: 1vw;
+	padding: 16px;
 	display: flex;
-    justify-content: center;
+	justify-content: center;
 }
 
-// desktop
-@media only screen and (min-width: 600px) {
-	.category-image {
-		width: 12vw;
-		height: 12vw;
-		object-fit: cover;
-		border-radius: 200px;
-	}
+@media only screen and (max-width: 600px) {
 	.category-card {
-		width: 12vw;
+		width: 30vw;
 	}
-	.link {
-		height: 12vw;
+	.category-image {
+		object-fit: cover;
 	}
 	.category-subtitle {
-		font-size: 1.2vw;
-	}
-	p {
-		margin-top: 1vh;
+		font-size: 1rem;
 	}
 }

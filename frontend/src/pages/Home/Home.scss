@@ -18,10 +18,9 @@
 .feature-container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	flex-direction: row;
-	justify-content: center;
+	justify-items: center;
 	overflow-x: auto;
-	gap: 1vw;
+	gap: 32px;
 	padding: 8px;
 	width: 100%;
 	justify-content: space-between;
@@ -30,7 +29,6 @@
 .feature-title {
 	display: flex;
 	color: #1f1d1d;
-	width: 90vw;
 	font-family: "Paytone One", sans-serif;
 	text-align: left;
 	font-size: 2rem;
@@ -42,16 +40,20 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	gap: 1vw;
-	margin-bottom: 2vh;
+	gap: 16px;
+	margin-bottom: 16px;
 }
 
 @media only screen and (max-width: 600px) {
+	.feature {
+		margin: 16px;
+	}
 	.feature-container {
 		display: flex;
-		flex-direction: column;
-		padding: 0 5%;
-		gap: 1.5rem;
+		flex-direction: row;
+		overflow-x: auto;
+		padding: 4px;
+		gap: 16px;
 	}
 	.feature-title {
 		display: flex;

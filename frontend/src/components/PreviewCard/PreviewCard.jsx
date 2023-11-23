@@ -12,11 +12,11 @@ export const PreviewCard = ({ selectedRecipe }) => {
 					alt={selectedRecipe.recipeName}
 				/>
 			</Link>
-			<p className="title-container">
+			<div className="title-container">
 				<a href={url} className="preview-title">
 					{selectedRecipe.recipeName}
 				</a>
-			</p>
+			</div>
 		</div>
 	);
 };

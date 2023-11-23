@@ -5,7 +5,7 @@ export const CategoryCard = ({ category }) => {
 	const url = `/${category.link}`;
 	return (
 		<div className="category-card">
-			<Link className="link" to={url}>
+			<Link className="category-link" to={url}>
 				<img
 					className="category-image"
 					src={`http://localhost:3001/uploads/${category.recipeImg}`}
