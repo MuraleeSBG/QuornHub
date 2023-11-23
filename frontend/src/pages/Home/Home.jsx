@@ -110,7 +110,7 @@ const Home = () => {
 				</div>
 				<div className="feature">
 					<h1 className="feature-title">Popular Categories</h1>
-					<div className="feature-container">{showCategories}</div>
+					<div className="categories-container">{showCategories}</div>
 				</div>
 			</div>
 
