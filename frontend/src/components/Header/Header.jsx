@@ -55,7 +55,7 @@ export const Header = ({ userName }) => {
 					<Link className="nav" to="/food-saver">
 						Food Saver
 					</Link>
-					<Link className="dropdown nav">
+					<div className="dropdown nav">
 						Recipes {dropIcon}
 						<div className="dropdown-content2">
 							<Link to="/gluten-free">Gluten Free</Link>
@@ -66,7 +66,7 @@ export const Header = ({ userName }) => {
 							{isLoggedIn() && <Link to="/add-recipes">Add a Recipe</Link>}
 							<Link to="/recipes">All Recipes</Link>
 						</div>
-					</Link>
+					</div>
 				</div>
 
 				<div className="dropdown">

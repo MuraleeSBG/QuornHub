@@ -5,61 +5,61 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	font-family: "Montserrat", sans-serif;
 }
 
 .createContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: 5%;
-	padding: 5%;
-	padding-top: 2%;
+	margin: 16px;
+	padding: 16px;
 	background-color: rgba(239, 230, 221, 0.7);
 	border-radius: 10px;
-	// box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+	overflow-y: auto;
+	max-height: 75vh;
 }
 
 h1 {
 	font-family: "Paytone One", sans-serif;
-	font-size: 45px;
+	font-size: 3rem;
 	margin: 0px;
 	color: #1f1d1d;
 }
 
 h2 {
-	font-family: "Montserrat", sans-serif;
 	font-weight: 400;
-	font-size: 20px;
+	font-size: 1rem;
 	margin: 0px;
-	padding-top: 2%;
+	padding: 4px;
 	color: #1f1d1d;
 }
 
-form {
+.addRecipe {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
 }
 
 .leftColumn {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 5% 5% 5% 0%;
+	padding: 8px;
+	gap: 8px;
 }
 
 .rightColumn {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 5%;
+	padding: 8px;
+	gap: 8px;
 }
 
 .tagCheckboxes {
 	display: flex;
 	flex-direction: column;
-	align-items: start;
-	padding: 2%;
+	align-items: flex-start;
+	padding-left: 4px;
 }
 
 .ingredient {
@@ -70,27 +70,28 @@ form {
 	width: 100%;
 }
 
-label {
-	font-family: "Montserrat", sans-serif;
+.recipeFormLabel {
 	font-weight: 400;
-	font-size: 0.9rem;
-	margin-top: 0.5rem;
-	padding-top: 2%;
+	font-size: 1rem;
+	padding-top: 8px;
 	color: #1f1d1d;
 }
 
 .recipeInput {
 	border-radius: 20px;
 	border: 1px solid #828282;
-	padding: 2%;
+	padding: 8px;
 	background-color: #efe6dd;
 }
 
-select {
+.servingSizeSelect {
 	background-color: #efe6dd;
 	border-radius: 20px;
-	border: 1px solid #828282;
+	border: 0;
 	padding: 8px 16px;
+	font-family: "Montserrat", sans-serif;
+	border-right: 16px solid transparent;
+	outline: 1px solid #828282;
 }
 
 .tagCheckbox {
@@ -103,7 +104,12 @@ select {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	gap: 0.2rem;
+	gap: 4px;
+}
+
+.checkboxLabel {
+	font-size: 0.75rem;
+	color: #1f1d1d;
 }
 
 .addIngredient {
@@ -112,14 +118,18 @@ select {
 	justify-content: flex-start;
 	align-items: center;
 	width: 100%;
+	min-width: 320px;
 	border-radius: 20px;
 	border: 1px solid #828282;
-	padding: 2%;
+	padding: 8px;
+	font-family: "Montserrat", sans-serif;
+	background-color: #efe6dd;
 }
 
 .plusIcon {
 	height: 15px;
 	width: 15px;
+	padding-right: 8px;
 }
 
 .method {
@@ -127,6 +137,9 @@ select {
 	border-radius: 20px;
 	background-color: #efe6dd;
 	border: 1px solid #828282;
+	padding: 8px;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1rem;
 }
 
 .done {
@@ -139,7 +152,19 @@ select {
 	width: 50%;
 	display: flex;
 	justify-content: center;
-	margin-top: 1rem;
-	padding: 0.3rem;
+	margin-top: 16px;
+	padding: 4px;
 	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+	.addRecipe {
+		flex-direction: column;
+	}
+	.rightColumn {
+		padding: 0 8px 8px;
+	}
+	.addIngredient {
+		min-width: 100%;
+	}
 }

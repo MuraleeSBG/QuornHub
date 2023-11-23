@@ -19,11 +19,11 @@
 
 .food-saver-header {
   width: 100%;
-  height: min-content;
+  height: 350px;
   color: #1f1d1d;
   font-family: "Montserrat", sans-serif;
   background-image: url(../../images/foodSaverTopImage.png);
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -34,14 +34,14 @@
   font-family: "Paytone One", sans-serif;
   margin: 0;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
 }
 
 .header-sub-heading {
   margin: 16px;
   padding-bottom: 16px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .header-main {
@@ -180,7 +180,7 @@
   border-radius: 16px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 600px) {
   .fs-header-title {
     font-size: 1.2rem;
   }

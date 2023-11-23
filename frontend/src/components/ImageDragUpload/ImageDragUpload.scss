@@ -1,6 +1,6 @@
 #form-file-upload {
-	height: 15rem;
-	width: 15rem;
+	height: 250px;
+	width: 250px;
 	text-align: center;
 	position: relative;
 }
@@ -15,7 +15,7 @@
 	align-items: center;
 	justify-content: center;
 	border-width: 2px;
-	border-radius: 1rem;
+	border-radius: 16px;
 	border-style: dashed;
 	border-color: #525252;
 	background-color: #efe6dd;
@@ -27,7 +27,7 @@
 
 .upload-button {
 	cursor: pointer;
-	padding: 0.25rem;
+	padding: 4px;
 	font-size: 1rem;
 	border: none;
 	font-family: "Oswald", sans-serif;
@@ -42,7 +42,7 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	border-radius: 1rem;
+	border-radius: 16px;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
@@ -52,7 +52,7 @@
 .uploadImage {
 	height: 25%;
 	width: 25%;
-	border-radius: 1rem;
+	border-radius: 16px;
 	object-fit: cover;
 }
 
@@ -76,8 +76,8 @@ p {
 	width: 50%;
 	display: flex;
 	justify-content: center;
-	margin-top: 1rem;
-	padding: 0.3rem;
+	margin-top: 16px;
+	padding: 4pxcd Ba;
 	cursor: pointer;
 }
 

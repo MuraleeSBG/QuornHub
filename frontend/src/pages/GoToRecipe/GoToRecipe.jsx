@@ -6,6 +6,8 @@ import { useParams } from "react-router";
 import { getTags } from "../../utils/tagUtils";
 import { Link, useNavigate } from "react-router-dom";
 import { isAdminUser } from "../../utils/authUtils";
+import deleteIcon from "../../images/delete.svg";
+import editIcon from "../../images/edit.svg";
 
 const GoToRecipe = () => {
 	const [data, setData] = useState(undefined);
@@ -32,17 +34,16 @@ const GoToRecipe = () => {
 			});
 	}, [id]);
 
-	const deleteRecipe = () => {
+	const deleteRecipe = async () => {
 		const recipeApiUrl = `http://localhost:3001/recipe/${id}`;
-		return fetch(recipeApiUrl, {
+		const response = await fetch(recipeApiUrl, {
 			method: "DELETE",
 			// we are checking on the backend that you are an admin or not to stop you going into local storage on the front end and changing admin to true and hacking into the website
 			credentials: "include",
-		}).then((response) => {
-			if (response.ok) {
-				navigate("/");
-			}
 		});
+		if (response.ok) {
+			navigate("/");
+		}
 	};
 
 	return (
@@ -62,15 +63,41 @@ const GoToRecipe = () => {
 							<div className="overview-col2">
 								<div className="recipe-title">{data.recipeName}</div>
 								<div className="description">{data.recipeDesc}</div>
-								<div className="goto-tag-container">
+								<div className="tag-container">
 									{getTags(data).map((tag, index) => {
 										return (
-											<p key={index} className="goto-tag-text">
+											<p key={index} className="tag">
 												{tag}
 											</p>
 										);
 									})}
 								</div>
+								{isAdminUser() && (
+									<div className="editDeleteButtons">
+										<Link
+											to={`/edit-recipe/${id}`}
+											className="editLink"
+											aria-label="edit recipe"
+										>
+											<img
+												src={editIcon}
+												className="editIcon"
+												alt="edit recipe"
+											/>
+										</Link>
+										<button
+											className="deleteButton"
+											aria-label="delete recipe"
+											onClick={deleteRecipe}
+										>
+											<img
+												src={deleteIcon}
+												className="deleteIcon"
+												alt="delete recipe"
+											/>
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 						<div className="main">
@@ -94,15 +121,14 @@ const GoToRecipe = () => {
 							<div className="main-column2">
 								<h4 className="sub-heading">Method</h4>
 								<ol className="recipe-method">
-									{" "}
 									{data.method
 										.split(".")
 										.filter(Boolean)
 										.map((methodLine, index) => {
 											return (
-												<p className="method-steps" key={index}>
-													{methodLine}
-												</p>
+												<li className="method-steps" key={index}>
+													{methodLine}.
+												</li>
 											);
 										})}
 								</ol>
@@ -115,12 +141,6 @@ const GoToRecipe = () => {
 					</div>
 				)}
 			</div>
-			{isAdminUser() && (
-				<div>
-					<Link to={`/edit-recipe/${id}`}>Edit Recipe</Link>
-					<button onClick={deleteRecipe}>Delete Recipe</button>
-				</div>
-			)}
 			<Footer />
 		</div>
 	);

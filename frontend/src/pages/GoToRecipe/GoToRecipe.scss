@@ -1,150 +1,203 @@
-.recipe-main{
-    background: rgb(239,230,221);
-    display: flex;
+.recipe-top {
+	margin: 32px;
+	max-width: 1000px;
+}
+
+.recipe-main {
+	background: rgb(239, 230, 221);
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
 .overview {
-    display: flex;
-    gap: 2vw;
-    justify-content: center;
-    margin: 0 10vw 0 10vw
+	display: flex;
+	gap: 32px;
+	justify-content: center;
 }
 
 .rec-image {
-    width: 35vw;
-    height: 35vw;
-    object-fit: cover;
-    border-radius: 0.6vw;
-
+	max-width: 400px;
+	max-height: 400px;
+	object-fit: cover;
+	border-radius: 0.6vw;
 }
 
 .overview-col1 {
-    display:flex;
+	display: flex;
 }
 
 .overview-col2 {
-    display:flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    font-family: "Paytone One", sans-serif;
-	margin: 0vw;
-    max-width: 70%;
-
+	display: flex;
+	flex-direction: column;
+	font-family: "Paytone One", sans-serif;
+	gap: 8px;
+	flex-grow: 2;
 }
 
 .recipe-title {
-    text-align: left;
-    font-size: 4vw;
-    margin-bottom: 0.5vw;
+	text-align: left;
+	font-size: 4rem;
 }
 
-.description{
-    display: flex;
-    flex-direction: column;
-    font-family: "Montserrat", sans-serif;
-    align-items: flex-start;
-    text-align: left;
-    font-size: 2vw;
-    color: #1f1d1d;
-
+.description {
+	display: flex;
+	flex-direction: column;
+	font-family: "Montserrat", sans-serif;
+	align-items: flex-start;
+	text-align: left;
+	font-size: 2rem;
+	color: #1f1d1d;
+	flex-grow: 1;
 }
 
-.goto-tag-container{
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 1vw;
-    gap: 0.5vw;
-    margin-bottom: auto;
+.tag-container {
+	display: flex;
+	justify-content: flex-start;
+	gap: 16px;
 }
 
-.goto-tag-text{
-    display:flex;
-    color: black;
-    font-size: 1.5vw;
-    font-weight: 500;
-    background-color: #C9A5CE;
-    border-radius: 10vw;
-    width: fit-content;
-    padding: 0.11vw 0.5vw;
+.tag {
+	display: flex;
+	color: black;
+	font-size: 1rem;
+	font-weight: 500;
+	background-color: #c9a5ce;
+	border-radius: 16px;
+	width: fit-content;
+	padding: 8px 16px;
+	font-family: "Montserrat", sans-serif;
 }
 
+.deleteButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: red;
+	border: none;
+	width: 36px;
+	height: 36px;
+}
+.deleteIcon {
+	max-width: 20px;
+	fill: #efe6dd;
+}
 
-.main{
-    display: flex;
-    margin: 2vw 10vw 10vw 10vw;
-    color: #1f1d1d;
-    gap: 3vw;
+.editLink {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: grey;
+	border: none;
+	width: 36px;
+	height: 36px;
+}
+.editIcon {
+	max-width: 20px;
+	fill: #efe6dd;
+}
+
+.main {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	color: #1f1d1d;
+	gap: 32px;
 }
 .sub-heading {
-    display:flex;
-    font-family: "Paytone One", sans-serif;
+	display: flex;
+	font-family: "Paytone One", sans-serif;
+	font-size: 2rem;
 }
 
-
-.main-column1{
-    display:flex;
-    flex-direction: column;
-    min-width: 30%;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    
+.main-column1 {
+	display: flex;
+	flex-direction: column;
+	min-width: 30%;
+	align-items: flex-start;
 }
 
-
-.ingredients-list{
-    display: flex;
-    flex-direction: column;
-    font-family: "Montserrat", sans-serif;
-    align-items: flex-start;
-    margin-block-start: 0.5rem;
-    margin-block-end: 0.5rem;
-    font-size: 1.2rem;
-    
-
-}
-
-.main-column2{
-    display:flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: #1f1d1d;
+.main-column2 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	color: #1f1d1d;
 }
 
 .recipe-method {
-    display: flex;
-    flex-direction: column;
-    font-family: "Montserrat", sans-serif;
-    align-items: flex-start;
-    text-align: left;
-    padding: 0;
-    margin-top: 0;
-    font-size: 1.2rem;
-    color: #1f1d1d;
-
+	display: flex;
+	flex-direction: column;
+	font-family: "Montserrat", sans-serif;
+	align-items: flex-start;
+	text-align: left;
+	padding-left: 36px;
+	margin-top: 0;
+	font-size: 1.25rem;
+	color: #1f1d1d;
+	gap: 8px;
+}
+.ingredients-list {
+	font-size: 1.25rem;
+	gap: 8px;
+	display: flex;
+	flex-direction: column;
 }
 
-
-
-.method-line{
-    margin: 1vw;
-    padding: 0;
-    color: #1f1d1d;
+.ingredient-list {
+	font-family: "Montserrat", sans-serif;
 }
 
+.editDeleteButtons {
+	display: flex;
+	max-width: 102px;
+	justify-content: space-around;
+}
 
-// desktop
-@media only screen and (min-width: 600px) {
-    .ingredients-list, .method {
-        font-size: 2vw;
-    }
-    .sub-heading{
-        font-size: 2vw;
-    }
-    .description{
-        font-size: 2vw;
-    }
+@media only screen and (max-width: 600px) {
+	.recipe-top {
+		margin: 24px;
+	}
+	.overview {
+		flex-direction: column;
+		width: 100%;
+	}
+	.rec-image {
+		width: 100%;
+		height: 100%;
+	}
+	.recipe-title {
+		font-size: 2rem;
+	}
+	.description {
+		font-size: 1rem;
+	}
+	.tag {
+		font-size: 0.75rem;
+		padding: 4px 8px;
+	}
+	.tag-container {
+		gap: 4px;
+	}
+	.main {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin: 8px 0;
+	}
+	.sub-heading {
+		font-size: 1.5rem;
+		margin: 0;
+	}
+	.ingredients-list {
+		font-size: 1rem;
+		gap: 4px;
+	}
 
-    
+	.method-steps {
+		font-size: 1rem;
+	}
+	.recipe-method {
+		padding-left: 24px;
+	}
 }

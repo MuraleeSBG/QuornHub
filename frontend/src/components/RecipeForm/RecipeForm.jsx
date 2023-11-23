@@ -103,7 +103,9 @@ const RecipeForm = ({
 							selectedImage={selectedImage}
 							setSelectedImage={setSelectedImage}
 						/>
-						<label htmlFor="recipeTitle">Recipe Title</label>
+						<label className="recipeFormLabel" htmlFor="recipeTitle">
+							Recipe Title
+						</label>
 						<input
 							type="text"
 							className="recipeInput"
@@ -116,20 +118,25 @@ const RecipeForm = ({
 							value={recipeTitle}
 							onChange={(e) => setRecipeTitle(e.target.value)}
 						/>
-						<label htmlFor="servingSize">Serving Size</label>
+						<label className="recipeFormLabel" htmlFor="servingSize">
+							Serving Size
+						</label>
 						<select
+							className="servingSizeSelect"
 							id="servingSize"
 							value={servingSize}
 							onChange={(e) => setServingSize(e.target.value)}
 						>
 							{/* <img className="servingUser" src={servingUser} alt="Serving size" /> */}
 							{Array.from(Array(10).keys()).map((num) => (
-								<option key={num} value={num + 1}>
+								<option key={num} value={num + 1} data-icon="glyphicon-music">
 									{num + 1}
 								</option>
 							))}
 						</select>
-						<label htmlFor="recipeTags">The Recipe Is:</label>
+						<label className="recipeFormLabel" htmlFor="recipeTags">
+							The Recipe Is:
+						</label>
 						<div className="tagCheckboxes">
 							{tags.map((tag) => (
 								<div key={tag} className="checkboxContainer">
@@ -140,13 +147,17 @@ const RecipeForm = ({
 										value={recipeTags.includes(tag)}
 										onChange={() => updateTags(tag)}
 									/>
-									<p htmlFor={tag}>{tag}</p>
+									<label className="checkboxLabel" htmlFor={tag}>
+										{tag}
+									</label>
 								</div>
 							))}
 						</div>
 					</div>
 					<div className="rightColumn">
-						<label htmlFor="addIngredient">Ingredients</label>
+						<label className="recipeFormLabel" htmlFor="addIngredient">
+							Ingredients
+						</label>
 						<button
 							type="button"
 							className="addIngredient"
@@ -183,14 +194,16 @@ const RecipeForm = ({
 							</div>
 						))}
 
-						<label htmlFor="method">Method</label>
+						<label className="recipeFormLabel" htmlFor="method">
+							Method
+						</label>
 						<textarea
 							id="method"
 							className="method"
 							rows="10"
 							value={method}
 							onChange={(e) => setMethod(e.target.value)}
-						></textarea>
+						/>
 
 						<button className="done" type="submit">
 							Done
@@ -198,7 +211,6 @@ const RecipeForm = ({
 					</div>
 				</form>
 			</div>
-			;
 		</div>
 	);
 };
