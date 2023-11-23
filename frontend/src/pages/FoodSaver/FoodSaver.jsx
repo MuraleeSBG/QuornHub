@@ -160,7 +160,7 @@ const FoodSaver = () => {
 	});
 
 	return (
-		<div className="foodsaver-page">
+		<div className="food-saver-page">
 			<div className="food-saver-header">
 				<Header />
 				<div className="header-main">
