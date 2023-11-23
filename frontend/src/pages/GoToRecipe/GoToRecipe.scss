@@ -69,6 +69,36 @@
 	font-family: "Montserrat", sans-serif;
 }
 
+.deleteButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: red;
+	border: none;
+	width: 36px;
+	height: 36px;
+}
+.deleteIcon {
+	max-width: 20px;
+	fill: #efe6dd;
+}
+
+.editLink {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	background-color: grey;
+	border: none;
+	width: 36px;
+	height: 36px;
+}
+.editIcon {
+	max-width: 20px;
+	fill: #efe6dd;
+}
+
 .main {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
@@ -116,6 +146,12 @@
 
 .ingredient-list {
 	font-family: "Montserrat", sans-serif;
+}
+
+.editDeleteButtons {
+	display: flex;
+	max-width: 102px;
+	justify-content: space-around;
 }
 
 @media only screen and (max-width: 600px) {

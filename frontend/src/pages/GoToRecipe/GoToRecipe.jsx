@@ -6,6 +6,8 @@ import { useParams } from "react-router";
 import { getTags } from "../../utils/tagUtils";
 import { Link, useNavigate } from "react-router-dom";
 import { isAdminUser } from "../../utils/authUtils";
+import deleteIcon from "../../images/delete.svg";
+import editIcon from "../../images/edit.svg";
 
 const GoToRecipe = () => {
 	const [data, setData] = useState(undefined);
@@ -70,6 +72,32 @@ const GoToRecipe = () => {
 										);
 									})}
 								</div>
+								{isAdminUser() && (
+									<div className="editDeleteButtons">
+										<Link
+											to={`/edit-recipe/${id}`}
+											className="editLink"
+											aria-label="edit recipe"
+										>
+											<img
+												src={editIcon}
+												className="editIcon"
+												alt="edit recipe"
+											/>
+										</Link>
+										<button
+											className="deleteButton"
+											aria-label="delete recipe"
+											onClick={deleteRecipe}
+										>
+											<img
+												src={deleteIcon}
+												className="deleteIcon"
+												alt="delete recipe"
+											/>
+										</button>
+									</div>
+								)}
 							</div>
 						</div>
 						<div className="main">
@@ -113,12 +141,6 @@ const GoToRecipe = () => {
 					</div>
 				)}
 			</div>
-			{isAdminUser() && (
-				<div>
-					<Link to={`/edit-recipe/${id}`}>Edit Recipe</Link>
-					<button onClick={deleteRecipe}>Delete Recipe</button>
-				</div>
-			)}
 			<Footer />
 		</div>
 	);
