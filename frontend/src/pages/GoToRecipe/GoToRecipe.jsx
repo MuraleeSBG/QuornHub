@@ -32,17 +32,16 @@ const GoToRecipe = () => {
 			});
 	}, [id]);
 
-	const deleteRecipe = () => {
+	const deleteRecipe = async () => {
 		const recipeApiUrl = `http://localhost:3001/recipe/${id}`;
-		return fetch(recipeApiUrl, {
+		const response = await fetch(recipeApiUrl, {
 			method: "DELETE",
 			// we are checking on the backend that you are an admin or not to stop you going into local storage on the front end and changing admin to true and hacking into the website
 			credentials: "include",
-		}).then((response) => {
-			if (response.ok) {
-				navigate("/");
-			}
 		});
+		if (response.ok) {
+			navigate("/");
+		}
 	};
 
 	return (
@@ -62,10 +61,10 @@ const GoToRecipe = () => {
 							<div className="overview-col2">
 								<div className="recipe-title">{data.recipeName}</div>
 								<div className="description">{data.recipeDesc}</div>
-								<div className="goto-tag-container">
+								<div className="tag-container">
 									{getTags(data).map((tag, index) => {
 										return (
-											<p key={index} className="goto-tag-text">
+											<p key={index} className="tag">
 												{tag}
 											</p>
 										);
@@ -94,15 +93,14 @@ const GoToRecipe = () => {
 							<div className="main-column2">
 								<h4 className="sub-heading">Method</h4>
 								<ol className="recipe-method">
-									{" "}
 									{data.method
 										.split(".")
 										.filter(Boolean)
 										.map((methodLine, index) => {
 											return (
-												<p className="method-steps" key={index}>
-													{methodLine}
-												</p>
+												<li className="method-steps" key={index}>
+													{methodLine}.
+												</li>
 											);
 										})}
 								</ol>

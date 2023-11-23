@@ -1,3 +1,8 @@
+.recipe-top {
+	margin: 32px;
+	max-width: 1000px;
+}
+
 .recipe-main {
 	background: rgb(239, 230, 221);
 	display: flex;
@@ -9,7 +14,6 @@
 	display: flex;
 	gap: 2vw;
 	justify-content: center;
-	margin: 0 10vw 0 10vw;
 }
 
 .rec-image {
@@ -26,15 +30,15 @@
 .overview-col2 {
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 	font-family: "Paytone One", sans-serif;
-	margin: 0vw;
 	max-width: 70%;
+	gap: 8px;
+	flex-grow: 2;
 }
 
 .recipe-title {
 	text-align: left;
-	font-size: 4vw;
+	font-size: 5rem;
 	margin-bottom: 0.5vw;
 }
 
@@ -44,11 +48,12 @@
 	font-family: "Montserrat", sans-serif;
 	align-items: flex-start;
 	text-align: left;
-	font-size: 2vw;
+	font-size: 3rem;
 	color: #1f1d1d;
+	flex-grow: 1;
 }
 
-.goto-tag-container {
+.tag-container {
 	display: flex;
 	justify-content: flex-start;
 	margin-bottom: 1vw;
@@ -56,7 +61,7 @@
 	margin-bottom: auto;
 }
 
-.goto-tag-text {
+.tag {
 	display: flex;
 	color: black;
 	font-size: 1.5vw;
@@ -68,14 +73,15 @@
 }
 
 .main {
-	display: flex;
-	margin: 2vw 10vw 10vw 10vw;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
 	color: #1f1d1d;
-	gap: 3vw;
+	gap: 32px;
 }
 .sub-heading {
 	display: flex;
 	font-family: "Paytone One", sans-serif;
+	font-size: 3rem;
 }
 
 .main-column1 {
@@ -83,7 +89,6 @@
 	flex-direction: column;
 	min-width: 30%;
 	align-items: flex-start;
-	flex-wrap: wrap;
 }
 
 .main-column2 {
@@ -99,24 +104,70 @@
 	font-family: "Montserrat", sans-serif;
 	align-items: flex-start;
 	text-align: left;
-	padding: 0;
+	padding-left: 36px;
 	margin-top: 0;
-	font-size: 1.2rem;
+	font-size: 1.25rem;
 	color: #1f1d1d;
 }
-
-.method-line {
-	margin: 1vw;
-	padding: 0;
-	color: #1f1d1d;
+.ingredients-list {
+	font-size: 2rem;
+	gap: 8px;
+	display: flex;
+	flex-direction: column;
 }
 
-// desktop
-@media only screen and (min-width: 600px) {
-	.sub-heading {
-		font-size: 2vw;
+.ingredient-list {
+	font-family: "Montserrat", sans-serif;
+}
+
+.method-steps {
+	font-size: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+	.recipe-top {
+		margin: 24px;
+	}
+	.overview {
+		flex-direction: column;
+		width: 100%;
+	}
+	.rec-image {
+		width: 100%;
+		height: 100%;
+	}
+	.recipe-title {
+		font-size: 2rem;
 	}
 	.description {
-		font-size: 2vw;
+		font-size: 1rem;
+	}
+	.tag {
+		font-size: 0.75rem;
+		padding: 4px 8px;
+	}
+	.tag-container {
+		gap: 4px;
+	}
+	.main {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin: 8px 0;
+	}
+	.sub-heading {
+		font-size: 1.5rem;
+		margin: 0;
+	}
+	.ingredients-list {
+		font-size: 1rem;
+		gap: 4px;
+	}
+
+	.method-steps {
+		font-size: 1rem;
+	}
+	.recipe-method {
+		padding-left: 24px;
 	}
 }
