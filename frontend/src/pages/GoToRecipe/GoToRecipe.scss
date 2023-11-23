@@ -12,13 +12,13 @@
 
 .overview {
 	display: flex;
-	gap: 2vw;
+	gap: 32px;
 	justify-content: center;
 }
 
 .rec-image {
-	width: 35vw;
-	height: 35vw;
+	max-width: 400px;
+	max-height: 400px;
 	object-fit: cover;
 	border-radius: 0.6vw;
 }
@@ -31,15 +31,13 @@
 	display: flex;
 	flex-direction: column;
 	font-family: "Paytone One", sans-serif;
-	max-width: 70%;
 	gap: 8px;
 	flex-grow: 2;
 }
 
 .recipe-title {
 	text-align: left;
-	font-size: 5rem;
-	margin-bottom: 0.5vw;
+	font-size: 4rem;
 }
 
 .description {
@@ -48,7 +46,7 @@
 	font-family: "Montserrat", sans-serif;
 	align-items: flex-start;
 	text-align: left;
-	font-size: 3rem;
+	font-size: 2rem;
 	color: #1f1d1d;
 	flex-grow: 1;
 }
@@ -56,20 +54,19 @@
 .tag-container {
 	display: flex;
 	justify-content: flex-start;
-	margin-bottom: 1vw;
-	gap: 0.5vw;
-	margin-bottom: auto;
+	gap: 16px;
 }
 
 .tag {
 	display: flex;
 	color: black;
-	font-size: 1.5vw;
+	font-size: 1rem;
 	font-weight: 500;
 	background-color: #c9a5ce;
-	border-radius: 10vw;
+	border-radius: 16px;
 	width: fit-content;
-	padding: 0.11vw 0.5vw;
+	padding: 8px 16px;
+	font-family: "Montserrat", sans-serif;
 }
 
 .main {
@@ -81,7 +78,7 @@
 .sub-heading {
 	display: flex;
 	font-family: "Paytone One", sans-serif;
-	font-size: 3rem;
+	font-size: 2rem;
 }
 
 .main-column1 {
@@ -108,9 +105,10 @@
 	margin-top: 0;
 	font-size: 1.25rem;
 	color: #1f1d1d;
+	gap: 8px;
 }
 .ingredients-list {
-	font-size: 2rem;
+	font-size: 1.25rem;
 	gap: 8px;
 	display: flex;
 	flex-direction: column;
@@ -118,10 +116,6 @@
 
 .ingredient-list {
 	font-family: "Montserrat", sans-serif;
-}
-
-.method-steps {
-	font-size: 2rem;
 }
 
 @media only screen and (max-width: 600px) {
