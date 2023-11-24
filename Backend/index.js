@@ -1,4 +1,5 @@
 const express = require("express");
+const passwordValidator = require("password-validator");
 const app = express();
 const port = process.env.PORT || 3001;
 const mysql = require("mysql");
@@ -114,7 +115,7 @@ app.get("/recipes", (req, res) => {
 // Endpoint to get a single recipe by ID
 app.get("/recipe/:id", (req, res) => {
 	con.query(
-		// parameterised queries prevent sql injection as the inputs are interpretted as raw strings 
+		// parameterised queries prevent sql injection as the inputs are interpretted as raw strings
 		"SELECT * FROM QuornhubDb.recipes WHERE id = ? LIMIT 1",
 		[req.params.id],
 		function (err, result) {
@@ -280,6 +281,26 @@ app.post("/user", jsonParser, async function (req, res) {
 			message: "Email, name and password are required",
 		});
 	}
+
+	const schema = new passwordValidator();
+	schema
+		.is()
+		.min(8, "Your password must have at least 8 characters") // Minimum length 8
+		.has()
+		.uppercase(1, "Your password must contain an uppercase character") // Must have uppercase letters
+		.has()
+		.lowercase(1, "Your password must contain an lowercase character") // Must have lowercase letters
+		.has()
+		.digits(1, "Your password must contain a digit") // Must have at least 1 digits
+		.has()
+		.symbols(1, "Your password must contain a special character"); // Must have at least 1 symbol
+	const passwordValidationErrors = schema.validate(password, { details: true });
+	if (passwordValidationErrors.length > 0) {
+		return res.status(400).send({
+			messages: passwordValidationErrors.map((error) => error.message),
+		});
+	}
+
 	try {
 		var emailLower = emailAddress.toLowerCase();
 
@@ -292,7 +313,7 @@ app.post("/user", jsonParser, async function (req, res) {
 				//If a user is found with the same email address, return a 400 Bad Request response as we don't want a duplicate email address
 				if (result[0].count > 0) {
 					return res.status(400).send({
-						message: "Email already exists",
+						messages: ["Email already exists"],
 					});
 				}
 
@@ -313,7 +334,7 @@ app.post("/user", jsonParser, async function (req, res) {
 		);
 	} catch (err) {
 		return res.status(400).send({
-			message: err.message,
+			messages: [err.message],
 		});
 	}
 });
