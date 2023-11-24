@@ -42,25 +42,25 @@ const App = () => {
 		},
 		{
 			path: "/gluten-free",
-			element: <Categories tag={"gluten-free"} title={"Gluten Free Recipes"} />,
+			element: <Categories key={"gluten-free"} tag={"gluten-free"} title={"Gluten Free Recipes"} />,
 		},
 		{
 			path: "/vegan",
-			element: <Categories tag={"vegan"} title={"Vegan Recipes"} />,
+			element: <Categories key={"vegan"} tag={"vegan"} title={"Vegan Recipes"} />,
 		},
 		{
 			path: "/fifteen-minute",
-			element: <Categories tag={"under-15"} title={"15 Minute Recipes"} />,
+			element: <Categories key={"under-15"} tag={"under-15"} title={"15 Minute Recipes"} />,
 		},
 		{
 			path: "/lactose-free",
 			element: (
-				<Categories tag={"lactose-free"} title={"Lactose Free Recipes"} />
+				<Categories key={"lactose-free"} tag={"lactose-free"} title={"Lactose Free Recipes"} />
 			),
 		},
 		{
 			path: "/nut-free",
-			element: <Categories tag={"nut-free"} title={"Nut Free Recipes"} />,
+			element: <Categories key={"nut-free"} tag={"nut-free"} title={"Nut Free Recipes"} />,
 		},
 		{
 			path: "/go-to-recipe/:id",
