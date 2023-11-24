@@ -1,79 +1,71 @@
 .QHlogo {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
 }
 
 .login-logo-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 60%;
-	max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  max-width: 300px;
 }
 
 .form {
-	display: flex;
-	align-items: flex-start;
-	flex-direction: column;
-	width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
 }
 
 .loginButton {
-	width: 100%;
-	background-color: #a60054;
-	border: none;
-	color: #ffffff;
-	margin-top: 20%;
-	font-weight: 800;
-	font-family: "Nunito Sans", sans-serif;
-	font-size: 1.2rem;
-	border-radius: 6px;
+  width: 100%;
+  background-color: #a60054;
+  border: none;
+  color: #ffffff;
+  margin-top: 20%;
+  font-weight: 800;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  border-radius: 6px;
 }
 
 .container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 30%;
-	justify-content: center;
-	min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  justify-content: center;
+  min-width: 300px;
 }
 
 .page {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.create {
-	color: #a60054;
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .Title {
-	font-family: "Paytone One", sans-serif;
-	font-size: 31px;
-	color: #525252;
-	margin-bottom: 0;
-	padding-top: 30px;
+  font-family: "Paytone One", sans-serif;
+  font-size: 31px;
+  color: #525252;
+  margin-bottom: 0;
+  padding-top: 30px;
 }
 
 .details {
-	font-family: "Nunito Sans", sans-serif;
-	font-weight: 200;
-	font-size: medium;
-	margin-bottom: 10%;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 200;
+  font-size: medium;
+  margin-bottom: 10%;
 }
 
 .error {
-	color: red;
-	font-family: "Nunito Sans", sans-serif;
-	font-size: small;
-	margin-top: 0;
-	margin-bottom: 0;
+  color: red;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: small;
+  margin-top: 0;
+  margin-bottom: 0;
 }

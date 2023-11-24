@@ -95,7 +95,7 @@ const CreateAccount = () => {
 
         <h2 className="notReg">
           Already have an account?{" "}
-          <Link to="/login" className="create">
+          <Link to="/login" className="loginLink">
             Login
           </Link>
         </h2>

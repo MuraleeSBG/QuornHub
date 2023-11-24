@@ -64,12 +64,12 @@ const Login = () => {
 					</button>
 				</form>
 
-				<p className="notReg">
+				<h2 className="notReg">
 					Not registered yet?{" "}
-					<Link to="/create-account" className="create">
+					<Link to="/create-account" className="loginLink">
 						Create an account
 					</Link>
-				</p>
+				</h2>
 			</div>
 		</div>
 	);
