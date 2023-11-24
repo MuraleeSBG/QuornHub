@@ -3,6 +3,7 @@ import logo from "../../images/QHLogo.png";
 import { useEffect, useState } from "react";
 import "./CreateAccount.scss";
 import PasswordInput from "../../components/PasswordInput/PasswordInput";
+import "../Login/Login.scss";
 
 const CreateAccount = () => {
   const [emailAddress, setEmailAddress] = useState("");
@@ -62,25 +63,25 @@ const CreateAccount = () => {
         <h1 className="Title">Create your account</h1>
         <h2 className="details">Enter your details to get started</h2>
         <form className="form" onSubmit={handleSubmit}>
-          <label htmlFor="emailAddress">Email</label>
+          <label className="loginLabel" htmlFor="emailAddress">Email</label>
           <input
             type="text"
-            className="input"
+            className="login-input"
             id="emailAddress"
             value={emailAddress}
             onChange={(e) => setEmailAddress(e.target.value)}
           />
-          <label htmlFor="displayName">Display Name</label>
+          <label className="loginLabel" htmlFor="displayName">Display Name</label>
           <input
             type="text"
-            className="input"
+            className="login-input"
             id="displayName"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
-          <label htmlFor="password">Password</label>
+          <label className="loginLabel" htmlFor="password">Password</label>
           <PasswordInput password={password} setPassword={setPassword} />
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label className="loginLabel" htmlFor="confirmPassword">Confirm Password</label>
           <PasswordInput
             password={confirmPassword}
             setPassword={setConfirmPassword}
