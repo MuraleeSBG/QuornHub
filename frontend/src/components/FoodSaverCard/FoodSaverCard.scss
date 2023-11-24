@@ -68,22 +68,30 @@
   font-weight: 600;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 600px) {
   .fs-tag-text {
     display: flex;
-    font-size: 0.8rem;
+    font-size: 0.625rem;
     padding: 2px 6px;
+  }
+
+  .fs-card-title {
+    font-size: 1rem;
   }
 
   .recipe-button {
     padding: 4px;
+    width: 100%;
   }
 
   .food-saver-card {
     flex-direction: row-reverse;
+    max-width: 90vw;
   }
 
   .recipe-image {
     border-radius: 0 16px 16px 0;
+    max-width: 50%;
+    height: auto;
   }
 }
