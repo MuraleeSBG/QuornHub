@@ -107,15 +107,15 @@ const CreateAccount = () => {
 					</button>
 				</form>
 
-				<h2 className="notReg">
-					Already have an account?{" "}
-					<Link to="/login" className="create">
-						Login
-					</Link>
-				</h2>
-			</div>
-		</div>
-	);
+        <h2 className="notReg">
+          Already have an account?{" "}
+          <Link to="/login" className="loginLink">
+            Login
+          </Link>
+        </h2>
+      </div>
+    </div>
+  );
 };
 
 export default CreateAccount;
