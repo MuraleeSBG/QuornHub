@@ -37,7 +37,6 @@ export const Header = ({ userName }) => {
 
   const userInitials = useMemo(() => {
     const userName = getUsersName();
-    console.log(userName);
     if (!userName || typeof userName !== "string") {
       return "XX";
     }
