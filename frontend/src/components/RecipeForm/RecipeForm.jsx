@@ -29,14 +29,12 @@ const RecipeForm = ({
     const newIngredients = Array.from(ingredients);
     newIngredients[index] = e.target.value;
     setIngredients(newIngredients);
-    console.log({ ingredients });
   };
 
   const removeIngredient = (indexToRemove) => {
     const newIngredients = ingredients.filter(
       (_, index) => index !== indexToRemove
     );
-    console.log(newIngredients);
     setIngredients(newIngredients);
   };
 
@@ -66,7 +64,6 @@ const RecipeForm = ({
       throw new Error("Error uploading image");
     }
     const data = await response.json();
-    console.log({data})
     return data.imageName;
   }, [selectedImage]);
 
@@ -74,9 +71,7 @@ const RecipeForm = ({
     async (e) => {
       e.preventDefault();
       try {
-        console.log({ selectedImage });
         const imageName = !selectedImage ? initialImage : await uploadImage();
-        console.log({imageName})
         const recipe = {
           recipeName: recipeTitle,
           recipeImg: imageName,
@@ -198,7 +193,7 @@ const RecipeForm = ({
                   type="button"
                   onClick={() => removeIngredient(index)}
                   className="remove-button"
-                  id="removeIngredient"
+                  id={`removeIngredient-${index}`}
                 >
                   <img
                     className="remove-button-icon"

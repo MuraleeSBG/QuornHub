@@ -23,5 +23,8 @@ export const getTags = (recipe) => {
   if (recipe.isNutFree) {
     tags.push("Nut Free");
   }
+  if (recipe.isUnder15) {
+    tags.push("< 15 Minutes");
+  }
   return tags;
 };

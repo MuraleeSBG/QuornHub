@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const FoodSaver = () => {
-  const dropIcon = <FontAwesomeIcon icon={faCaretDown} />;
   const [ingredientSearchTerms, setIngredientSearchTerms] = useState([]);
   const [recipesToDisplay, setRecipesToDisplay] = useState([]);
   const [inputText, setInputText] = useState("");
@@ -60,11 +59,8 @@ const FoodSaver = () => {
   useEffect(() => {
     const filteredRecsByIngredient = data.filter((recipe) => {
       return recipe.ingredients.some((ingredient) => {
-        const ingredientStr =
-          typeof ingredient === "string" ? ingredient : ingredient.ingredient;
-        return ingredientSearchTerms.some(
-          (ingredientSearchTerm) =>
-            ingredientSearchTerm.toLowerCase() === ingredientStr.toLowerCase()
+        return ingredientSearchTerms.some((ingredientSearchTerm) =>
+          ingredient.toLowerCase().includes(ingredientSearchTerm.toLowerCase())
         );
       });
     });
@@ -194,7 +190,7 @@ const FoodSaver = () => {
           {categoryFilters.length === 0
             ? "Filter by a category"
             : categoryFilters.join(", ")}{" "}
-          {dropIcon}
+          <FontAwesomeIcon icon={faCaretDown} />
           <div className="filter-dropdown-content">{showFilters}</div>
         </div>
         <div id="tags" className="search-tags-container">
