@@ -107,7 +107,6 @@ app.get("/recipes", (req, res) => {
 				};
 			});
 			res.send(parsedResult);
-			console.log("all works");
 		}
 	);
 });
@@ -268,7 +267,6 @@ app.get("/users", (req, res) => {
 	con.query("SELECT * FROM QuornhubDb.users", function (err, result, fields) {
 		if (err) throw err;
 		res.send(result);
-		console.log("get user works");
 	});
 });
 
@@ -345,7 +343,6 @@ app.post("/user", jsonParser, async function (req, res) {
 // 		con.query("UPDATE QuornhubDb.users SET name = ?, password = ?, email = ?, admin = ? WHERE id = ?", [req.body.name, hashedpass, req.body.email, req.body.admin, req.body.id], function (err, result, fields) {
 // 			if (err) throw err;
 // 			res.send(result);
-// 			console.log("update user works")
 // 		});
 // 	}
 // });
@@ -355,7 +352,6 @@ app.post("/user", jsonParser, async function (req, res) {
 // 	con.query("DELETE FROM QuornhubDb.users WHERE id = ?", [req.params.id], function (err, result, fields) {
 // 	  if (err) throw err;
 // 	  res.send(result);
-// 	  console.log("delete user works")
 // 	});
 //   }
 // });

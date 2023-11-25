@@ -10,140 +10,140 @@ import deleteIcon from "../../images/delete.svg";
 import editIcon from "../../images/edit.svg";
 
 const GoToRecipe = () => {
-	const [data, setData] = useState(undefined);
-	const navigate = useNavigate();
+  const [data, setData] = useState(undefined);
+  const navigate = useNavigate();
 
-	const { id } = useParams();
+  const { id } = useParams();
 
-	useEffect(() => {
-		// CHANGE LOCAL HOST PORT TO WHATEVER BACKEND IS USING
-		const apiUrl = `http://localhost:3001/recipe/${id}`;
+  useEffect(() => {
+    // CHANGE LOCAL HOST PORT TO WHATEVER BACKEND IS USING
+    const apiUrl = `http://localhost:3001/recipe/${id}`;
 
-		fetch(apiUrl)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Error with response");
-				}
-				return response.json();
-			})
-			.then((data) => {
-				setData(data);
-			})
-			.catch((error) => {
-				console.error("Error fetching data:", error);
-			});
-	}, [id]);
+    fetch(apiUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error with response");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [id]);
 
-	const deleteRecipe = async () => {
-		const recipeApiUrl = `http://localhost:3001/recipe/${id}`;
-		const response = await fetch(recipeApiUrl, {
-			method: "DELETE",
-			// we are checking on the backend that you are an admin or not to stop you going into local storage on the front end and changing admin to true and hacking into the website
-			credentials: "include",
-		});
-		if (response.ok) {
-			navigate("/");
-		}
-	};
+  const deleteRecipe = async () => {
+    const recipeApiUrl = `http://localhost:3001/recipe/${id}`;
+    const response = await fetch(recipeApiUrl, {
+      method: "DELETE",
+      // we are checking on the backend that you are an admin or not to stop you going into local storage on the front end and changing admin to true and hacking into the website
+      credentials: "include",
+    });
+    if (response.ok) {
+      navigate("/");
+    }
+  };
 
-	return (
-		<div className="recipe-main">
-			<Header />
-			<div className="recipe-top">
-				{data ? (
-					<div>
-						<div className="overview">
-							<div className="overview-col1">
-								<img
-									className="rec-image"
-									src={`http://localhost:3001/uploads/${data.recipeImg}`}
-									alt={data.recipeName}
-								/>
-							</div>
-							<div className="overview-col2">
-								<div className="recipe-title">{data.recipeName}</div>
-								<div className="description">{data.recipeDesc}</div>
-								<div className="tag-container">
-									{getTags(data).map((tag, index) => {
-										return (
-											<p key={index} className="tag">
-												{tag}
-											</p>
-										);
-									})}
-								</div>
-								{isAdminUser() && (
-									<div className="editDeleteButtons">
-										<Link
-											to={`/edit-recipe/${id}`}
-											className="editLink"
-											aria-label="edit recipe"
-										>
-											<img
-												src={editIcon}
-												className="editIcon"
-												alt="edit recipe"
-											/>
-										</Link>
-										<button
-											className="deleteButton"
-											aria-label="delete recipe"
-											onClick={deleteRecipe}
-										>
-											<img
-												src={deleteIcon}
-												className="deleteIcon"
-												alt="delete recipe"
-											/>
-										</button>
-									</div>
-								)}
-							</div>
-						</div>
-						<div className="main">
-							<div className="main-column1">
-								<h4 className="sub-heading">Ingredients</h4>
-								<div className="ingredients-list">
-									{data.ingredients.map((ingredient, index) => {
-										return (
-											<p key={index} className="ingredient-list">
-												{/* Currently, test ingredients are strings, but ingredients added through the app are objects. 
+  return (
+    <div className="recipe-main">
+      <Header />
+      <div className="recipe-top">
+        {data ? (
+          <div>
+            <div className="overview">
+              <div className="overview-col1">
+                <img
+                  className="rec-image"
+                  src={`http://localhost:3001/uploads/${data.recipeImg}`}
+                  alt={data.recipeName}
+                />
+              </div>
+              <div className="overview-col2">
+                <div className="recipe-title">{data.recipeName}</div>
+                <div className="description">{data.recipeDesc}</div>
+                <div className="tag-container">
+                  {getTags(data).map((tag, index) => {
+                    return (
+                      <p key={index} className="tag">
+                        {tag}
+                      </p>
+                    );
+                  })}
+                </div>
+                {isAdminUser() && (
+                  <div className="editDeleteButtons">
+                    <Link
+                      to={`/edit-recipe/${id}`}
+                      className="editLink"
+                      aria-label="edit recipe"
+                    >
+                      <img
+                        src={editIcon}
+                        className="editIcon"
+                        alt="edit recipe"
+                      />
+                    </Link>
+                    <button
+                      className="deleteButton"
+                      aria-label="delete recipe"
+                      onClick={deleteRecipe}
+                    >
+                      <img
+                        src={deleteIcon}
+                        className="deleteIcon"
+                        alt="delete recipe"
+                      />
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="main">
+              <div className="main-column1">
+                <h4 className="sub-heading">Ingredients</h4>
+                <div className="ingredients-list">
+                  {data.ingredients.map((ingredient, index) => {
+                    return (
+                      <p key={index} className="ingredient-list">
+                        {/* Currently, test ingredients are strings, but ingredients added through the app are objects. 
                                                 So if the ingredient is of type string, it must be test ingredient and we display the string.
                                                 If not it must be a new ingredient which is an object with amount and ingredient fields */}
-												{typeof ingredient === "string"
-													? ingredient
-													: `${ingredient.amount} ${ingredient.ingredient}`}
-											</p>
-										);
-									})}
-								</div>
-							</div>
-							<div className="main-column2">
-								<h4 className="sub-heading">Method</h4>
-								<ol className="recipe-method">
-									{data.method
-										.split(".")
-										.filter(Boolean)
-										.map((methodLine, index) => {
-											return (
-												<li className="method-steps" key={index}>
-													{methodLine}.
-												</li>
-											);
-										})}
-								</ol>
-							</div>
-						</div>
-					</div>
-				) : (
-					<div>
-						<h1 className="results-placeholder">error 404 - page not found</h1>
-					</div>
-				)}
-			</div>
-			<Footer />
-		</div>
-	);
+                        {typeof ingredient === "string"
+                          ? ingredient
+                          : `${ingredient.amount} ${ingredient.ingredient}`}
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="main-column2">
+                <h4 className="sub-heading">Method</h4>
+                <ol className="recipe-method">
+                  {data.method
+                    .split("STEP ")
+                    .filter(Boolean)
+                    .map((methodLine, index) => {
+                      return (
+                        <li className="method-steps" key={index}>
+                          {methodLine.substring(2)}
+                        </li>
+                      );
+                    })}
+                </ol>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <h1 className="results-placeholder">error 404 - page not found</h1>
+          </div>
+        )}
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default GoToRecipe;

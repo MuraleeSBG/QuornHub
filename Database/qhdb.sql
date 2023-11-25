@@ -98,7 +98,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('16471ff0-7f2d-11ee-8f30-ec9421e72607','alicedaisysmith1@gmail.com','alicedaisysmith1@gmail.com','$2b$10$Ik9Xz.zl9pHjAGStYvvcTeH7PZ5R/Jn/2WxhU18FQrlLfHid52vgu',0),('2acf6710-7f38-11ee-8f30-ec9421e72607','Alice','1234@gmail.com','$2b$10$gbzKETlcZyYE4LlpN.02s.07yvr.4GrG5xCbl0iNWnTQhvbC/5ri2',0),('9b5f0e9a-7f33-11ee-8f30-ec9421e72607','honk','123@gmail.com','$2b$10$DaQ9N91MEt7OvyFei8nepOlsWI37GiBOWUR59BJ365aGvtsDSSu/q',1),('a0bbdfda-7f38-11ee-8f30-ec9421e72607','Heelo','12345@gmail.com','$2b$10$dlhRq8sjOPZiHIzdYui9I.FjnwYMaSAfZ2sohAkP9fZPhEXYd8s1G',0);
+INSERT INTO `users` VALUES ('16471ff0-7f2d-11ee-8f30-ec9421e72607','alicedaisysmith1@gmail.com','alicedaisysmith1@gmail.com','$2b$10$Ik9Xz.zl9pHjAGStYvvcTeH7PZ5R/Jn/2WxhU18FQrlLfHid52vgu',0),('2acf6710-7f38-11ee-8f30-ec9421e72607','Alice Smith','1234@gmail.com','$2b$10$gbzKETlcZyYE4LlpN.02s.07yvr.4GrG5xCbl0iNWnTQhvbC/5ri2',0),('9b5f0e9a-7f33-11ee-8f30-ec9421e72607','Honk McGee','123@gmail.com','$2b$10$DaQ9N91MEt7OvyFei8nepOlsWI37GiBOWUR59BJ365aGvtsDSSu/q',1),('a0bbdfda-7f38-11ee-8f30-ec9421e72607','Heelo','12345@gmail.com','$2b$10$dlhRq8sjOPZiHIzdYui9I.FjnwYMaSAfZ2sohAkP9fZPhEXYd8s1G',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

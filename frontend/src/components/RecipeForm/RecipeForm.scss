@@ -1,170 +1,173 @@
 .add-recipes-page {
-	background-image: url(../../images/addrecipebackground.png);
-	background-color: #efe6dd;
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-family: "Montserrat", sans-serif;
+  background-image: url(../../images/addrecipebackground.png);
+  background-color: #efe6dd;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
 }
 
 .createContainer {
-	margin: 16px;
-	padding: 16px;
-	background-color: rgba(239, 230, 221, 0.7);
-	border-radius: 10px;
-	overflow-y: auto;
-	max-height: 75vh;
+  margin: 16px;
+  padding: 16px;
+  background-color: rgba(239, 230, 221, 0.7);
+  border-radius: 10px;
+  overflow-y: auto;
+  max-height: 75vh;
 }
 
 h1 {
-	font-family: "Paytone One", sans-serif;
-	font-size: 3rem;
-	margin: 0px;
-	color: #1f1d1d;
+  font-family: "Paytone One", sans-serif;
+  font-size: 3rem;
+  margin: 0px;
+  color: #1f1d1d;
 }
 
 h2 {
-	font-weight: 400;
-	font-size: 1rem;
-	margin: 0px;
-	padding: 4px;
-	color: #1f1d1d;
+  font-weight: 400;
+  font-size: 1rem;
+  margin: 0px;
+  padding: 4px;
+  color: #1f1d1d;
 }
 
 .addRecipe {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .leftColumn {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: 8px;
-	gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 }
 
 .rightColumn {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding: 8px;
-	gap: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px;
+  gap: 8px;
 }
 
 .tagCheckboxes {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	padding-left: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 4px;
 }
 
 .ingredient {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .recipeFormLabel {
-	font-weight: 400;
-	font-size: 1rem;
-	padding-top: 8px;
-	color: #1f1d1d;
+  font-weight: 400;
+  font-size: 1rem;
+  padding-top: 8px;
+  color: #1f1d1d;
 }
 
 .recipeInput {
-	border-radius: 20px;
-	border: 1px solid #828282;
-	padding: 8px;
-	background-color: #efe6dd;
+  border-radius: 20px;
+  border: 1px solid #828282;
+  padding: 8px;
+  background-color: #efe6dd;
+  width: 100%;
 }
 
 .servingSizeSelect {
-	background-color: #efe6dd;
-	border-radius: 20px;
-	border: 0;
-	padding: 8px 16px;
-	font-family: "Montserrat", sans-serif;
-	border-right: 16px solid transparent;
-	outline: 1px solid #828282;
+  background-color: #efe6dd;
+  border-radius: 20px;
+  border: 0;
+  padding: 8px 16px;
+  font-family: "Montserrat", sans-serif;
+  border-right: 16px solid transparent;
+  outline: 1px solid #828282;
 }
 
 .tagCheckbox {
-	height: 20px;
-	width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 .checkboxContainer {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	gap: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .checkboxLabel {
-	font-size: 0.75rem;
-	color: #1f1d1d;
+  font-size: 0.75rem;
+  color: #1f1d1d;
 }
 
 .addIngredient {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-	width: 100%;
-	min-width: 320px;
-	border-radius: 20px;
-	border: 1px solid #828282;
-	padding: 8px;
-	font-family: "Montserrat", sans-serif;
-	background-color: #efe6dd;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-width: 320px;
+  border-radius: 20px;
+  border: 1px solid #828282;
+  padding: 8px;
+  font-family: "Montserrat", sans-serif;
+  background-color: #efe6dd;
+  font-size: 0.75rem;
 }
 
 .plusIcon {
-	height: 15px;
-	width: 15px;
-	padding-right: 8px;
+  height: 15px;
+  width: 15px;
+  padding-right: 8px;
 }
 
 .method {
-	width: 100%;
-	border-radius: 20px;
-	background-color: #efe6dd;
-	border: 1px solid #828282;
-	padding: 8px;
-	font-family: "Montserrat", sans-serif;
-	font-size: 1rem;
+  width: 95%;
+  border-radius: 20px;
+  background-color: #efe6dd;
+  border: 1px solid #828282;
+  padding: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  resize: vertical;
 }
 
 .done {
-	font-family: "Nunito Sans", sans-serif;
-	font-weight: 800;
-	color: #ffffff;
-	border: none;
-	background-color: #a60054;
-	border-radius: 10px;
-	width: 50%;
-	display: flex;
-	justify-content: center;
-	margin-top: 16px;
-	padding: 4px;
-	cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  color: #ffffff;
+  border: none;
+  background-color: #a60054;
+  border-radius: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  padding: 4px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
-	.addRecipe {
-		flex-direction: column;
-	}
-	.rightColumn {
-		padding: 0 8px 8px;
-	}
-	.addIngredient {
-		min-width: 100%;
-	}
+  .addRecipe {
+    flex-direction: column;
+  }
+  .rightColumn {
+    padding: 0 8px 8px;
+  }
+  .addIngredient {
+    min-width: 100%;
+  }
 }
