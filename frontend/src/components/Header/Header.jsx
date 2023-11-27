@@ -84,7 +84,7 @@ export const Header = ({ userName }) => {
 					</div>
 				</div>
 
-				<div className="dropdown">
+				<div className="user-dropdown">
 					{isUserLoggedIn ? (
 						<p className="header-icon user-initials">{userInitials}</p>
 					) : (
