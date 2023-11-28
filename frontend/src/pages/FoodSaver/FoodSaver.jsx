@@ -124,7 +124,7 @@ const FoodSaver = () => {
 
   const showFilters = filters.map((category, index) => {
     return (
-      <div className="dropdown-option" key={index}>
+      <label className="dropdown-option" key={index}>
         <input
           type="checkbox"
           name="dropdown-group"
@@ -138,7 +138,7 @@ const FoodSaver = () => {
           }
         />
         {category}
-      </div>
+      </label>
     );
   });
 
