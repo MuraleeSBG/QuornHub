@@ -12,7 +12,7 @@ export const FoodSaverCard = ({ selectedRecipe, tags, onRecipeSelect }) => {
         alt={selectedRecipe.recipeName}
       />
       <div className="fs-card-body">
-        <h3 className="fs-card-title">{selectedRecipe.recipeName}</h3>
+        <h1 className="fs-card-title">{selectedRecipe.recipeName}</h1>
         <div className="fs-tag-container">
           {tags.map((tag, index) => (
             <p key={index} className="fs-tag-text">
