@@ -13,19 +13,19 @@ export const Footer = () => {
 				Enjoy weekly hand picked recipes and food waste tips on all our socials
 			</p>
 			<div className="socials">
-				<a target="_blank" href="https://www.facebook.com/">
+				<a target="_blank" href="https://www.facebook.com/" rel="noreferrer">
 					<img className="social-svg" src={fbLogo} alt="Facebook logo" />
 				</a>
-				<a target="_blank" href="https://www.instagram.com/">
+				<a target="_blank" href="https://www.instagram.com/" rel="noreferrer">
 					<img className="social-svg" src={instaLogo} alt="Instagram logo" />
 				</a>
-				<a target="_blank" href="https://twitter.com/">
+				<a target="_blank" href="https://twitter.com/" rel="noreferrer">
 					<img className="social-svg" src={twitterLogo} alt="Twitter logo" />
 				</a>
-				<a target="_blank" href="https://www.youtube.com/">
+				<a target="_blank" href="https://www.youtube.com/" rel="noreferrer">
 					<img className="social-svg" src={youtubeLogo} alt="Youtube logo" />
 				</a>
-				<a target="_blank" href="https://www.tiktok.com/">
+				<a target="_blank" href="https://www.tiktok.com/" rel="noreferrer">
 					<img className="social-svg" src={tiktokLogo} alt="Tiktok logo" />
 				</a>
 			</div>
