@@ -16,7 +16,7 @@ const GoToRecipe = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    // CHANGE LOCAL HOST PORT TO WHATEVER BACKEND IS USING
+
     const apiUrl = `http://localhost:3001/recipe/${id}`;
 
     fetch(apiUrl)
